@@ -36,5 +36,24 @@
     "summary": "本报告深入分析了WCHN这一世界级神经影像研究中心的成功模式。从方法论革命（SPM）、理论基石（贝叶斯大脑）到技术前沿（7T MRI、可穿戴MEG），WCHN构建了一个强大的创新飞轮。报告还探讨了其开放科学战略和全球合作网络。",
     "featured": true,
     "thumbnail": "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg"
+  },
+  {
+    "id": "richard-frackowiak-analysis-report",
+    "filename": "Richard_Frackowiak_Analysis_Report.html",
+    "title": "Richard Frackowiak 学者信息分析报告",
+    "description": "全面分析神经影像学领域奠基人Richard Frackowiak的学术贡献、影响力与合作网络",
+    "author": "ScholarInsight AI",
+    "date": "2025-01-01",
+    "category": "学者分析",
+    "tags": ["神经科学", "神经影像学", "SPM", "FIL", "人类大脑计划", "Richard Frackowiak"],
+    "subject": {
+      "type": "scholar",
+      "name": "Richard Stanislaus Joseph Frackowiak",
+      "institution": "洛桑联邦理工学院 / 伦敦大学学院",
+      "field": "Neuroimaging, Brain Mapping, Neuroplasticity"
+    },
+    "summary": "本报告全面分析了Richard Frackowiak的学术生涯、核心贡献和影响力。作为神经影像学领域的奠基人与开拓者，他创立了惠康功能影像实验室（FIL），推动了SPM等革命性工具的诞生，并领导了著名的'伦敦出租车司机'研究，揭示了大脑结构可塑性。",
+    "featured": true,
+    "thumbnail": "https://agents-download.skywork.ai/croped/images/db39daf203a8b46b7950ec8baae768cc_crop.jpg"
   }
 ]

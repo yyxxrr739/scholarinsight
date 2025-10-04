@@ -6,51 +6,33 @@ import { ArrowLeft, Share2, Download, Calendar, User, Building2, Tag } from 'luc
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-// 报告数据
-const reports = [
-  {
-    id: "karl-friston-academic-report",
-    filename: "Karl_Friston_Academic_Report.html",
-    title: "Karl Friston学术情报分析报告",
-    description: "深度分析知名理论神经科学家Karl Friston的学术贡献、影响力与合作网络",
-    author: "ScholarInsight AI",
-    date: "2024-01-15",
-    category: "学者分析",
-    tags: ["神经科学", "理论神经科学", "自由能原理", "SPM", "Karl Friston"],
-    subject: {
-      type: "scholar",
-      name: "Karl J. Friston",
-      institution: "University College London",
-      field: "Theoretical Neuroscience"
-    },
-    summary: "本报告全面分析了Karl Friston的学术生涯、核心贡献和影响力。作为自由能原理的提出者和SPM软件的开发者，Friston在理论神经科学领域具有举足轻重的地位。报告深入探讨了他的理论框架、方法论贡献以及对整个领域的影响。",
-    featured: true,
-    thumbnail: "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg"
-  },
-  {
-    id: "wellcome-trust-centre-analysis",
-    filename: "Wellcome_Trust_Centre_Analysis_Report.html",
-    title: "深度解析：Wellcome Centre for Human Neuroimaging (WCHN) 如何定义现代脑科学研究",
-    description: "全面剖析WCHN的核心技术、战略思想与生态系统，系统性地揭示其成功的蓝图",
-    author: "ScholarInsight AI",
-    date: "2024-01-20",
-    category: "机构分析",
-    tags: ["神经影像", "研究机构", "WCHN", "SPM", "开放科学", "脑科学"],
-    subject: {
-      type: "institution",
-      name: "Wellcome Centre for Human Neuroimaging",
-      institution: "University College London",
-      field: "Neuroscience"
-    },
-    summary: "本报告深入分析了WCHN这一世界级神经影像研究中心的成功模式。从方法论革命（SPM）、理论基石（贝叶斯大脑）到技术前沿（7T MRI、可穿戴MEG），WCHN构建了一个强大的创新飞轮。报告还探讨了其开放科学战略和全球合作网络。",
-    featured: true,
-    thumbnail: "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg"
-  }
-]
+// 报告数据类型定义
+interface ReportSubject {
+  type: string
+  name: string
+  institution: string
+  field: string
+}
+
+interface Report {
+  id: string
+  filename: string
+  title: string
+  description: string
+  author: string
+  date: string
+  category: string
+  tags: string[]
+  subject: ReportSubject
+  summary: string
+  featured: boolean
+  thumbnail: string
+}
 
 export default function ReportDetailPage() {
   const params = useParams()
   const router = useRouter()
+  const [reports, setReports] = useState<Report[]>([])
   const [reportContent, setReportContent] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -58,8 +40,28 @@ export default function ReportDetailPage() {
   const filename = params.filename as string
   const report = reports.find(r => r.filename === filename)
 
+  // 加载报告数据
+  useEffect(() => {
+    const loadReports = async () => {
+      try {
+        const response = await fetch('/api/reports')
+        if (!response.ok) {
+          throw new Error('无法加载报告数据')
+        }
+        const reportsData = await response.json()
+        setReports(reportsData)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : '加载报告数据时发生错误')
+      }
+    }
+
+    loadReports()
+  }, [])
+
   useEffect(() => {
     const loadReport = async () => {
+      if (!report || !filename) return
+      
       try {
         setLoading(true)
         setError(null)
@@ -79,10 +81,26 @@ export default function ReportDetailPage() {
       }
     }
 
-    if (filename) {
-      loadReport()
-    }
-  }, [filename])
+    loadReport()
+  }, [report, filename])
+
+  if (reports.length === 0 && !error) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-academic-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <h3 className="text-lg font-semibold text-academic-900 mb-2">正在加载报告数据</h3>
+            <p className="text-academic-600">请稍候...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
 
   if (!report) {
     return (

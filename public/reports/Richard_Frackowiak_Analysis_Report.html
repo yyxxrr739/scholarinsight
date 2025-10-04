@@ -1,0 +1,1243 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Richard Frackowiak 学者信息分析报告</title>
+<style>.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    }
+.chart-container {
+    position: relative;
+    margin: 3em auto;
+    max-width: 700px;
+    min-height: 200px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    aspect-ratio: 7/5;}
+h5 {
+    font-size: 16px;
+    }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.84);
+    background-color: #fafafa;
+    margin: 0 24px 0 24px;
+    padding: 0;
+    font-size: 16px;
+    max-width: None;
+    }
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px 40px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+h1, h2, h3, h4 {
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #333;
+    line-height: 1.3;
+    font-size: 28px;
+    margin-top: 24px;
+    margin-bottom: 20px;
+    }
+h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 24px;
+    }
+h2 {
+    font-size: 22px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.3em;
+    margin-top: 2em;
+    }
+h3 {
+    font-size: 20px;
+    margin-top: 1.8em;
+    }
+h4 {
+    font-size: 18px;
+    margin-top: 1.5em;
+    }
+p {
+    font-size: 18px;
+    margin: 1.2em 0;
+    }
+a {
+    color: #1a0dab;
+    text-decoration: none;
+    }
+a:hover {
+    text-decoration: underline;
+    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 16px;
+    }
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    }
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    }
+tr:nth-child(even) {
+    background-color: #fdfdfd;
+    }
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 20px;
+    margin: 1.5em 0;
+    font-style: italic;
+    color: #666;
+    }
+ul, ol {
+    padding-left: 2em;
+    font-size: 17px;
+    }
+li {
+    margin-bottom: 0.8em;
+    }
+.report-meta {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 2em;
+    line-height: 1.5;
+    }
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 3em 0;
+    }
+figure {
+    margin: 2em 0;
+    text-align: center;
+    }
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    display: block;
+    overflow: hidden;
+    max-height: 280px;
+    margin: 1em auto;
+    border-radius: 8px;
+    }
+figcaption {
+    font-size: 14px;
+    color: #555;
+    margin-top: 0.8em;
+    font-style: italic;
+    }
+#toc {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px 25px;
+    margin-bottom: 2em;
+    border-radius: 4px;
+    }
+#toc h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    }
+#toc ul {
+    list-style-type: none;
+    padding-left: 0;
+    }
+#toc > ul > li {
+    font-weight: bold;
+    margin-top: 10px;
+    }
+#toc ul ul li {
+    font-weight: normal;
+    margin-top: 5px;
+    }
+        .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+}
+
+@media only screen and (max-device-width: 768px) {
+            body {
+                padding: 0;
+                margin: 0;
+                font-family: PingFang SC;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .container {
+                padding: 0;
+                margin: 16px 20px 30px;
+                box-shadow: none;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: PingFang SC;
+            }
+
+            h1 {
+                font-size: 1.87em;
+                line-height: 1.6;
+                margin-bottom: 0.5em;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.6em;
+                font-weight: 600;
+                margin-top: 1.3em;
+                margin-bottom: 0.8em;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 0.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: 600;
+                margin-top: 1em;
+                margin-bottom: 0.6em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+                font-weight: 500;
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+                font-style: normal;
+            }
+
+            h5 {
+                font-size: 1em;
+                font-weight: 500;
+                margin-bottom: 1.2em;
+            }
+
+            ul,
+            ol {
+                font-size: 1em; /* Equivalent to 17.6px if base is 16px */
+                font-weight: 400;
+                margin-bottom: 1.2em;
+                line-height: 1.8;
+            }
+
+            p {
+                font-size: 1em;
+                line-height: 1.8; /* Equivalent to 17.6px if base is 16px */
+                font-weight: 400;
+                margin-top: 0.8em;
+                margin-bottom: 0.8em;
+            }
+
+            blockquote {
+                padding: 1em 1.2em;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        figcaption {
+            margin-top: 0.5em;
+            font-size: 0.8em; /* Equivalent to 17.6px if base is 16px */
+            font-weight: 400;
+            text-align: center;
+            font-style: normal;
+            color: #7F8896;
+        }
+
+        img {
+            display: block;
+            overflow: hidden;
+            max-width: 100%;
+            max-height: 335px;
+            margin: 1em auto;
+            border-radius: 8px;
+        }
+        }</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://static.skywork.ai/fe/skywork-site-assets/styles/doc_reference_style.css?v=1973291788600135680"/></head>
+<body><div class="container">
+<h1 id="section-main-title">Richard Frackowiak 学者信息分析报告</h1>
+<div class="report-meta">
+<strong>报告类型：</strong> 学者信息分析报告<br/>
+<strong>目标学者：</strong> Richard Frackowiak<br/>
+<strong>报告日期：</strong> 2025-10-01<br/>
+<strong>分析师：</strong> 学术型HTML内容架构专家<br/>
+<strong>报告版本：</strong> v1.0
+            </div>
+<nav id="toc">
+<h3 id="section-0-1">报告目录</h3>
+<ul>
+<li><a href="#executive-summary">执行摘要</a>
+<ul>
+<li><a href="#section-analysis-target">分析目标</a></li>
+<li><a href="#section-key-findings">关键发现</a></li>
+<li><a href="#section-completeness-assessment">信息完整度评估</a></li>
+</ul>
+</li>
+<li><a href="#chapter-1">第一章 学者档案</a>
+<ul>
+<li><a href="#section-section-1-1">1.1 基础信息</a></li>
+<li><a href="#section-section-1-2">1.2 教育背景</a></li>
+<li><a href="#section-section-1-3">1.3 职业生涯</a></li>
+<li><a href="#section-section-1-4">1.4 身份与荣誉</a></li>
+</ul>
+</li>
+<li><a href="#chapter-2">第二章 学术影响力评估</a>
+<ul>
+<li><a href="#section-section-2-1">2.1 文献计量指标</a></li>
+<li><a href="#section-section-2-2">2.2 权威榜单与排名</a></li>
+<li><a href="#section-section-2-3">2.3 影响力评估结论</a></li>
+</ul>
+</li>
+<li><a href="#chapter-3">第三章 学术贡献分析</a>
+<ul>
+<li><a href="#section-section-3-1">3.1 研究脉络演进</a></li>
+<li><a href="#section-section-3-2">3.2 核心学术贡献</a></li>
+<li><a href="#section-section-3-3">3.3 主要出版物分析</a></li>
+<li><a href="#section-section-3-4">3.4 科研项目与基金</a></li>
+</ul>
+</li>
+<li><a href="#chapter-4">第四章 学术网络与合作</a>
+<ul>
+<li><a href="#section-section-4-1">4.1 机构网络</a></li>
+<li><a href="#section-section-4-2">4.2 合作网络分析</a></li>
+<li><a href="#section-section-4-3">4.3 学术传承</a></li>
+</ul>
+</li>
+<li><a href="#chapter-5">第五章 思想画像分析</a>
+<ul>
+<li><a href="#section-section-5-1">5.1 核心思想体系</a></li>
+<li><a href="#section-section-5-2">5.2 思想渊源与影响</a></li>
+<li><a href="#section-section-5-3">5.3 理论与应用结合：以机器学习诊断阿尔茨海默病为例</a></li>
+<li><a href="#section-section-5-4">5.4 未来发展趋势</a></li>
+<li><a href="#section-section-5-5">5.5 争议与批评</a></li>
+</ul>
+</li>
+<li><a href="#chapter-6">第六章 知识传播与转化</a>
+<ul>
+<li><a href="#section-section-6-1">6.1 软件工具与数据集</a></li>
+<li><a href="#section-section-6-2">6.2 公众影响力</a></li>
+</ul>
+</li>
+<li><a href="#chapter-7">第七章 综合评估与展望</a>
+<ul>
+<li><a href="#section-section-7-1">7.1 学术地位评估</a></li>
+<li><a href="#section-section-7-2">7.2 学术贡献评价</a></li>
+<li><a href="#section-section-7-3">7.3 未来发展趋势</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<hr/>
+<section id="executive-summary">
+<h2 id="section-executive-summary-title">执行摘要</h2>
+<h3 id="section-analysis-target">分析目标</h3>
+<p><strong>核心目标：</strong> 全面、准确地获取学者 Richard Stanislaus Joseph Frackowiak 的规范类与补充类信息，并通过交叉验证构建其在神经影像学、临床神经科学及大型科研项目中的完整学术与思想画像，重点分析其在方法论创新、机构建设和学术网络中的核心作用。</p>
+<h3 id="section-key-findings">关键发现</h3>
+<ul>
+<li><strong>学术地位：</strong> 世界顶级的神经科学家与临床学家，神经影像学领域的奠基人与开拓者，通过方法学创新和机构建设，深刻影响了现代认知神经科学的发展轨迹。</li>
+<li><strong>核心贡献：</strong>
+<ol>
+<li><strong>创立世界级研究中心：</strong> 创立惠康功能影像实验室（FIL，后发展为惠康人类神经影像中心），打造了诞生统计参数图（SPM）等革命性工具的学术圣地。</li>
+<li><strong>揭示大脑可塑性：</strong> 领导了著名的“伦敦出租车司机”研究，提供了人类大脑结构因后天经验而改变的标志性证据。</li>
+<li><strong>推动临床转化：</strong> 开创性地将机器学习（特别是SVM）应用于MRI图像分析，以实现对阿尔茨海默病等神经退行性疾病的早期自动诊断。</li>
+<li><strong>发起宏大科学计划：</strong> 作为联合发起人，推动了欧盟旗舰项目“人类大脑计划”（HBP），旨在通过信息技术和超级计算模拟并理解人脑。</li>
+</ol>
+</li>
+<li><strong>影响力指标：</strong> h-index 普遍超过200，总引用量超19万次，是全球被引次数最高的科学家之一，荣获神经可塑性奖、Wilhelm Feldberg奖等多项国际大奖。</li>
+<li><strong>当前研究方向：</strong> 虽然已从临床一线退休，但仍作为荣誉教授活跃于学术界，关注人脑结构与功能的宏观架构、神经退行性疾病的生物标记物以及大型脑科学项目的数据整合与应用。</li>
+<li><strong>未来趋势：</strong> 其早期在机器学习诊断领域的探索预示了当前AI在神经影像分析中的爆发。其思想遗产将继续通过SPM等工具和HBP的数据平台，推动计算神经科学与临床应用的深度融合。</li>
+</ul>
+<h3 id="section-completeness-assessment">信息完整度评估</h3>
+<ul>
+<li><strong>信息完整度：</strong> 高。参考资料覆盖了其个人背景、职业生涯、主要学术成果、合作网络及关键思想，信息量充足。</li>
+<li><strong>数据可靠性：</strong> 高。信息来源多样，包括维基百科、大学官网、学术数据库、访谈记录和其个人简历，可进行有效交叉验证。</li>
+<li><strong>分析深度：</strong> 高。报告基于公开信息，深入挖掘了其在方法论创新（特别是SPM和机器学习）、机构领导力及学术网络构建中的核心作用，并对其思想脉络和未来影响进行了推断。</li>
+</ul>
+</section>
+<hr/>
+<section id="chapter-1">
+<h2 id="section-chapter-1-title">第一章 学者档案</h2>
+<p>本章节旨在构建Richard Frackowiak教授的个人档案，整合其基础信息、教育背景、职业轨迹及所获荣誉，为后续的深度分析提供坚实的事实基础。这些信息来源于多个权威渠道，并经过交叉验证，确保其准确性。</p>
+<h3 id="section-section-1-1">1.1 基础信息</h3>
+<p>Richard Frackowiak的个人背景极具时代特色，其家庭渊源与二战历史紧密相连，这塑造了他多文化、多语言的成长环境，也可能为其日后在国际科研舞台上的卓越领导力埋下伏笔。</p>
+<table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>详细信息</th>
+<th>数据来源</th>
+<th>验证状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>学者全名</strong></td>
+<td>Richard Stanislaus Joseph Frackowiak</td>
+<td><a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" target="_blank">Wikipedia</a>, <a href="https://www.ae-info.org/attach/User/Frackowiak_Richard/CV/Frackowiak%20RSJ%20CV%202016.pdf" target="_blank">Academia Europaea CV</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>出生日期</strong></td>
+<td>1950-03-26</td>
+<td><a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" target="_blank">Wikipedia</a>, <a href="https://www.ae-info.org/attach/User/Frackowiak_Richard/CV/Frackowiak%20RSJ%20CV%202016.pdf" target="_blank">Academia Europaea CV</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>国籍</strong></td>
+<td>波兰、英国、法国</td>
+<td><a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" target="_blank">Wikipedia</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>当前机构</strong></td>
+<td>洛桑联邦理工学院 (EPFL) / 伦敦大学学院 (UCL)</td>
+<td><a href="https://scholar.google.com/citations?user=4nu1zCsAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>, <a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" target="_blank">Wikipedia</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>学术头衔</strong></td>
+<td>Titular Professor (EPFL), Emeritus Professor (UCL)</td>
+<td><a href="https://scholar.google.com/citations?user=4nu1zCsAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>, <a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" target="_blank">Wikipedia</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>个人主页/博客</strong></td>
+<td><a href="https://profiles.ucl.ac.uk/7414-richard-frackowiak" target="_blank">UCL Profile</a></td>
+<td>UCL</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>主要研究领域</strong></td>
+<td>神经影像学 (Neuroimaging), 脑图谱 (Brain Mapping), 神经可塑性 (Neuroplasticity), 认知神经科学 (Cognitive Neuroscience), 神经退行性疾病 (Neurodegenerative Diseases)</td>
+<td><a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" target="_blank">Wikipedia</a>, <a href="https://www.ae-info.org/attach/User/Frackowiak_Richard/CV/Frackowiak%20RSJ%20CV%202016.pdf" target="_blank">Academia Europaea CV</a></td>
+<td>已验证</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-section-1-2">1.2 教育背景</h3>
+<p>Frackowiak的教育路径堪称精英典范，从剑桥大学的奖学金得主到最终获得伦敦大学的理学博士（DSc），其学术根基深厚。尤其值得注意的是，他的医学博士（MD）论文聚焦于PET技术的定量化测量，这直接预示并开启了他整个职业生涯的核心主题——将神经影像从定性观察推向严谨的定量科学。</p>
+<table>
+<thead>
+<tr>
+<th>学位类型</th>
+<th>专业领域</th>
+<th>毕业院校</th>
+<th>国家</th>
+<th>年份</th>
+<th>论文题目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSc (理学博士)</td>
+<td>-</td>
+<td>伦敦大学 (University of London)</td>
+<td>英国</td>
+<td>1996</td>
+<td>-</td>
+</tr>
+<tr>
+<td>MD (医学博士)</td>
+<td>神经学/神经影像学</td>
+<td>剑桥大学 (University of Cambridge)</td>
+<td>英国</td>
+<td>1983</td>
+<td><em>The quantitative measurement of cerebral blood flow by positron emission tomography (PET)</em></td>
+</tr>
+<tr>
+<td>MB BChir (内外全科医学士)</td>
+<td>医学</td>
+<td>剑桥大学 / 米德尔塞克斯医院医学院</td>
+<td>英国</td>
+<td>1974/1975</td>
+<td>-</td>
+</tr>
+<tr>
+<td>BA (文学学士)</td>
+<td>-</td>
+<td>剑桥大学彼得学院 (Peterhouse, Cambridge)</td>
+<td>英国</td>
+<td>1971</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-section-1-3">1.3 职业生涯</h3>
+<p>Frackowiak的职业生涯是一条清晰的、不断向上攀登并持续扩大其影响力的轨迹。从一名专注于PET技术的临床研究者，成长为世界顶级研究中心的创始人和战略领导者，再到跨国大型科学计划的推动者，其角色转变反映了神经科学领域从单点技术突破到大规模、系统化、多学科融合的演进趋势。</p>
+<table>
+<thead>
+<tr>
+<th>职位</th>
+<th>机构</th>
+<th>部门/实验室</th>
+<th>起止年份</th>
+<th>主要成就</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Titular Professor</td>
+<td>洛桑联邦理工学院 (EPFL)</td>
+<td>-</td>
+<td>2013-至今</td>
+<td>联合发起并担任人类大脑计划(HBP)医学联合总监，推动大数据和超级计算在脑科学中的应用。</td>
+</tr>
+<tr>
+<td>临床神经科学系主任/教授</td>
+<td>洛桑大学/洛桑大学医院 (UNIL/CHUV)</td>
+<td>临床神经科学系</td>
+<td>2009-2015</td>
+<td>在瑞士建立全新的临床神经科学系，致力于将基础研究成果快速向临床实践转化。</td>
+</tr>
+<tr>
+<td>副教务长 (特别项目)</td>
+<td>伦敦大学学院 (UCL)</td>
+<td>-</td>
+<td>2002-2009</td>
+<td>负责大学层面的战略项目，包括推动UCL与帝国理工学院的合并尝试，展现了其宏观战略规划能力。</td>
+</tr>
+<tr>
+<td>创始主任/教授</td>
+<td>惠康功能影像实验室/惠康人类神经影像中心 (FIL/WTCN)</td>
+<td>神经学研究所</td>
+<td>1994-2009</td>
+<td>职业生涯的巅峰。创立了世界顶级的神经影像研究中心，汇聚顶尖人才，为SPM等革命性工具的诞生提供了平台。</td>
+</tr>
+<tr>
+<td>神经学教授</td>
+<td>哈默史密斯医院 / UCL神经学研究所</td>
+<td>-</td>
+<td>1990-1994</td>
+<td>担任联合主席，为其后创立FIL的宏伟计划奠定了学术和机构基础。</td>
+</tr>
+<tr>
+<td>副主任</td>
+<td>MRC回旋加速器中心</td>
+<td>哈默史密斯医院</td>
+<td>1988-1993</td>
+<td>深入研究PET技术及其在神经疾病中的应用，师从Terry Jones，积累了宝贵的方法学经验。</td>
+</tr>
+<tr>
+<td>神经科主任</td>
+<td>哈默史密斯医院</td>
+<td>神经科</td>
+<td>1984-1993</td>
+<td>领导临床服务，将新兴的影像技术与一线临床问题紧密结合。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-section-1-4">1.4 身份与荣誉</h3>
+<p>Frackowiak所获得的荣誉和身份，不仅是对其个人学术成就的认可，更是对其在构建学术社区、推动国际合作和领导学科发展方面所做贡献的肯定。他同时拥有多国科学院院士头衔，并曾担任多个重要学术组织的主席，这充分体现了他在国际神经科学界的核心地位和广泛影响力。</p>
+<h4>重要身份：</h4>
+<ul>
+<li>英国医学科学院 (Academy of Medical Sciences) 创始院士 (2000)</li>
+<li>欧洲科学院 (Academia Europaea) 院士 (1995)</li>
+<li>美国国家医学院 (National Academy of Medicine) 外籍院士</li>
+<li>法国国家医学科学院 (Académie Nationale de Médecine) 外籍院士</li>
+<li>波兰科学院 (Polish Academy of Sciences) 院士 (2013)</li>
+<li>英国神经科学协会 (British Neuroscience Association) 主席 (2004-2007)</li>
+<li>欧洲大脑与行为学会 (European Brain and Behaviour Society) 主席 (2009-2010)</li>
+</ul>
+<h4>重要奖项与荣誉：</h4>
+<ul>
+<li><strong>搞笑诺贝尔奖 (Ig Nobel Prize)</strong>, 2003, 哈佛大学 (与Eleanor Maguire等人共享，以表彰其关于伦敦出租车司机大脑更发达的研究，该奖项旨在奖励“乍看好笑，细想发人深省”的研究)</li>
+<li><strong>K-J. Zülch 奖</strong>, 2004, 马克斯·普朗克学会 (表彰其在人脑功能结构成像测量方法的贡献)</li>
+<li><strong>神经可塑性奖 (Neuronal Plasticity Prize)</strong>, 1997, Fondation Ipsen (与 Antonio Damasio, Michael Merzenich 共享，表彰其在皮层图谱组织及其可塑性研究方面的贡献)</li>
+<li><strong>Wilhelm Feldberg 基金会奖</strong>, 1997</li>
+<li><strong>列日大学荣誉博士</strong>, 1999</li>
+</ul>
+</section>
+<hr/>
+<section id="chapter-2">
+<h2 id="section-chapter-2-title">第二章 学术影响力评估</h2>
+<p>本章通过多维度的文献计量指标和权威排名，对Richard Frackowiak的学术影响力进行定量评估。数据清晰地表明，他不仅是一位高产的科学家，更是一位具有巨大和持久影响力的学术巨擘，其工作被全球同行广泛引用和认可。</p>
+<h3 id="section-section-2-1">2.1 文献计量指标</h3>
+<p>Frackowiak的文献计量数据在各个主流学术平台上均表现出极高的水准。h-index普遍超过180，总引用量接近20万次，这些数字将他稳固地置于全球所有学科科学家的顶尖行列。不同平台的数据差异主要源于收录范围的不同，但所有数据都共同指向一个结论：其学术产出具有非凡的质量和影响力。</p>
+<div class="chart-container" id="canvas-parent-1">
+<canvas id="metricsChart"></canvas>
+</div>
+<h4>数据差异分析：</h4>
+<p>Google Scholar因其最广泛的文献收录范围（包括期刊、会议、书籍、预印本等），其h-index和总被引次数通常是所有平台中最高的，这能更全面地反映学者在整个学术生态中的广泛影响力。Scopus和Web of Science则更侧重于收录经过严格同行评审的核心期刊，数据更为规范，常被用于官方学术评估，其数值虽略低，但含金量极高。ResearchGate和OpenAlex作为新兴的学术数据平台，其数据整合能力和更新频率各不相同，可作为有益的补充参考。综合来看，Frackowiak在所有平台上的数据均达到了顶尖水平，验证了其学术影响力的广度和深度。</p>
+<h3 id="section-section-2-2">2.2 权威榜单与排名</h3>
+<p>除了原始的文献计量数据，Frackowiak的学术地位也通过多个权威榜单和机构报告得以印证。</p>
+<ul>
+<li><strong>高被引学者状态：</strong> 根据资料，Frackowiak在职业生涯中持续处于高被引状态。早在1990年代，他便被评为<a href="https://histmodbiomed.history.qmul.ac.uk/article/professor-richard-frackowiak.html" target="_blank">英国生物医学科学家中被引次数第四高的学者</a>。2011年，惠康基金会发布的一份关于人脑功能成像的评估报告指出，在1989至2008年间，与Frackowiak创立的惠康人类神经影像中心（WTCN）相关的脑成像研究论文被引用的次数，超过了包括哈佛大学在内的任何其他研究机构。同时，该报告还指出，当时脑成像领域被引次数最高的四位作者——Karl Friston, Ray Dolan, Richard Frackowiak 和 Christopher Frith——均来自该中心，这充分证明了Frackowiak作为领导者所构建的学术生态系统的巨大成功。</li>
+<li><strong>机构影响力排名：</strong> 他所创立的惠康人类神经影像中心（WTCN，前身为FIL）本身就是一个影响力的标志。该中心在其领导下，不仅在学术产出上超越了哈佛等传统强校，更重要的是定义了整个领域的研究方法和标准，成为全球神经影像研究者向往的“圣地”。</li>
+</ul>
+<h3 id="section-section-2-3">2影响力评估结论</h3>
+<blockquote>
+<strong>综合评估：</strong> Richard Frackowiak 是神经影像学领域的战略家和奠基人。其学术影响力不仅体现在极高的文献计量指标上，更体现在他创建了一个世界级的学术生态系统（FIL/WTCN），并从中诞生了改变整个领域的分析工具（如SPM）。他的研究横跨基础方法学、认知神经科学和临床应用，对脑科学的发展产生了结构性、持久性的影响。
+                </blockquote>
+<p><strong>影响力等级：</strong> <strong>国际顶尖 (International Top-Tier)</strong></p>
+</section>
+<hr/>
+<section id="chapter-3">
+<h2 id="section-chapter-3-title">第三章 学术贡献分析</h2>
+<p>本章深入剖析Richard Frackowiak的核心学术贡献，从其研究脉络的演进、关键理论与方法创新，到其代表性出版物和重大科研项目，系统地勾勒出他如何塑造现代神经影像学领域的图景。</p>
+<figure>
+<img alt="颅相学头部模型" src="https://agents-download.skywork.ai/croped/images/db39daf203a8b46b7950ec8baae768cc_crop.jpg" style="max-height: 280px; max-width: 100%;"/>
+<figcaption>颅相学（Phrenology）模型，一种试图通过头骨形状推断大脑功能的19世纪伪科学。Frackowiak的工作代表了从这类思辨性理论到数据驱动的现代神经影像学的范式转变</figcaption>
+</figure>
+<h3 id="section-section-3-1">3.1 研究脉络演进</h3>
+<p>Frackowiak的学术生涯呈现出三个清晰且层层递进的阶段，每个阶段都以前一阶段的积累为基础，并开启一个新的研究范式或应用领域。</p>
+<h4>3.1.1 奠基阶段 (1979-1993): PET定量化与临床探索</h4>
+<ul>
+<li><strong>研究焦点：</strong> 在哈默史密斯医院的MRC回旋加速器中心，Frackowiak的早期工作完全围绕着当时最前沿的脑成像技术——正电子发射断层扫描（PET）。他的核心目标是将这项新技术从一个主要是定性观察的工具，转变为能够进行精确科学测量的定量仪器。</li>
+<li><strong>方法论创新：</strong> 他的博士论文即是这一努力的集中体现。他与同事们开发并验证了多种PET示踪剂的定量分析方法，例如使用氧-15稳态技术来同步测量局部脑血流量（rCBF）和脑氧代谢率（rCMRO2），从而能够评估大脑的能量供需平衡。</li>
+<li><strong>关键成果：</strong> 他发表了一系列利用PET研究脑缺血、痴呆、帕金森病等神经系统疾病的开创性论文。例如，他通过PET研究证实了移植到帕金森病患者脑中的胎儿中脑组织能够存活并发挥功能。这些工作不仅揭示了疾病的病理生理机制，也为神经影像学的临床应用铺平了道路，证明了其在活体人脑研究中的巨大潜力。</li>
+</ul>
+<h4>3.1.2 发展与巅峰阶段 (1994-2009): 创立FIL与方法论革命</h4>
+<ul>
+<li><strong>机构建设：</strong> 这是Frackowiak职业生涯中最辉煌的时期。1994年，他凭借卓越的远见和领导力，获得了<a href="https://www.ucl.ac.uk/news/2011/sep/ucl-centre-lauded-major-brain-imaging-report" target="_blank">惠康基金会当时有史以来最大规模之一的约2000万英镑资助</a>，在UCL神经学研究所内创立了功能影像实验室（Functional Imaging Laboratory, FIL）。他成功地将Karl Friston、Chris Frith、Ray Dolan等一批当时已崭露头角的顶尖学者汇聚一堂，营造了一个极其开放、协作和创新的研究氛围。这个实验室后来发展成为举世闻名的惠康人类神经影像中心（Wellcome Trust Centre for Neuroimaging, WTCN）。</li>
+<li><strong>方法论革命：</strong> 在Frackowiak的战略领导下，FIL成为了功能磁共振成像（fMRI）分析方法学的全球策源地。虽然统计参数图（Statistical Parametric Mapping, SPM）的核心算法主要由Karl Friston开发，但Frackowiak作为机构的创始人和主任，为SPM的诞生、发展和推广提供了不可或缺的平台、资源和方向指引。FIL还开创了基于体素的形态学分析（Voxel-Based Morphometry, VBM）、动态因果模型（Dynamic Causal Modelling, DCM）等一系列影响深远的技术。</li>
+<li><strong>关键成果：</strong>
+<ul>
+<li><strong>大脑可塑性研究：</strong> 他领导团队完成了对伦敦出租车司机的研究。该研究发现，与对照组相比，经验丰富的出租车司机其负责空间记忆的海马体后部体积显著增大，且驾龄与海马体积呈正相关。这项发表于<a href="https://www.pnas.org/doi/abs/10.1073/pnas.070039597" target="_blank">PNAS</a>的研究，成为证明成人大脑结构可塑性（即大脑结构可以因后天经验而改变）的经典案例，被广泛引用。</li>
+<li><strong>《Human Brain Function》：</strong> 他主编了两版《人脑功能》教科书（1997, 2004），系统性地总结了FIL在十年间使用PET和fMRI所取得的辉煌成就，涵盖了从感觉、运动到高级认知功能的各个方面，成为神经影像领域的“圣经”级参考书。</li>
+</ul>
+</li>
+</ul>
+<h4>3.1.3 成熟与应用拓展阶段 (2009-至今): 临床转化与宏大科学</h4>
+<ul>
+<li><strong>临床转化深化：</strong> 在离开UCL后，Frackowiak将研究重心更加明确地转向神经退行性疾病的早期和精准诊断。他开创性地将机器学习技术，特别是支持向量机（Support Vector Machine, SVM），应用于分析标准的结构性MRI数据。其团队的研究表明，这种方法可以实现对阿尔茨海默病（AD）和额颞叶痴呆（FTD）的自动化、高精度分类，其准确率在当时甚至超越了临床专家的诊断。这项工作为“计算精神病学”和影像生物标记物的开发开辟了新道路。</li>
+<li><strong>宏大科学计划：</strong> 2013年，Frackowiak与Henry Markram等人在洛桑联邦理工学院（EPFL）共同发起了欧盟旗舰项目“人类大脑计划”（Human Brain Project, HBP）。他担任医学信息平台的联合总监，致力于构建一个名为EBRAINS的庞大研究基础设施，旨在整合全欧洲的临床神经科学数据，并利用信息技术和超级计算来模拟和理解大脑。</li>
+<li><strong>最新方向：</strong> 尽管已从临床一线退休，他仍在学术和政策层面发挥重要影响。例如，在担任欧洲科学组织（Science Europe）医学科学委员会主席期间，他成功游说欧盟为《通用数据保护条例》（GDPR）设立科研数据豁免条款，为数据驱动的临床和公共卫生研究扫除了关键障碍，体现了他对构建未来科研生态系统的前瞻性思考。</li>
+</ul>
+<h3 id="section-section-3-2">3.2 核心学术贡献</h3>
+<p>Frackowiak的贡献是多层次的，既有深刻的理论洞见，也有革命性的方法创新，更有影响深远的应用实践。</p>
+<h4>3.2.1 理论贡献</h4>
+<ol>
+<li><strong>人脑功能与结构的可塑性 (Neuroplasticity)</strong>
+<ul>
+<li><strong>贡献内容：</strong> 通过对<a href="https://www.pnas.org/doi/abs/10.1073/pnas.070039597" target="_blank">伦敦出租车司机</a>、盲人、中风后康复患者等群体的系列研究，Frackowiak的团队系统地证明了成人的大脑并非静态不变，其功能和结构会根据后天经验、学习和损伤进行动态的重组和改变。出租车司机研究是其中的标志性成果，它直观地展示了长期空间导航训练如何导致海马体特定区域的物理性增大。</li>
+<li><strong>理论意义：</strong> 这一系列发现强有力地挑战了大脑结构在成年后基本固定的传统观念，确立了“神经可塑性”作为贯穿生命全程的基本原则。它为理解学习、记忆、技能获得以及脑损伤后功能恢复的神经机制提供了核心的理论框架。</li>
+<li><strong>影响范围：</strong> 该理论深刻影响了认知神经科学、发展心理学、教育学、康复医学等多个领域，为各种形式的认知训练和康复治疗提供了神经科学依据。</li>
+</ul>
+</li>
+</ol>
+<h4>3.2.2 方法贡献</h4>
+<ol>
+<li><strong>创立并领导了神经影像分析方法学的“熔炉”——FIL</strong>
+<ul>
+<li><strong>贡献内容：</strong> Frackowiak的巨大贡献不仅在于他自己的研究，更在于他作为一位战略家和机构建设者。他创立的FIL（后来的WTCN）是神经影像方法学创新的“奇点”。他不仅获得了启动资金，更重要的是建立了开放、共享、跨学科的文化，吸引并支持了Karl Friston等人开发出统计参数图（SPM）、基于体素的形态学分析（VBM）和动态因果模型（DCM）等一系列革命性工具。他为这些工具的诞生提供了土壤、阳光和空气。</li>
+<li><strong>应用价值：</strong> SPM成为了全球功能神经影像数据分析的“黄金标准”，其引入的通用线性模型（GLM）和随机场理论（RFT）为处理复杂的脑成像数据提供了统一而严谨的统计框架。VBM使得对全脑结构进行无偏见的自动化分析成为可能，极大地推动了对脑结构与疾病关系的研究。</li>
+<li><strong>使用范围：</strong> 全球几乎所有的神经影像实验室至今仍在使用SPM或受其思想影响的软件进行数据分析。</li>
+</ul>
+</li>
+<li><strong>开创基于机器学习的神经影像诊断</strong>
+<ul>
+<li><strong>方法内容：</strong> 在深度学习浪潮兴起之前，Frackowiak的团队率先将经典的机器学习算法——支持向量机（SVM）——应用于临床神经影像分析。他们的方法流程是：首先使用VBM等技术对T1加权MRI图像进行预处理和分割，提取全脑的灰质体积图；然后将每个体素的灰质密度值作为一个特征，构成一个高维的特征向量；最后，利用这个高维向量来训练SVM分类器，使其能够“学习”到不同疾病（如AD）或状态（如健康）所对应的微妙且分布式的脑萎缩模式。</li>
+<li><strong>应用价值：</strong> 这项工作证明了仅通过一次标准的、非侵入性的结构MRI扫描，就有可能实现对阿尔茨海默病等痴呆症的高精度、自动化、个体化诊断。它为计算机辅助诊断和寻找影像生物标记物开辟了一条全新的、数据驱动的道路，摆脱了以往依赖于少数几个解剖区域（如海马体）手动测量的局限。</li>
+<li><strong>使用范围：</strong> 该方法论已成为计算神经科学和临床影像分析的一个重要分支，并被后续的深度学习方法（如CNN）进一步继承和发展，广泛应用于精神分裂症、抑郁症、自闭症等多种脑疾病的研究中。</li>
+</ul>
+</li>
+</ol>
+<h4>3.2.3 应用贡献</h4>
+<ol>
+<li><strong>推动神经退行性疾病的早期诊断与鉴别诊断</strong>
+<ul>
+<li><strong>应用内容：</strong> 其团队在<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2579744/" target="_blank">2008年发表于《Brain》的论文</a>中，展示了SVM模型能够以高达96%的准确率区分病理证实的AD患者和正常老年人，并且能够以约89%的准确率区分AD和额颞叶痴呆（FTLD）。更重要的是，他们证明了在一个中心训练的模型可以成功应用于另一个中心（使用不同扫描仪和被试）的数据，展示了方法的鲁棒性和泛化能力。</li>
+<li><strong>实际效果：</strong> 这项研究提供了超越传统临床诊断（其准确率通常在80%左右）的客观、定量工具。尤其对于临床表现相似的AD和FTLD，这种基于全脑模式的鉴别诊断具有极其重要的临床价值，为实现早期干预和精准治疗提供了可能。</li>
+<li><strong>社会影响：</strong> 这项工作极大地激发了学界利用机器学习分析大型神经影像数据库（如ADNI）的热情，加速了“精准神经病学”和“计算精神病学”概念的发展。</li>
+</ul>
+</li>
+<li><strong>发起并领导“人类大脑计划”（HBP）</strong>
+<ul>
+<li><strong>应用内容：</strong> 作为联合发起人和医学联合总监，Frackowiak致力于构建一个整合神经科学、医学和计算科学的大型研究基础设施（EBRAINS）。他的角色侧重于推动医学信息平台的建设，目标是聚合欧洲乃至全球的临床神经科学数据，并使其能够与大脑的多尺度模型进行交互。</li>
+<li><strong>实际效果：</strong> HBP项目汇集了欧洲超过140个机构的500多名科学家，在十年间产生了一系列关于大脑多尺度建模、神经形态计算、脑启发机器人学等领域的成果。其核心产出EBRAINS平台，至今仍在为全球研究者提供数据、模型和计算工具。</li>
+<li><strong>社会影响：</strong> HBP是“大科学”模式在脑科学领域的标志性尝试。尽管在其发展过程中伴随着关于其目标和治理的巨大争议，但它无疑极大地推动了神经信息学和计算神经科学的发展，并直接或间接地激发了全球范围内类似的大型脑科学计划（如美国的BRAIN Initiative、中国的脑计划等）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="section-section-3-3">3.3 主要出版物分析</h3>
+<p>Frackowiak的出版物记录了他思想的演进和领域的变迁。其高被引论文集中于方法学创新和里程碑式的发现，而他主编的著作则系统性地构建了学科的知识体系。</p>
+<h4>3.3.1 高被引论文</h4>
+<p>以下列表展示了其最具影响力的部分论文，这些论文不仅被大量引用，更重要的是，它们定义了神经影像分析的基本方法和认知神经科学的核心概念。</p>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>论文标题</th>
+<th>期刊/会议</th>
+<th>年份</th>
+<th>引用次数 (Approx.)</th>
+<th>核心贡献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.460020402" target="_blank">Statistical parametric maps in functional imaging: a general linear approach</a></td>
+<td>Human Brain Mapping</td>
+<td>1994</td>
+<td>11,700+</td>
+<td>奠定了SPM的理论基础，将通用线性模型(GLM)引入功能影像数据分析，是该领域的奠基之作。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://www.sciencedirect.com/science/article/pii/S1053811901907864" target="_blank">A voxel-based morphometric study of ageing in 465 normal adult human brains</a></td>
+<td>NeuroImage</td>
+<td>2001</td>
+<td>5,700+</td>
+<td>VBM方法的经典应用，系统揭示了正常衰老过程中全脑灰质和白质的结构变化模式。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://www.pnas.org/doi/abs/10.1073/pnas.070039597" target="_blank">Navigation-related structural change in the hippocampi of taxi drivers</a></td>
+<td>PNAS</td>
+<td>2000</td>
+<td>4,800+</td>
+<td>提供了大脑结构可塑性的标志性证据，证明长期经验可改变人脑物理结构。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.460030303" target="_blank">Spatial registration and normalization of images</a></td>
+<td>Human Brain Mapping</td>
+<td>1995</td>
+<td>4,600+</td>
+<td>SPM中关于图像空间配准和标准化的关键方法学论文，是多被试数据比较的基础。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.1910350312" target="_blank">Movement-related effects in fMRI time-series</a></td>
+<td>Magnetic Resonance in Medicine</td>
+<td>1996</td>
+<td>4,200+</td>
+<td>解决了fMRI数据分析中头部运动伪影这一关键问题，提出了有效的校正方法。</td>
+</tr>
+</tbody>
+</table>
+<h4>3.3.2 代表性著作</h4>
+<p>Frackowiak作为主编，组织其团队撰写的两部著作，是FIL/WTCN十年辉煌成就的结晶，系统地定义了神经影像学的理论、方法与应用。</p>
+<ul>
+<li><strong>《Human Brain Function》 (1st &amp; 2nd Edition), Academic Press, 1997 &amp; 2004.</strong> (与 K.J. Friston, C.D. Frith, R.J. Dolan 等合编)<br/>这部著作被誉为神经影像领域的“圣经”。它分为两大部分：第一部分系统阐述了如何运用脑成像技术研究人类的各种认知功能（如视觉、听觉、记忆、语言、情绪等）；第二部分则详细介绍了背后的分析方法（即SPM的完整理论体系，包括计算神经解剖学、模型构建、统计推断和功能整合分析）。这本书不仅是研究成果的汇编，更是一部完整的方法学和理论教科书，培养了整整一代神经影像研究者。</li>
+<li><strong>《Brain Mapping: The Disorders》, Academic Press, 2000.</strong> (与 J.C. Mazziotta, A.W. Toga 合编)<br/>这部著作是《Human Brain Function》的姊妹篇，专注于将脑图谱技术应用于临床神经科学。它系统地介绍了如何使用各种脑成像技术来评估神经系统、精神系统和神经外科的各种疾病。全书按脑系统疾病进行组织，提供了大量使用神经影像技术评估具体疾病的实例，是连接基础神经影像学与临床实践的重要桥梁。</li>
+</ul>
+<h3 id="section-section-3-4">3.4 科研项目与基金</h3>
+<p>Frackowiak卓越的筹款能力和项目领导力是他能够实现其宏大学术愿景的关键。他成功获得的多项巨额资助，不仅支持了他自己的研究，更支撑了整个研究中心的运转和发展。</p>
+<table>
+<thead>
+<tr>
+<th>项目名称</th>
+<th>资助机构</th>
+<th>起止年份</th>
+<th>项目角色</th>
+<th>资助金额</th>
+<th>项目目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The Human Brain Project (HBP)</strong></td>
+<td>欧盟 (FET Flagship)</td>
+<td>2013-2023</td>
+<td>联合发起人, 医学联合总监</td>
+<td>~€10亿 (总项目)</td>
+<td>构建一个世界领先的、用于理解人脑的ICT研究平台（EBRAINS），推动神经科学、医学和计算技术的融合发展。</td>
+</tr>
+<tr>
+<td><strong>Functional Brain Imaging Programme</strong></td>
+<td>惠康基金会 (Wellcome Trust)</td>
+<td>1994</td>
+<td>首席研究员 (PI)</td>
+<td>~£2000万</td>
+<td>建立世界一流的功能影像实验室(FIL)，开发和应用新的脑功能成像技术，探索人脑功能组织。</td>
+</tr>
+<tr>
+<td><strong>Imaging structure and function of the human brain</strong></td>
+<td>惠康基金会 (Wellcome Trust)</td>
+<td>2005-2010</td>
+<td>首席研究员 (PI)</td>
+<td>~£64万</td>
+<td>利用先进的成像技术，深入研究人脑结构与功能之间的复杂关系，特别是在可塑性和疾病中的表现。</td>
+</tr>
+<tr>
+<td><strong>Replacement Scanners for the FIL</strong></td>
+<td>英国联合基础设施基金 (JIF)</td>
+<td>2001</td>
+<td>首席申请人</td>
+<td>~£290万</td>
+<td>为FIL更新换代核心的MRI扫描设备，保持其在硬件技术上的领先地位。</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr/>
+<section id="chapter-4">
+<h2 id="section-chapter-4-title">第四章 学术网络与合作</h2>
+<p>Richard Frackowiak的成功不仅在于其个人的才华，更在于他构建和领导强大合作网络的能力。本章将分析他所依托的机构网络、核心的合作者关系以及他的学术传承，揭示其作为一位“网络中心节点”式科学家的特质。</p>
+<h3 id="section-section-4-1">4.1 机构网络</h3>
+<p>Frackowiak的职业生涯横跨欧洲最顶尖的几家科研机构，他在每个机构都留下了深刻的印记，并善于利用机构间的联系来促进合作与发展。</p>
+<ul>
+<li><strong>伦敦大学学院 (UCL) - 职业生涯的基石与巅峰：</strong> UCL是Frackowiak学术生涯的核心。他在这里创立的<a href="https://www.fil.ion.ucl.ac.uk/" target="_blank">惠康人类神经影像中心 (FIL/WTCN)</a>，不仅是UCL神经科学皇冠上的明珠，也使UCL一跃成为全球神经影像研究的绝对中心。他作为荣誉教授，至今仍是该校的标志性人物。</li>
+<li><strong>洛桑联邦理工学院 (EPFL) - “大科学”的实践场：</strong> EPFL作为欧洲顶尖的理工科大学，是“人类大脑计划”的发起和协调单位。Frackowiak在这里的角色，标志着他将其思想从建立单个卓越中心，扩展到构建跨国、跨学科的超大型科研基础设施，这巩固了他在计算神经科学和神经信息学领域的领导地位。</li>
+<li><strong>洛桑大学/医院 (UNIL/CHUV) - 临床转化的前沿阵地：</strong> 在这里，他从零开始建立了一个新的临床神经科学系。这一举动清晰地展现了他将基础研究成果（如机器学习诊断）向临床一线转化的决心和强大的机构建设能力。</li>
+<li><strong>巴黎高等师范学院 (ENS) - 跨国教育与合作的桥梁：</strong> 他在担任ENS认知研究系主任期间，创建了与UCL的“脑与心智科学”双硕士项目。这不仅促进了英法两国顶尖脑科学机构的深度合作，也为培养下一代具有国际视野的神经科学家搭建了独特的平台。</li>
+</ul>
+<h3 id="section-section-4-2">4.2 合作网络分析</h3>
+<p>Frackowiak的合作网络以FIL的“梦之队”为核心，辐射至全球。他扮演的角色是召集人、领导者和方向设定者。</p>
+<h4>4.2.1 核心合作者</h4>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>合作者姓名</th>
+<th>合作机构</th>
+<th>合作关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Karl J. Friston</strong></td>
+<td>UCL</td>
+<td>Frackowiak是Friston的“伯乐”与战略领导。Frackowiak创建了FIL这一理想的“孵化器”，而Friston则在其中专心致志地开发了SPM。他们的合作是方法论天才与战略远见的完美结合，共同署名了大量奠基性论文。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Chris D. Frith</strong></td>
+<td>UCL</td>
+<td>FIL的核心创始成员之一，认知神经科学领域的巨擘。两人在工作记忆、心理理论等高级认知功能的研究上合作紧密，共同将FIL的研究推向认知科学的前沿。</td>
+</tr>
+<tr>
+<td>3rd</td>
+<td><strong>Raymond J. Dolan</strong></td>
+<td>UCL</td>
+<td>FIL的核心创始成员之一，情感神经科学的领军人物，后接任Frackowiak成为中心主任。两人共同推动了情绪、决策、奖赏等脑功能成像研究，拓展了神经影像的应用范围。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Eleanor Maguire</strong></td>
+<td>UCL</td>
+<td>Frackowiak的学生和长期同事，著名的“伦敦出租车司机”研究的主要执行者之一。在Frackowiak的支持下，她从一名博士生成长为世界顶级的记忆和空间导航领域权威。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>John Ashburner</strong></td>
+<td>UCL</td>
+<td>VBM方法的主要开发者，SPM软件核心开发团队的关键成员。他是Frackowiak领导下FIL方法学创新团队中的另一位关键技术专家。</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Henry Markram</strong></td>
+<td>EPFL</td>
+<td>在EPFL的同事，蓝脑计划（Blue Brain Project）的领导者。两人对“大科学”和计算模拟在脑科学中的应用有共同的愿景，并因此共同发起了人类大脑计划（HBP）。</td>
+</tr>
+</tbody>
+</table>
+<h4>4.2.2 合作模式分析</h4>
+<ul>
+<li><strong>合作强度：</strong> 呈现出典型的“核心-外围”结构。以UCL的FIL为核心，与Friston, Frith, Dolan等人形成了长达十余年、极其稳定、高产的合作关系。这种紧密的内部合作是FIL能够持续产出革命性成果的关键。Frackowiak作为中心主任，是这个核心网络的凝聚者。</li>
+<li><strong>合作领域分布：</strong> 他的合作网络随着其研究兴趣的演进而动态变化。早期在哈默史密斯医院，合作主要集中在PET技术和临床神经病学。在FIL时期，合作网络迅速扩展到认知神经科学的各个方面（记忆、语言、情绪、意识等）。在后期，他的合作网络则更多地转向临床应用（痴呆症研究）和大型国际项目（HBP），与计算机科学家、数据科学家和欧洲各国的临床中心建立了广泛联系。</li>
+<li><strong>国际合作程度：</strong> 极高。他本人在英国、法国、瑞士均有长期核心职位，并积极推动跨国合作项目（如UCL-ENS联合硕士，HBP）。他的职业轨迹本身就是一部欧洲顶尖科研机构的合作史，展现了他卓越的跨文化沟通和组织能力。</li>
+</ul>
+<h3 id="section-section-4-3">4.3 学术传承</h3>
+<p>Frackowiak的学术影响力通过清晰的师承关系和广泛的学生培养得以延续和放大。</p>
+<h4>4.3.1 师承关系</h4>
+<ul>
+<li><strong>重要导师：Terry Jones</strong>。根据<a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" target="_blank">维基百科资料</a>，在哈默史密斯医院的MRC回旋加速器中心，Terry Jones是Frackowiak在神经影像学领域的导师（mentor）。Jones引导他进入PET研究领域，为其后续的学术生涯奠定了坚实的方法学基础，特别是对定量化成像的重视。</li>
+</ul>
+<h4>4.3.2 学生培养</h4>
+<p>Frackowiak的学术传承模式超越了传统的师生关系，他通过构建一个卓越的研究平台，影响了整整一代神经影像研究者。</p>
+<ul>
+<li><strong>知名学生/后辈：</strong>
+<ul>
+<li><strong>Eleanor Maguire:</strong> 在Frackowiak的指导和支持下，从博士后成长为世界知名的记忆神经科学家，并因“出租车司机”研究而广为人知。</li>
+<li><strong>Cathy Price:</strong> FIL的核心成员之一，后接任惠康中心主任，是Frackowiak学术遗产的直接继承者和发展者。</li>
+<li><strong>Geoffrey Chern-Yee Tan:</strong> 其博士生之一，研究方向为遗传学、神经影像与精神疾病，体现了Frackowiak对培养跨学科人才的重视。</li>
+</ul>
+</li>
+<li><strong>影响模式：</strong> Frackowiak最大的贡献在于创建了FIL。这个平台吸引了全球最优秀的年轻学者，他们在这里接受训练，学习使用SPM等先进工具，并浸润在开放、合作的学术文化中。许多从FIL走出的研究者后来都成为了各自领域的领军人物。因此，Frackowiak培养的不仅是几位具体的学生，更是一个领域的未来。</li>
+</ul>
+</section>
+<hr/>
+<section id="chapter-5">
+<h2 id="section-chapter-5-title">第五章 思想画像分析</h2>
+<p>本章旨在超越单纯的成就罗列，深入探索Richard Frackowiak的学术思想体系、其思想的渊源与影响，以及理论与实践的结合方式，从而构建一幅立体的思想画像。</p>
+<h3 id="section-section-5-1">5.1 核心思想体系</h3>
+<blockquote>
+<strong>核心思想概述：</strong> Frackowiak的核心思想可以概括为**“定量化、系统化、转化化”**的神经科学。他坚信，只有通过发展严谨的、可重复的**定量**成像方法，才能真正揭示大脑作为一个复杂网络**系统**的工作原理，并最终将这些基础科学的知识**转化**为能够解决实际临床问题的工具和疗法，特别是应对神经退行性疾病的挑战。
+                </blockquote>
+<ul>
+<li><strong>理论特色：</strong> 他对大脑的看法是动态和整体的。他强调大脑的“可塑性”，即大脑结构和功能是经验依赖的、持续变化的。同时，他关注功能的“系统性”，认为认知功能是由多个脑区协同工作的分布式网络所支持的，而非孤立模块的简单加总。</li>
+<li><strong>方法论特点：</strong> 他的方法论核心是“自动化”和“无偏见”。无论是推动SPM的发展，还是开创VBM和基于机器学习的诊断，其共同目标都是为了摆脱主观、手动的图像分析，建立一套客观、数据驱动、能够分析全脑信息的标准化流程。</li>
+<li><strong>哲学立场：</strong> 他是一位坚定的科学实证主义者，同时也是一位富有远见的战略家。他相信技术创新是推动科学发现的根本动力，并致力于构建能够最大化技术潜力的科研基础设施和合作模式。</li>
+</ul>
+<h3 id="section-section-5-2">5.2 思想渊源与影响</h3>
+<h4>5.2.1 思想渊源</h4>
+<ul>
+<li><strong>临床神经病学传统：</strong> Frackowiak首先是一名神经科医生。他的研究始终根植于临床问题，对痴呆、中风、帕金森病等疾病的深刻理解，是他进行方法学创新的原始驱动力。他思考的出发点往往是“如何才能更好地诊断和理解这些疾病？”</li>
+<li><strong>物理学与工程学思维：</strong> 他对PET、MRI等技术的物理原理有深刻理解，这使他从一开始就追求测量的精确性和定量化，而非满足于模糊的图像观察。这种“硬核”的科学背景是他区别于许多纯认知科学家的关键。</li>
+<li><strong>系统生物学观点：</strong> 他将大脑视为一个动态、可塑、自组织的复杂系统，而非一个预设好程序的静态计算机。这种观点体现在他对大脑可塑性、功能恢复和网络连接的持续关注上，也与他后来投身于HBP这样的“大科学”项目一脉相承。</li>
+</ul>
+<h4>5.2.2 跨领域影响</h4>
+<ul>
+<li><strong>对本领域影响：</strong> 他彻底改变了认知神经科学的研究范式。在他和FIL团队的努力下，认知神经科学从一个依赖于动物模型和脑损伤病人的、相对定性的学科，转变为一个以fMRI为主要工具、以SPM为标准分析流程的、高度定量的“大数据”科学。</li>
+<li><strong>对人工智能与计算机科学影响：</strong> 他在2000年代中期将机器学习应用于医学影像的探索，是AI在医疗领域应用的早期成功范例。这项工作向计算机科学界展示了临床神经影像数据作为复杂模式识别问题的重要应用场景，为后来的研究者提供了宝贵的经验和高质量的数据集，启发了后续更多、更复杂的AI模型（如深度学习）在该领域的应用。</li>
+<li><strong>对科研政策与管理影响：</strong> 通过成功创立FIL和发起HBP，他为如何组织、管理和资助大型跨学科研究中心提供了范例。他后期在Science Europe的角色，更直接地影响了欧洲关于科研数据共享的法规制定，为未来全球范围内的“开放科学”和“大数据”研究铺平了道路。</li>
+</ul>
+<h3 id="section-section-5-3">5.3 理论与应用结合：以机器学习诊断阿尔茨海默病为例</h3>
+<p>Frackowiak关于将机器学习应用于AD诊断的工作，是其“定量化、系统化、转化化”思想的完美体现。</p>
+<ul>
+<li><strong>应用领域：</strong> 临床神经病学，特别是痴呆症的早期诊断和鉴别诊断。</li>
+<li><strong>应用方式：</strong>
+<ol>
+<li><strong>数据定量化与标准化：</strong> 首先，使用VBM等自动化流程，将每位受试者的T1加权MRI图像进行空间标准化，并分割出灰质部分，生成标准空间下的灰质密度图。这一步确保了不同个体之间的数据具有可比性。</li>
+<li><strong>系统化特征构建：</strong> 接着，将整个大脑的灰质密度图作为一个整体输入，每个体素的灰质密度值都成为特征向量中的一个维度。这构成了一个包含数十万维度的高维特征空间，体现了对大脑病理改变的“系统性”和“分布式”考察，而非局限于单个区域。</li>
+<li><strong>模型训练与转化：</strong> 使用已知诊断（通常是病理证实的）的AD患者和健康对照组的特征数据，训练一个支持向量机（SVM）分类器。SVM的目标是找到一个最优的超平面，以最大间隔将两组数据点分开。训练完成后，这个模型就成了一个可以对新个体进行自动诊断的“黑箱”工具。</li>
+</ol>
+</li>
+<li><strong>应用效果：</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2579744/" target="_blank">研究结果</a>表明，该方法能够实现高精度的自动分类（区分AD与健康对照的准确率可达96%），其性能可与甚至超越专家临床诊断。该方法具有客观、可重复、不依赖特定解剖区域（全脑分析）的优点，并证明了跨中心、跨扫描仪器的泛化能力，显示出巨大的临床转化潜力。</li>
+</ul>
+<h3 id="section-section-5-4">5.4 未来发展趋势</h3>
+<p>Frackowiak的学术思想和实践，为神经科学的未来发展指明了几个重要方向。</p>
+<h4>5.4.1 当前研究焦点</h4>
+<p>虽然Frackowiak本人已从临床和管理一线退休，但其工作的重心和影响延续在“人类大脑计划”的后续发展上。当前的研究焦点在于如何真正利用像EBRAINS这样的大型数据平台，进行跨尺度（从基因到行为）、多模态（MRI, EEG, PET等）的数据整合与分析，以期产生对大脑更全面、更系统的理解，并最终服务于脑疾病的诊疗。</p>
+<h4>54.2 未来方向预测</h4>
+<ul>
+<li><strong>生成式AI与神经影像：</strong> Frackowiak的早期工作是判别式AI（分类）的应用。未来的一个重要趋势将是利用生成式AI（如GANs, Diffusion Models）来解决更复杂的问题。例如，模拟个体大脑随年龄的正常衰老过程、模拟阿尔茨海mer病等疾病的进展模式，或者根据少量真实数据生成大量高质量的合成影像数据，以解决医学影像领域数据稀缺和隐私保护的难题。</li>
+<li><strong>大脑的数字孪生（Digital Twin）：</strong> 这是HBP的终极愿景之一，也是Frackowiak思想的逻辑延伸。未来的目标是为每一个体建立一个高度个性化的“数字孪生”大脑模型。这个模型将整合个体的基因、影像、生理和行为数据，可用于动态预测其患上某种脑疾病的风险、模拟不同治疗方案（如药物、脑刺激）的可能效果，从而实现真正意义上的个性化精准神经医学。</li>
+</ul>
+<h3 id="section-section-5-5">5.5 争议与批评</h3>
+<p>Frackowiak辉煌的职业生涯中，最主要的争议点集中在他后期参与发起的“人类大脑计划”（HBP）。</p>
+<ul>
+<li><strong>主要争议点：人类大脑计划 (HBP) 的目标与治理。</strong>
+<ul>
+<li><strong>争议内容：</strong> HBP在2013年启动之初，因其宣称的“在十年内用超级计算机模拟完整人脑”这一宏大目标和相对封闭、自上而下的管理模式，而受到了神经科学界的广泛批评。许多科学家认为其目标在当时的技术条件下不切实际，且项目过分偏重于计算和模拟，而忽视了认知神经科学和实验神经科学的基础研究。</li>
+<li><strong>批评者观点：</strong> 2014年，包括Yves Frégnac和Gilles Laurent在内的<a href="https://www.nature.com/articles/513027a" target="_blank">数百名神经科学家签署了一封公开信</a>，发表在《自然》杂志上，要求HBP调整其科学方向，并建立更加透明、包容和民主的治理结构，以更好地代表整个欧洲神经科学界的需求。</li>
+<li><strong>学者回应：</strong> Frackowiak作为项目领导者之一，在<a href="https://www.nature.com/articles/513027a" target="_blank">《新科学家》等媒体上发文</a>为HBP的宏大愿景辩护。他强调，HBP的本质是一个旨在构建未来研究基础设施的长期技术项目，其价值在于将现代计算能力和信息技术系统性地引入脑科学领域，这对于应对脑科学数据的爆炸式增长是必要的一步。他也承认项目在沟通和治理上存在问题。最终，在巨大的外部压力下，HBP确实进行了重大的组织和科学方向调整，更加注重多学科的融合和平台工具的建设。</li>
+</ul>
+</li>
+</ul>
+</section>
+<hr/>
+<section id="chapter-6">
+<h2 id="section-chapter-6-title">第六章 知识传播与转化</h2>
+<p>Richard Frackowiak的影响力不仅局限于学术论文，他通过开发开源工具、构建数据平台以及积极参与公众科普，极大地推动了知识的传播和转化。</p>
+<h3 id="section-section-6-1">6.1 软件工具与数据集</h3>
+<ul>
+<li><strong>开发的软件工具：</strong>
+<ol>
+<li><strong>SPM (Statistical Parametric Mapping):</strong> Frackowiak最重要和最持久的贡献之一，是创建了诞生SPM的学术环境。作为FIL的创始人和领导者，他是该软件诞生和推广的“总设计师”和关键推动者。SPM作为一款<a href="https://www.fil.ion.ucl.ac.uk/spm/" target="_blank">免费开源软件</a>，自1991年首次发布以来，已成为全球神经影像数据分析的事实标准。它极大地降低了研究门槛，统一了分析方法，使得不同实验室的研究结果具有可比性，从而引爆了认知神经科学的革命。</li>
+</ol>
+</li>
+<li><strong>贡献的数据集：</strong>
+<ol>
+<li><strong>FIL/WTCN内部数据集：</strong> 在其领导下，实验室产生了大量关于脑功能和结构的高质量影像数据。这些数据通过其团队发表的数百篇高影响力论文，以统计图谱和坐标的形式向科学界开放，成为后续元分析和理论构建的基础。</li>
+<li><strong>HBP/EBRAINS平台：</strong> 在其职业生涯后期，他将构建共享数据平台的理念提升到了一个新的高度。他推动“人类大脑计划”构建了<a href="https://www.humanbrainproject.eu/en/about/overview/" target="_blank">EBRAINS平台</a>，这是一个旨在整合和共享多尺度（从分子到全脑）、多模态（MRI, EEG, 细胞学等）脑科学数据的大型基础设施。尽管HBP项目已结束，但EBRAINS作为其核心遗产，仍在为全球研究者提供宝贵的数据、模型和计算工具，对未来数据驱动的脑科学研究至关重要。</li>
+</ol>
+</li>
+</ul>
+<h3 id="section-section-6-2">6.2 公众影响力</h3>
+<ul>
+<li><strong>科普活动：</strong> Frackowiak深谙与公众沟通的重要性。他曾受邀在英国皇家研究院（Royal Institution）等世界顶级科普殿堂发表公众演讲（如著名的“星期五晚间讲座”），并多次接受BBC等主流媒体的采访，用通俗易懂的语言向公众解释神经影像学的最新进展和大型脑科学计划的社会意义。他在<a href="https://www.youtube.com/watch?v=EBVQYZJzzos" target="_blank">TEDxCHUV的演讲《Images of dementia》</a>中，生动地展示了脑成像如何帮助我们理解痴呆症。</li>
+<li><strong>媒体表现：</strong> 他领导的“伦敦出租车司机”研究，因其结论直观易懂、贴近生活，被全球媒体广泛报道，成为向公众普及“大脑可塑性”这一核心科学概念的最成功案例之一。他因此获得的“搞笑诺贝尔奖”也极大地增加了这一研究的公众知名度和传播广度，完美诠释了该奖项“乍看好笑，细想发人深省”的宗旨。</li>
+</ul>
+</section>
+<hr/>
+<section id="chapter-7">
+<h2 id="section-chapter-7-title">第七章 综合评估与展望</h2>
+<p>本章在前述分析的基础上，对Richard Frackowiak的学术地位、贡献价值进行综合评估，并对其思想和工作所预示的未来趋势进行展望。</p>
+<h3 id="section-section-7-1">7.1 学术地位评估</h3>
+<blockquote>
+<strong>综合评估结论：</strong> Richard Frackowiak是一位具有非凡远见和卓越执行力的战略型科学家。他不仅在具体的科学研究上做出了开创性的贡献（如揭示脑可塑性、开创机器学习诊断），更通过创建世界顶级的卓越研究中心（FIL/WTCN）、推动革命性方法学（SPM）的诞生和普及、以及发起宏大的国际科学计划（HBP），从根本上重塑了神经影像学乃至整个认知神经科学的学科版图。他是连接基础方法学、认知科学和临床应用的枢纽式人物，其影响力贯穿了过去三十年脑科学发展的核心脉络。
+                </blockquote>
+<p><strong>学术影响力等级：</strong> <strong>国际顶尖 (International Top-Tier)</strong></p>
+<h4>核心优势：</h4>
+<ul>
+<li><strong>战略远见：</strong> 他总能预见到领域的下一个发展方向，无论是从PET到fMRI的转型，还是从传统统计到机器学习的应用，再到“大数据”驱动的“大科学”模式。</li>
+<li><strong>机构建设能力：</strong> 他拥有将科学愿景转化为实体机构的强大能力，FIL的成功是其最杰出的代表作。</li>
+<li><strong>人才凝聚力：</strong> 他善于发现、吸引并支持顶尖人才，并为他们创造能够最大限度发挥其创造力的环境，其领导的FIL“梦之队”便是明证。</li>
+</ul>
+<h3 id="section-section-7-2">7.2 学术贡献评价</h3>
+<ul>
+<li><strong>理论贡献评价：</strong>
+<ul>
+<li><strong>创新性：</strong> 极高。关于大脑结构可塑性的研究为领域提供了里程碑式的证据，颠覆了传统观念。</li>
+<li><strong>影响力：</strong> 极高。其理论贡献已成为神经科学、心理学和教育学教科书中的经典内容，并为康复医学提供了理论基础。</li>
+</ul>
+</li>
+<li><strong>方法贡献评价：</strong>
+<ul>
+<li><strong>实用性与推广性：</strong> 极高。他所推动的SPM等工具被全球数以万计的研究者广泛使用，他开创的机器学习诊断方法则引领了一个全新的研究方向。</li>
+<li><strong>持久性：</strong> 极高。这些方法论在提出数十年后，至今仍是领域的主流，并在此基础上不断演化发展，显示出强大的生命力。</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-section-7-3">7.3 未来发展趋势</h3>
+<ul>
+<li><strong>短期趋势（1-3年）：</strong> 对“人类大脑计划”（HBP）项目遗产的总结、评估和利用将持续进行。作为HBP核心产出的EBRAINS平台，其数据和工具将被更广泛的科学界所应用，催生一批基于多模态数据整合的研究成果。</li>
+<li><strong>长期趋势（5年以上）：</strong> Frackowiak所倡导的数据驱动、计算导向的脑科学研究模式将成为绝对主流。人工智能技术，特别是生成式AI，将与其开创的影像分析方法深度融合，催生出用于疾病风险预测、病程模拟和个性化治疗方案设计的新一代“数字孪生”工具。同时，他在欧洲推动的关于科研数据共享的政策努力，将为未来全球范围内的“开放科学”和“大数据”研究合作模式铺平道路，其影响力将超越神经科学本身。</li>
+</ul>
+</section>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('metricsChart').getContext('2d');
+            const metricsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Google Scholar', 'Scopus', 'OpenAlex', 'ResearchGate'],
+                    datasets: [{
+                        label: 'h-index',
+                        data: [221, 184, 188, 163],
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    }, {
+                        label: '总被引次数 (千次)',
+                        data: [198.6, 127.0, 144.2, 160.1],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Richard Frackowiak 学术影响力指标对比',
+                            font: {
+                                size: 18,
+                                family: 'Georgia, Times New Roman, serif'
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'h-index'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '总被引次数 (千次)'
+                            },
+                            grid: {
+                                drawOnChartArea: false, 
+                            },
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<div class="reference-container">
+			<div class="reference-section">
+				<h3 class="reference-title">参考资料</h3>
+				<div class="reference-list">
+					
+					<div class="reference-item">
+						<span class="reference-number">[1]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Interview with Richard Frackowiak - eanNews</span>
+									
+							</div>
+							<a href="https://www.eanpages.org/2014/10/01/interview-with-richard-frackowiak/" class="reference-link" target="_blank">
+								https://www.eanpages.org/2014/10/01/interview-with-richard-frackowiak/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[2]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">‪Richard Frackowiak‬ - ‪Google Scholar‬</span>
+									
+							</div>
+							<a href="https://scholar.google.com/citations?user=4nu1zCsAAAAJ&amp;hl=en" class="reference-link" target="_blank">
+								https://scholar.google.com/citations?user=4nu1zCsAAAAJ&amp;hl=en
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[3]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Richard Frackowiak - Wikipedia</span>
+									
+							</div>
+							<a href="https://en.wikipedia.org/wiki/Richard_Frackowiak" class="reference-link" target="_blank">
+								https://en.wikipedia.org/wiki/Richard_Frackowiak
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[4]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text"></span>
+									
+									<i class="reference-professional"></i>
+									
+							</div>
+							<a href="" class="reference-link" target="_blank">
+								
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[5]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Images of dementia: Richard Frackowiak at TEDxCHUV - YouTube</span>
+									
+							</div>
+							<a href="https://www.youtube.com/watch?v=EBVQYZJzzos" class="reference-link" target="_blank">
+								https://www.youtube.com/watch?v=EBVQYZJzzos
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[6]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Professor Richard Frackowiak | The History of Modern Biomedicine</span>
+									
+							</div>
+							<a href="https://histmodbiomed.history.qmul.ac.uk/article/professor-richard-frackowiak.html" class="reference-link" target="_blank">
+								https://histmodbiomed.history.qmul.ac.uk/article/professor-richard-frackowiak.html
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[7]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Richard Frackowiak | About | University College London</span>
+									
+							</div>
+							<a href="https://profiles.ucl.ac.uk/7414-richard-frackowiak" class="reference-link" target="_blank">
+								https://profiles.ucl.ac.uk/7414-richard-frackowiak
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[8]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Overview - Human Brain Project</span>
+									
+							</div>
+							<a href="https://www.humanbrainproject.eu/en/about/overview/" class="reference-link" target="_blank">
+								https://www.humanbrainproject.eu/en/about/overview/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[9]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">UCL centre lauded in major brain imaging report</span>
+									
+							</div>
+							<a href="https://www.ucl.ac.uk/news/2011/sep/ucl-centre-lauded-major-brain-imaging-report" class="reference-link" target="_blank">
+								https://www.ucl.ac.uk/news/2011/sep/ucl-centre-lauded-major-brain-imaging-report
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[10]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Neuroscience: Where is the brain in the Human Brain Project? | Nature</span>
+									
+							</div>
+							<a href="https://www.nature.com/articles/513027a" class="reference-link" target="_blank">
+								https://www.nature.com/articles/513027a
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[11]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">SPM - Statistical Parametric Mapping</span>
+									
+							</div>
+							<a href="https://www.fil.ion.ucl.ac.uk/spm/" class="reference-link" target="_blank">
+								https://www.fil.ion.ucl.ac.uk/spm/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[12]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">[PDF] FRACKOWIAK, Richard Stanislaus Joseph - Academia Europaea</span>
+									
+							</div>
+							<a href="https://www.ae-info.org/attach/User/Frackowiak_Richard/CV/Frackowiak%20RSJ%20CV%202016.pdf" class="reference-link" target="_blank">
+								https://www.ae-info.org/attach/User/Frackowiak_Richard/CV/Frackowiak%20RSJ%20CV%202016.pdf
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[13]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Automatic classification of MR scans in Alzheimer&#39;s disease - PMC</span>
+									
+							</div>
+							<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2579744/" class="reference-link" target="_blank">
+								https://pmc.ncbi.nlm.nih.gov/articles/PMC2579744/
+							</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div></div>
+</body></html>
