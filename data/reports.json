@@ -1,0 +1,40 @@
+[
+  {
+    "id": "karl-friston-academic-report",
+    "filename": "Karl_Friston_Academic_Report.html",
+    "title": "Karl Friston学术情报分析报告",
+    "description": "深度分析知名理论神经科学家Karl Friston的学术贡献、影响力与合作网络",
+    "author": "ScholarInsight AI",
+    "date": "2024-01-15",
+    "category": "学者分析",
+    "tags": ["神经科学", "理论神经科学", "自由能原理", "SPM", "Karl Friston"],
+    "subject": {
+      "type": "scholar",
+      "name": "Karl J. Friston",
+      "institution": "University College London",
+      "field": "Theoretical Neuroscience"
+    },
+    "summary": "本报告全面分析了Karl Friston的学术生涯、核心贡献和影响力。作为自由能原理的提出者和SPM软件的开发者，Friston在理论神经科学领域具有举足轻重的地位。报告深入探讨了他的理论框架、方法论贡献以及对整个领域的影响。",
+    "featured": true,
+    "thumbnail": "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg"
+  },
+  {
+    "id": "wellcome-trust-centre-analysis",
+    "filename": "Wellcome_Trust_Centre_Analysis_Report.html",
+    "title": "深度解析：Wellcome Centre for Human Neuroimaging (WCHN) 如何定义现代脑科学研究",
+    "description": "全面剖析WCHN的核心技术、战略思想与生态系统，系统性地揭示其成功的蓝图",
+    "author": "ScholarInsight AI",
+    "date": "2024-01-20",
+    "category": "机构分析",
+    "tags": ["神经影像", "研究机构", "WCHN", "SPM", "开放科学", "脑科学"],
+    "subject": {
+      "type": "institution",
+      "name": "Wellcome Centre for Human Neuroimaging",
+      "institution": "University College London",
+      "field": "Neuroscience"
+    },
+    "summary": "本报告深入分析了WCHN这一世界级神经影像研究中心的成功模式。从方法论革命（SPM）、理论基石（贝叶斯大脑）到技术前沿（7T MRI、可穿戴MEG），WCHN构建了一个强大的创新飞轮。报告还探讨了其开放科学战略和全球合作网络。",
+    "featured": true,
+    "thumbnail": "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg"
+  }
+]
