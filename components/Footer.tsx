@@ -13,8 +13,8 @@ export default function Footer() {
           </div>
           
           <div className="text-gray-400 text-xs space-y-1 text-center md:text-right">
-            <div>© 2024 ScholarInsight. All Rights Reserved.</div>
-            <div>ICP备案号：京ICP备XXXXXXXX号</div>
+            <div>© 2025 余希瑞. All Rights Reserved.</div>
+            <div>ICP备案号：渝ICP备2025067359号</div>
           </div>
         </div>
       </div>
