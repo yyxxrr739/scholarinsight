@@ -5,78 +5,20 @@ import { Search, Filter, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NetworkGraph from '@/components/NetworkGraph'
+import networkDataRaw from '@/data/network-data.json'
 
-// 扩展的学者数据
-const scholars = [
-  {
-    id: 'karl-friston',
-    name: 'Karl J. Friston',
-    shortName: 'K. Friston',
-    hIndex: 285,
-    institution: 'University College London',
-    field: 'Theoretical Neuroscience',
-    category: 'neuroscience',
-    image: 'https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg',
-    connections: ['yoshua-bengio', 'geoffrey-hinton', 'andrew-ng', 'yann-lecun']
-  },
-  {
-    id: 'yoshua-bengio',
-    name: 'Yoshua Bengio',
-    shortName: 'Y. Bengio',
-    hIndex: 245,
-    institution: 'University of Montreal',
-    field: 'Deep Learning',
-    category: 'ai',
-    connections: ['karl-friston', 'geoffrey-hinton', 'andrew-ng', 'yann-lecun', 'jordan-michael']
-  },
-  {
-    id: 'geoffrey-hinton',
-    name: 'Geoffrey Hinton',
-    shortName: 'G. Hinton',
-    hIndex: 235,
-    institution: 'University of Toronto',
-    field: 'Deep Learning',
-    category: 'ai',
-    connections: ['karl-friston', 'yoshua-bengio', 'andrew-ng', 'yann-lecun']
-  },
-  {
-    id: 'andrew-ng',
-    name: 'Andrew Ng',
-    shortName: 'A. Ng',
-    hIndex: 185,
-    institution: 'Stanford University',
-    field: 'Machine Learning',
-    category: 'ai',
-    connections: ['karl-friston', 'yoshua-bengio', 'geoffrey-hinton', 'jordan-michael']
-  },
-  {
-    id: 'yann-lecun',
-    name: 'Yann LeCun',
-    shortName: 'Y. LeCun',
-    hIndex: 175,
-    institution: 'New York University',
-    field: 'Computer Vision',
-    category: 'ai',
-    connections: ['karl-friston', 'yoshua-bengio', 'geoffrey-hinton']
-  },
-  {
-    id: 'jordan-michael',
-    name: 'Michael I. Jordan',
-    shortName: 'M. Jordan',
-    hIndex: 165,
-    institution: 'University of California, Berkeley',
-    field: 'Machine Learning',
-    category: 'ai',
-    connections: ['yoshua-bengio', 'andrew-ng']
-  }
-]
+// 类型断言确保数据符合 NetworkData 接口
+const networkData = networkDataRaw as any
+
+// 从网络数据中提取学者信息
+const scholars = networkData.nodes.filter((node: any) => node.type === 'scholar')
 
 export default function NetworkPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterField, setFilterField] = useState<string>('all')
   const [selectedScholar, setSelectedScholar] = useState<string | null>(null)
 
-  const filteredScholars = scholars.filter(scholar => {
+  const filteredScholars = scholars.filter((scholar: any) => {
     const matchesSearch = 
       scholar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       scholar.institution.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -88,7 +30,7 @@ export default function NetworkPage() {
   })
 
   const getUniqueFields = () => {
-    const fields = scholars.map(s => s.field)
+    const fields = scholars.map((s: any) => s.field)
     return ['all', ...Array.from(new Set(fields))]
   }
 
@@ -136,7 +78,7 @@ export default function NetworkPage() {
                     onChange={(e) => setFilterField(e.target.value)}
                     className="px-3 py-2 border border-academic-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
-                    {getUniqueFields().map(field => (
+                    {getUniqueFields().map((field: any) => (
                       <option key={field} value={field}>
                         {field === 'all' ? '所有领域' : field}
                       </option>
@@ -172,7 +114,7 @@ export default function NetworkPage() {
                 </p>
               </div>
               
-              <NetworkGraph scholars={filteredScholars} />
+              <NetworkGraph data={networkData} />
             </div>
           </div>
         </section>
@@ -183,7 +125,7 @@ export default function NetworkPage() {
             <h2 className="text-2xl font-bold text-academic-900 mb-6">网络中的学者</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredScholars.map((scholar) => (
+              {filteredScholars.map((scholar: any) => (
                 <div
                   key={scholar.id}
                   className={`card cursor-pointer transition-all duration-200 ${
@@ -204,7 +146,7 @@ export default function NetworkPage() {
                       ) : (
                         <div className="w-full h-full bg-academic-300 flex items-center justify-center">
                           <span className="text-academic-600 font-semibold">
-                            {scholar.name.split(' ').map(n => n[0]).join('')}
+                            {scholar.name.split(' ').map((n: any) => n[0]).join('')}
                           </span>
                         </div>
                       )}
@@ -226,8 +168,8 @@ export default function NetworkPage() {
                     <div className="mt-3 pt-3 border-t border-academic-200">
                       <h4 className="text-sm font-medium text-academic-900 mb-2">合作者：</h4>
                       <div className="flex flex-wrap gap-1">
-                        {scholar.connections.map(connectionId => {
-                          const connection = scholars.find(s => s.id === connectionId)
+                        {scholar.connections.map((connectionId: any) => {
+                          const connection = scholars.find((s: any) => s.id === connectionId)
                           return connection ? (
                             <span
                               key={connectionId}

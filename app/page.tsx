@@ -6,6 +6,10 @@ import { Search, Calendar, User, Building2, ArrowRight } from 'lucide-react'
 import NetworkGraph from '@/components/NetworkGraph'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import networkDataRaw from '@/data/network-data.json'
+
+// 类型断言确保数据符合 NetworkData 接口
+const networkData = networkDataRaw as any
 
 // 最新报告数据
 const latestReports = [
@@ -45,100 +49,8 @@ const latestReports = [
   }
 ]
 
-// 扩展的学者数据，按研究领域分类
-const scholars = [
-  {
-    id: 'karl-friston',
-    name: 'Karl J. Friston',
-    shortName: 'K. Friston',
-    hIndex: 285,
-    institution: 'University College London',
-    field: 'Theoretical Neuroscience',
-    category: 'neuroscience',
-    image: 'https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg',
-    connections: ['yoshua-bengio', 'geoffrey-hinton', 'andrew-ng', 'yann-lecun']
-  },
-  {
-    id: 'yoshua-bengio',
-    name: 'Yoshua Bengio',
-    shortName: 'Y. Bengio',
-    hIndex: 245,
-    institution: 'University of Montreal',
-    field: 'Deep Learning',
-    category: 'ai',
-    connections: ['karl-friston', 'geoffrey-hinton', 'andrew-ng', 'yann-lecun', 'jordan-michael']
-  },
-  {
-    id: 'geoffrey-hinton',
-    name: 'Geoffrey Hinton',
-    shortName: 'G. Hinton',
-    hIndex: 235,
-    institution: 'University of Toronto',
-    field: 'Deep Learning',
-    category: 'ai',
-    connections: ['karl-friston', 'yoshua-bengio', 'andrew-ng', 'yann-lecun']
-  },
-  {
-    id: 'andrew-ng',
-    name: 'Andrew Ng',
-    shortName: 'A. Ng',
-    hIndex: 185,
-    institution: 'Stanford University',
-    field: 'Machine Learning',
-    category: 'ai',
-    connections: ['karl-friston', 'yoshua-bengio', 'geoffrey-hinton', 'jordan-michael']
-  },
-  {
-    id: 'yann-lecun',
-    name: 'Yann LeCun',
-    shortName: 'Y. LeCun',
-    hIndex: 175,
-    institution: 'New York University',
-    field: 'Computer Vision',
-    category: 'ai',
-    connections: ['karl-friston', 'yoshua-bengio', 'geoffrey-hinton']
-  },
-  {
-    id: 'jordan-michael',
-    name: 'Michael I. Jordan',
-    shortName: 'M. Jordan',
-    hIndex: 165,
-    institution: 'University of California, Berkeley',
-    field: 'Machine Learning',
-    category: 'ai',
-    connections: ['yoshua-bengio', 'andrew-ng']
-  },
-  {
-    id: 'demis-hassabis',
-    name: 'Demis Hassabis',
-    shortName: 'D. Hassabis',
-    hIndex: 155,
-    institution: 'DeepMind',
-    field: 'Artificial Intelligence',
-    category: 'ai',
-    connections: ['yoshua-bengio', 'geoffrey-hinton']
-  },
-  {
-    id: 'fei-fei-li',
-    name: 'Fei-Fei Li',
-    shortName: 'F. Li',
-    hIndex: 145,
-    institution: 'Stanford University',
-    field: 'Computer Vision',
-    category: 'ai',
-    connections: ['andrew-ng', 'yann-lecun']
-  }
-]
-
-// 研究领域颜色映射 - 使用彩色渐变色
-const categoryColors = {
-  ai: 'linear-gradient(135deg, #3B82F6, #1D4ED8)',        // 蓝色渐变
-  neuroscience: 'linear-gradient(135deg, #8B5CF6, #7C3AED)', // 紫色渐变
-  physics: 'linear-gradient(135deg, #EF4444, #DC2626)',   // 红色渐变
-  biology: 'linear-gradient(135deg, #10B981, #059669)',   // 绿色渐变
-  chemistry: 'linear-gradient(135deg, #F59E0B, #D97706)', // 橙色渐变
-  mathematics: 'linear-gradient(135deg, #EC4899, #DB2777)' // 粉色渐变
-}
+// 从网络数据中提取学者信息用于搜索建议
+const scholars = networkData.nodes.filter((node: any) => node.type === 'scholar')
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -149,11 +61,11 @@ export default function HomePage() {
   useEffect(() => {
     if (searchQuery.trim()) {
       const filtered = scholars
-        .filter(scholar => 
+        .filter((scholar: any) => 
           scholar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           scholar.shortName.toLowerCase().includes(searchQuery.toLowerCase())
         )
-        .map(scholar => scholar.name)
+        .map((scholar: any) => scholar.name)
         .slice(0, 5)
       setSuggestions(filtered)
       setShowSuggestions(filtered.length > 0)
@@ -223,31 +135,27 @@ export default function HomePage() {
             <div className="w-full max-w-6xl">
               <div className="relative">
                 {/* 网络图容器 */}
-                <div className="bg-black/20 backdrop-blur-sm rounded-2xl border border-gray-800 p-6">
-                  <NetworkGraph 
-                    scholars={scholars} 
-                    categoryColors={categoryColors}
-                    darkMode={true}
-                  />
+                <div className="bg-black/20 backdrop-blur-sm rounded-2xl border border-gray-800 p-4 md:p-6">
+                  <div className="w-full h-full min-h-[300px] md:min-h-[400px] flex items-center justify-center">
+                    <NetworkGraph 
+                      data={networkData}
+                      darkMode={true}
+                    />
+                  </div>
                 </div>
 
                 {/* 图例 */}
-                <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700">
-                  <h3 className="text-white font-semibold mb-3 text-sm">研究领域</h3>
-                  <div className="space-y-2">
-                    {Object.entries(categoryColors).map(([category, gradient]) => (
-                      <div key={category} className="flex items-center space-x-2">
+                <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-black/50 backdrop-blur-sm rounded-lg p-2 md:p-4 border border-gray-700">
+                  <h3 className="text-white font-semibold mb-2 md:mb-3 text-xs md:text-sm">节点类型</h3>
+                  <div className="space-y-1 md:space-y-2">
+                    {Object.entries(networkData.categories).map(([categoryKey, categoryData]: [string, any]) => (
+                      <div key={categoryKey} className="flex items-center space-x-1 md:space-x-2">
                         <div 
-                          className="w-3 h-3 rounded-full"
-                          style={{ background: gradient }}
+                          className={`w-2 h-2 md:w-3 md:h-3 ${categoryData.nodeStyle === 'rect' ? 'rounded' : 'rounded-full'}`}
+                          style={{ background: categoryData.color }}
                         />
-                        <span className="text-gray-300 text-xs capitalize">
-                          {category === 'ai' ? '人工智能' : 
-                           category === 'neuroscience' ? '神经科学' :
-                           category === 'physics' ? '物理学' :
-                           category === 'biology' ? '生物学' :
-                           category === 'chemistry' ? '化学' :
-                           category === 'mathematics' ? '数学' : category}
+                        <span className="text-gray-300 text-xs">
+                          {categoryData.name}
                         </span>
                       </div>
                     ))}
