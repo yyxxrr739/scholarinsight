@@ -111,7 +111,7 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
             .attr('preserveAspectRatio', 'xMidYMid slice')
         } else {
           // 学者节点：圆形照片
-          const radius = Math.sqrt(node.hIndex) * 2
+          const radius = Math.max(Math.sqrt(node.hIndex || 1) * 2, 8) // 最小半径8px
           const finalRadius = radius * mobileScale // 应用移动端缩放
           
           defs.append('pattern')
@@ -132,17 +132,47 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       }
     })
 
+    // 定义节点领域分类
+    const categorizeNode = (node: NetworkNode): 'ai' | 'neuroscience' => {
+      const field = node.field.toLowerCase()
+      if (field.includes('deep learning') || field.includes('artificial intelligence') || field.includes('ai safety')) {
+        return 'ai'
+      }
+      return 'neuroscience'
+    }
+
+    // 计算两个领域的中心点位置
+    const leftCenterX = width * 0.25  // 左侧中心点 (AI领域)
+    const rightCenterX = width * 0.75 // 右侧中心点 (Neuroscience领域)
+    const centerY = height / 2
+
     // 创建力导向图
     const simulation = d3.forceSimulation<NetworkNode>(data.nodes)
-      .force('link', d3.forceLink<NetworkNode, any>().id((d) => d.id).distance(120))
-      .force('charge', d3.forceManyBody().strength(-400))
-      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('link', d3.forceLink<NetworkNode, any>().id((d) => d.id).distance(100))
+      .force('charge', d3.forceManyBody().strength(-300))
+      .force('center', d3.forceCenter(width / 2, height / 2).strength(0.05)) // 整体中心力较弱
+      .force('fieldPosition', (alpha: number) => {
+        // 自定义力：将节点拉向各自领域的中心点
+        data.nodes.forEach(node => {
+          const category = categorizeNode(node)
+          const targetX = category === 'ai' ? leftCenterX : rightCenterX
+          const targetY = centerY
+          
+          // 计算当前位置到目标位置的距离
+          const dx = targetX - (node.x || 0)
+          const dy = targetY - (node.y || 0)
+          
+          // 应用力，强度随alpha衰减，降低强度使布局更稳定
+          node.vx = (node.vx || 0) + dx * alpha * 0.1
+          node.vy = (node.vy || 0) + dy * alpha * 0.1
+        })
+      })
       .force('collision', d3.forceCollide().radius((d: any) => {
         if (d.type === 'institution') {
           // 机构节点碰撞检测：边长等于最大学者节点的直径
           return maxRectSize * mobileScale
         } else {
-          const baseRadius = Math.sqrt(d.hIndex) * 2
+          const baseRadius = Math.max(Math.sqrt(d.hIndex || 1) * 2, 8) // 最小半径8px
           return baseRadius * mobileScale
         }
       }))
@@ -192,6 +222,7 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       })
       .style('filter', darkMode ? 'drop-shadow(0 0 1px rgba(59, 130, 246, 0.2))' : 'none')
 
+
     // 添加节点组
     const node = svg.append('g')
       .selectAll('g')
@@ -228,8 +259,8 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
             'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
           )
       } else {
-        // 学者节点使用圆形，尺寸与hIndex成正比
-        const radius = Math.sqrt(d.hIndex) * 2
+        // 学者节点使用圆形，尺寸与hIndex成正比，但确保最小可见尺寸
+        const radius = Math.max(Math.sqrt(d.hIndex || 1) * 2, 8) // 最小半径8px
         const finalRadius = radius * mobileScale // 应用移动端缩放
         
         // 添加圆形形状
@@ -286,6 +317,10 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
     // 更新力导向图
     simulation.nodes(data.nodes)
     simulation.force<d3.ForceLink<NetworkNode, any>>('link')!.links(links)
+    
+    // 设置模拟参数，让它在稳定后停止
+    simulation.alphaDecay(0.05) // 降低alpha衰减率，让模拟更稳定
+    simulation.velocityDecay(0.4) // 增加速度衰减，减少震荡
 
     // 更新位置 - 添加动态效果
     simulation.on('tick', () => {
@@ -299,12 +334,6 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
         .attr('transform', (d: NetworkNode) => `translate(${d.x},${d.y})`)
     })
 
-    // 添加轻微的持续动画效果
-    const animate = () => {
-      simulation.alpha(0.1).restart()
-      setTimeout(animate, 12000) // 每12秒重新激活一次
-    }
-    setTimeout(animate, 6000)
 
     // 拖拽函数
     function dragstarted(event: any, d: NetworkNode) {

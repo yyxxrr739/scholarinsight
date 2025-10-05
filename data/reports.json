@@ -191,6 +191,38 @@
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "预测性加工理论核心阐释者，预测心智理论提出者"
       }
+    },
+    {
+      "id": "ilya-sutskever-analysis-report",
+      "filename": "Ilya_Sutskever_Analysis_Report.html",
+      "title": "应用领域核心人物信息分析报告：Ilya Sutskever",
+      "description": "深度分析人工智能领域核心人物Ilya Sutskever的职业生涯、技术贡献、思想演变及其行业影响力",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["人工智能", "深度学习", "GPT", "OpenAI", "AI安全", "Ilya Sutskever", "神经网络"],
+      "subject": {
+        "type": "scholar",
+        "name": "Ilya Sutskever",
+        "institution": "Safe Superintelligence Inc. (SSI)",
+        "field": "Deep Learning, Artificial Intelligence, AI Safety"
+      },
+      "summary": "本报告全面分析了Ilya Sutskever的学术生涯、核心贡献和影响力。作为深度学习领域的奠基人之一，他联合发明了AlexNet和Sequence-to-Sequence Learning，领导了GPT系列模型的开发，并创办了以安全为唯一使命的Safe Superintelligence Inc. (SSI)。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/0d56efdf331eb261022fcdff97d98bdc.jpg",
+      "networkNode": {
+        "id": "ilya-sutskever",
+        "name": "Ilya Sutskever",
+        "shortName": "I. Sutskever",
+        "type": "scholar",
+        "institution": "Safe Superintelligence Inc. (SSI)",
+        "field": "Deep Learning, AI Safety",
+        "category": "scholar",
+        "hIndex": 85,
+        "image": "https://agents-download.skywork.ai/image/rt/0d56efdf331eb261022fcdff97d98bdc.jpg",
+        "connections": [],
+        "description": "深度学习奠基人，GPT系列模型领导者，AI安全倡导者"
+      }
     }
   ],
   "connections": [
