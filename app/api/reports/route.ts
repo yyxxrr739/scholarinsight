@@ -7,9 +7,10 @@ export async function GET() {
     // 读取reports.json文件
     const filePath = path.join(process.cwd(), 'data', 'reports.json')
     const fileContents = fs.readFileSync(filePath, 'utf8')
-    const reports = JSON.parse(fileContents)
+    const data = JSON.parse(fileContents)
     
-    return NextResponse.json(reports)
+    // 返回reports数组
+    return NextResponse.json(data.reports)
   } catch (error) {
     console.error('Error reading reports data:', error)
     return NextResponse.json(

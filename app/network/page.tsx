@@ -5,13 +5,25 @@ import { Search, Filter, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NetworkGraph from '@/components/NetworkGraph'
-import networkDataRaw from '@/data/network-data.json'
+import reportsDataRaw from '@/data/reports.json'
 
-// 类型断言确保数据符合 NetworkData 接口
-const networkData = networkDataRaw as any
+// 类型断言确保数据符合 ReportsData 接口
+const reportsData = reportsDataRaw as any
+
+// 从报告数据中提取网络节点信息
+const networkNodes = reportsData.reports
+  .filter((report: any) => report.networkNode)
+  .map((report: any) => report.networkNode)
 
 // 从网络数据中提取学者信息
-const scholars = networkData.nodes.filter((node: any) => node.type === 'scholar')
+const scholars = networkNodes.filter((node: any) => node.type === 'scholar')
+
+// 构建网络数据对象
+const networkData = {
+  nodes: networkNodes,
+  connections: reportsData.connections,
+  categories: reportsData.categories
+}
 
 export default function NetworkPage() {
   const [searchQuery, setSearchQuery] = useState('')

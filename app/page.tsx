@@ -6,51 +6,28 @@ import { Search, Calendar, User, Building2, ArrowRight } from 'lucide-react'
 import NetworkGraph from '@/components/NetworkGraph'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import networkDataRaw from '@/data/network-data.json'
+import reportsDataRaw from '@/data/reports.json'
 
-// 类型断言确保数据符合 NetworkData 接口
-const networkData = networkDataRaw as any
+// 类型断言确保数据符合 ReportsData 接口
+const reportsData = reportsDataRaw as any
 
-// 最新报告数据
-const latestReports = [
-  {
-    id: "karl-friston-academic-report",
-    filename: "Karl_Friston_Academic_Report.html",
-    title: "Karl Friston学术情报分析报告",
-    description: "深度分析知名理论神经科学家Karl Friston的学术贡献、影响力与合作网络",
-    author: "ScholarInsight AI",
-    date: "2024-01-15",
-    category: "学者分析",
-    tags: ["神经科学", "理论神经科学", "自由能原理", "SPM"],
-    subject: {
-      type: "scholar",
-      name: "Karl J. Friston",
-      institution: "University College London",
-      field: "Theoretical Neuroscience"
-    },
-    thumbnail: "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg"
-  },
-  {
-    id: "wellcome-trust-centre-analysis",
-    filename: "Wellcome_Trust_Centre_Analysis_Report.html",
-    title: "深度解析：Wellcome Centre for Human Neuroimaging (WCHN) 如何定义现代脑科学研究",
-    description: "全面剖析WCHN的核心技术、战略思想与生态系统，系统性地揭示其成功的蓝图",
-    author: "ScholarInsight AI",
-    date: "2024-01-20",
-    category: "机构分析",
-    tags: ["神经影像", "研究机构", "WCHN", "开放科学"],
-    subject: {
-      type: "institution",
-      name: "Wellcome Centre for Human Neuroimaging",
-      institution: "University College London",
-      field: "Neuroscience"
-    },
-    thumbnail: "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg"
-  }
-]
+// 从报告数据中提取网络节点信息
+const networkNodes = reportsData.reports
+  .filter((report: any) => report.networkNode)
+  .map((report: any) => report.networkNode)
+
+// 构建网络数据对象
+const networkData = {
+  nodes: networkNodes,
+  connections: reportsData.connections,
+  categories: reportsData.categories
+}
+
+// 最新报告数据 - 使用前两个报告
+const latestReports = reportsData.reports.slice(0, 2)
 
 // 从网络数据中提取学者信息用于搜索建议
-const scholars = networkData.nodes.filter((node: any) => node.type === 'scholar')
+const scholars = networkNodes.filter((node: any) => node.type === 'scholar')
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -174,7 +151,7 @@ export default function HomePage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                {latestReports.map((report) => (
+                {latestReports.map((report: any) => (
                   <Link
                     key={report.id}
                     href={`/reports/${report.filename}`}
@@ -227,7 +204,7 @@ export default function HomePage() {
                         <p className="text-sm text-gray-300 line-clamp-2 mb-3">{report.description}</p>
 
                         <div className="flex flex-wrap gap-1">
-                          {report.tags.slice(0, 3).map((tag, index) => (
+                          {report.tags.slice(0, 3).map((tag: any, index: number) => (
                             <span
                               key={index}
                               className="text-xs bg-white/10 text-white/80 px-2 py-1 rounded"

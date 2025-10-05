@@ -14,6 +14,20 @@ interface ReportSubject {
   field: string
 }
 
+interface NetworkNode {
+  id: string
+  name: string
+  shortName: string
+  type: 'scholar' | 'institution'
+  institution: string
+  field: string
+  category: string
+  hIndex: number
+  image?: string
+  connections: string[]
+  description?: string
+}
+
 interface Report {
   id: string
   filename: string
@@ -27,6 +41,7 @@ interface Report {
   summary: string
   featured: boolean
   thumbnail: string
+  networkNode?: NetworkNode
 }
 
 type SortField = 'date' | 'title' | 'category'

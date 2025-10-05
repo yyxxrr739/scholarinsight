@@ -1,59 +1,132 @@
-[
-  {
-    "id": "karl-friston-academic-report",
-    "filename": "Karl_Friston_Academic_Report.html",
-    "title": "Karl Friston学术情报分析报告",
-    "description": "深度分析知名理论神经科学家Karl Friston的学术贡献、影响力与合作网络",
-    "author": "ScholarInsight AI",
-    "date": "2024-01-15",
-    "category": "学者分析",
-    "tags": ["神经科学", "理论神经科学", "自由能原理", "SPM", "Karl Friston"],
-    "subject": {
-      "type": "scholar",
-      "name": "Karl J. Friston",
-      "institution": "University College London",
-      "field": "Theoretical Neuroscience"
+{
+  "reports": [
+    {
+      "id": "karl-friston-academic-report",
+      "filename": "Karl_Friston_Academic_Report.html",
+      "title": "Karl Friston学术情报分析报告",
+      "description": "深度分析知名理论神经科学家Karl Friston的学术贡献、影响力与合作网络",
+      "author": "ScholarInsight AI",
+      "date": "2024-01-15",
+      "category": "学者分析",
+      "tags": ["神经科学", "理论神经科学", "自由能原理", "SPM", "Karl Friston"],
+      "subject": {
+        "type": "scholar",
+        "name": "Karl J. Friston",
+        "institution": "University College London",
+        "field": "Theoretical Neuroscience"
+      },
+      "summary": "本报告全面分析了Karl Friston的学术生涯、核心贡献和影响力。作为自由能原理的提出者和SPM软件的开发者，Friston在理论神经科学领域具有举足轻重的地位。报告深入探讨了他的理论框架、方法论贡献以及对整个领域的影响。",
+      "featured": true,
+      "thumbnail": "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg",
+      "networkNode": {
+        "id": "karl-friston",
+        "name": "Karl J. Friston",
+        "shortName": "K. Friston",
+        "type": "scholar",
+        "institution": "University College London",
+        "field": "Theoretical Neuroscience",
+        "category": "scholar",
+        "hIndex": 285,
+        "image": "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg",
+        "connections": ["wellcome-centre", "richard-frackowiak"],
+        "description": "自由能原理提出者，SPM软件开发者"
+      }
     },
-    "summary": "本报告全面分析了Karl Friston的学术生涯、核心贡献和影响力。作为自由能原理的提出者和SPM软件的开发者，Friston在理论神经科学领域具有举足轻重的地位。报告深入探讨了他的理论框架、方法论贡献以及对整个领域的影响。",
-    "featured": true,
-    "thumbnail": "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg"
-  },
-  {
-    "id": "wellcome-trust-centre-analysis",
-    "filename": "Wellcome_Trust_Centre_Analysis_Report.html",
-    "title": "深度解析：Wellcome Centre for Human Neuroimaging (WCHN) 如何定义现代脑科学研究",
-    "description": "全面剖析WCHN的核心技术、战略思想与生态系统，系统性地揭示其成功的蓝图",
-    "author": "ScholarInsight AI",
-    "date": "2024-01-20",
-    "category": "机构分析",
-    "tags": ["神经影像", "研究机构", "WCHN", "SPM", "开放科学", "脑科学"],
-    "subject": {
-      "type": "institution",
-      "name": "Wellcome Centre for Human Neuroimaging",
-      "institution": "University College London",
-      "field": "Neuroscience"
+    {
+      "id": "wellcome-trust-centre-analysis",
+      "filename": "Wellcome_Trust_Centre_Analysis_Report.html",
+      "title": "深度解析：Wellcome Centre for Human Neuroimaging (WCHN) 如何定义现代脑科学研究",
+      "description": "全面剖析WCHN的核心技术、战略思想与生态系统，系统性地揭示其成功的蓝图",
+      "author": "ScholarInsight AI",
+      "date": "2024-01-20",
+      "category": "机构分析",
+      "tags": ["神经影像", "研究机构", "WCHN", "SPM", "开放科学", "脑科学"],
+      "subject": {
+        "type": "institution",
+        "name": "Wellcome Centre for Human Neuroimaging",
+        "institution": "University College London",
+        "field": "Neuroscience"
+      },
+      "summary": "本报告深入分析了WCHN这一世界级神经影像研究中心的成功模式。从方法论革命（SPM）、理论基石（贝叶斯大脑）到技术前沿（7T MRI、可穿戴MEG），WCHN构建了一个强大的创新飞轮。报告还探讨了其开放科学战略和全球合作网络。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg",
+      "networkNode": {
+        "id": "wellcome-centre",
+        "name": "Wellcome Centre for Human Neuroimaging",
+        "shortName": "WCHN",
+        "type": "institution",
+        "institution": "University College London",
+        "field": "Neuroscience",
+        "category": "institution",
+        "hIndex": 0,
+        "image": "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg",
+        "connections": ["karl-friston", "richard-frackowiak"],
+        "description": "世界级神经影像研究中心"
+      }
     },
-    "summary": "本报告深入分析了WCHN这一世界级神经影像研究中心的成功模式。从方法论革命（SPM）、理论基石（贝叶斯大脑）到技术前沿（7T MRI、可穿戴MEG），WCHN构建了一个强大的创新飞轮。报告还探讨了其开放科学战略和全球合作网络。",
-    "featured": true,
-    "thumbnail": "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg"
-  },
-  {
-    "id": "richard-frackowiak-analysis-report",
-    "filename": "Richard_Frackowiak_Analysis_Report.html",
-    "title": "Richard Frackowiak 学者信息分析报告",
-    "description": "全面分析神经影像学领域奠基人Richard Frackowiak的学术贡献、影响力与合作网络",
-    "author": "ScholarInsight AI",
-    "date": "2025-01-01",
-    "category": "学者分析",
-    "tags": ["神经科学", "神经影像学", "SPM", "FIL", "人类大脑计划", "Richard Frackowiak"],
-    "subject": {
-      "type": "scholar",
-      "name": "Richard Stanislaus Joseph Frackowiak",
-      "institution": "洛桑联邦理工学院 / 伦敦大学学院",
-      "field": "Neuroimaging, Brain Mapping, Neuroplasticity"
+    {
+      "id": "richard-frackowiak-analysis-report",
+      "filename": "Richard_Frackowiak_Analysis_Report.html",
+      "title": "Richard Frackowiak 学者信息分析报告",
+      "description": "全面分析神经影像学领域奠基人Richard Frackowiak的学术贡献、影响力与合作网络",
+      "author": "ScholarInsight AI",
+      "date": "2025-01-01",
+      "category": "学者分析",
+      "tags": ["神经科学", "神经影像学", "SPM", "FIL", "人类大脑计划", "Richard Frackowiak"],
+      "subject": {
+        "type": "scholar",
+        "name": "Richard Stanislaus Joseph Frackowiak",
+        "institution": "洛桑联邦理工学院 / 伦敦大学学院",
+        "field": "Neuroimaging, Brain Mapping, Neuroplasticity"
+      },
+      "summary": "本报告全面分析了Richard Frackowiak的学术生涯、核心贡献和影响力。作为神经影像学领域的奠基人与开拓者，他创立了惠康功能影像实验室（FIL），推动了SPM等革命性工具的诞生，并领导了著名的'伦敦出租车司机'研究，揭示了大脑结构可塑性。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/croped/images/db39daf203a8b46b7950ec8baae768cc_crop.jpg",
+      "networkNode": {
+        "id": "richard-frackowiak",
+        "name": "Richard S. J. Frackowiak",
+        "shortName": "R. Frackowiak",
+        "type": "scholar",
+        "institution": "洛桑联邦理工学院 / 伦敦大学学院",
+        "field": "Neuroimaging, Brain Mapping",
+        "category": "scholar",
+        "hIndex": 195,
+        "image": "https://agents-download.skywork.ai/croped/images/db39daf203a8b46b7950ec8baae768cc_crop.jpg",
+        "connections": ["karl-friston", "wellcome-centre"],
+        "description": "神经影像学奠基人，FIL实验室创始人"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "source": "karl-friston",
+      "target": "wellcome-centre",
+      "strength": 0.9,
+      "type": "collaboration"
     },
-    "summary": "本报告全面分析了Richard Frackowiak的学术生涯、核心贡献和影响力。作为神经影像学领域的奠基人与开拓者，他创立了惠康功能影像实验室（FIL），推动了SPM等革命性工具的诞生，并领导了著名的'伦敦出租车司机'研究，揭示了大脑结构可塑性。",
-    "featured": true,
-    "thumbnail": "https://agents-download.skywork.ai/croped/images/db39daf203a8b46b7950ec8baae768cc_crop.jpg"
+    {
+      "source": "karl-friston",
+      "target": "richard-frackowiak",
+      "strength": 0.8,
+      "type": "collaboration"
+    },
+    {
+      "source": "wellcome-centre",
+      "target": "richard-frackowiak",
+      "strength": 0.7,
+      "type": "affiliation"
+    }
+  ],
+  "categories": {
+    "scholar": {
+      "name": "学者",
+      "color": "linear-gradient(135deg, #3B82F6, #1D4ED8)",
+      "nodeStyle": "circle"
+    },
+    "institution": {
+      "name": "研究机构",
+      "color": "linear-gradient(135deg, #10B981, #059669)",
+      "nodeStyle": "rect"
+    }
   }
-]
+}
