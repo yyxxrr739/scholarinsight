@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>移动端显示测试</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        .test-section h2 {
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .report-link {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px 10px 0;
+            transition: background-color 0.3s;
+        }
+        
+        .report-link:hover {
+            background: #2980b9;
+        }
+        
+        .mobile-tips {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .mobile-tips h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        
+        .mobile-tips ul {
+            margin: 10px 0;
+        }
+        
+        .mobile-tips li {
+            margin: 5px 0;
+        }
+        
+        /* 移动端样式 */
+        @media only screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .test-section {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .report-link {
+                display: block;
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 HTML报告移动端显示测试</h1>
+        
+        <div class="mobile-tips">
+            <h3>🔧 已修复的问题</h3>
+            <ul>
+                <li>✅ 修复了媒体查询条件（从 max-device-width 改为 max-width）</li>
+                <li>✅ 优化了容器宽度和边距设置</li>
+                <li>✅ 改进了表格的响应式显示</li>
+                <li>✅ 调整了移动端的字体大小和间距</li>
+                <li>✅ 添加了图表容器的水平滚动支持</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h2>📊 测试报告</h2>
+            <p>点击下面的链接在移动设备上测试报告显示效果：</p>
+            
+            <a href="reports/Karl_Friston_Academic_Report.html" class="report-link" target="_blank">
+                Karl Friston 学术报告
+            </a>
+            
+            <a href="reports/Richard_Frackowiak_Analysis_Report.html" class="report-link" target="_blank">
+                Richard Frackowiak 分析报告
+            </a>
+            
+            <a href="reports/Wellcome_Trust_Centre_Analysis_Report.html" class="report-link" target="_blank">
+                Wellcome Trust 中心分析报告
+            </a>
+        </div>
+        
+        <div class="test-section">
+            <h2>📱 移动端测试说明</h2>
+            <p><strong>请在手机或平板上打开上述报告链接进行测试：</strong></p>
+            <ul>
+                <li>检查页面是否完全适应屏幕宽度</li>
+                <li>验证表格是否可以水平滚动查看</li>
+                <li>确认文字大小是否适合阅读</li>
+                <li>测试图表和图片的显示效果</li>
+                <li>检查导航和链接是否正常工作</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h2>🛠️ 技术改进详情</h2>
+            <h3>CSS 响应式设计优化：</h3>
+            <ul>
+                <li><strong>媒体查询：</strong> 使用 <code>max-width: 768px</code> 替代 <code>max-device-width</code></li>
+                <li><strong>容器宽度：</strong> 设置 <code>max-width: 100%</code> 和 <code>width: auto</code></li>
+                <li><strong>边距调整：</strong> 减少移动端的外边距和内边距</li>
+                <li><strong>表格优化：</strong> 添加水平滚动和调整单元格大小</li>
+                <li><strong>字体适配：</strong> 优化移动端的字体大小和行高</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
