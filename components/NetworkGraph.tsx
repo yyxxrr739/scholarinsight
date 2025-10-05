@@ -85,6 +85,47 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       }
     })
 
+    // 为每个节点创建照片图案
+    data.nodes.forEach(node => {
+      if (node.image) {
+        if (node.category === 'institution') {
+          // 机构节点：矩形照片，边长等于最大学者节点的直径
+          const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
+          const maxRadius = Math.sqrt(maxHIndex) * 2
+          const rectSize = maxRadius * 2 // 边长 = 直径
+          
+          defs.append('pattern')
+            .attr('id', `image-${node.id}`)
+            .attr('patternUnits', 'userSpaceOnUse')
+            .attr('width', rectSize)
+            .attr('height', rectSize)
+            .append('image')
+            .attr('xlink:href', node.image)
+            .attr('width', rectSize)
+            .attr('height', rectSize)
+            .attr('preserveAspectRatio', 'xMidYMid slice')
+        } else {
+          // 学者节点：圆形照片
+          const radius = Math.sqrt(node.hIndex) * 2
+          
+          defs.append('pattern')
+            .attr('id', `image-${node.id}`)
+            .attr('patternUnits', 'userSpaceOnUse')
+            .attr('x', -radius)
+            .attr('y', -radius)
+            .attr('width', radius * 2)
+            .attr('height', radius * 2)
+            .append('image')
+            .attr('xlink:href', node.image)
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', radius * 2)
+            .attr('height', radius * 2)
+            .attr('preserveAspectRatio', 'xMidYMid slice')
+        }
+      }
+    })
+
     // 创建力导向图
     const simulation = d3.forceSimulation<NetworkNode>(data.nodes)
       .force('link', d3.forceLink<NetworkNode, any>().id((d) => d.id).distance(120))
@@ -92,9 +133,11 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collision', d3.forceCollide().radius((d: any) => {
         if (d.type === 'institution') {
-          const baseRadius = Math.sqrt(d.hIndex) * 2
-          const rectSize = isMobile ? Math.min(baseRadius, 12) : baseRadius
-          return rectSize / 2 // 机构节点碰撞半径是学者节点的一半
+          // 机构节点碰撞检测：边长等于最大学者节点的直径
+          const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
+          const maxRadius = Math.sqrt(maxHIndex) * 2
+          const rectSize = maxRadius * 2 // 边长 = 直径
+          return isMobile ? Math.min(rectSize, 24) : rectSize
         } else {
           const baseRadius = Math.sqrt(d.hIndex) * 2
           return isMobile ? Math.min(baseRadius, 12) : baseRadius
@@ -115,15 +158,35 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       .data(links)
       .enter().append('line')
       .attr('stroke', (d: any) => {
-        if (d.type === 'affiliation') return darkMode ? '#10B981' : '#059669'
+        // 基于节点类型组合决定颜色
+        const sourceNode = data.nodes.find(n => n.id === d.source)
+        const targetNode = data.nodes.find(n => n.id === d.target)
+        const isInstitutionToScholar = (sourceNode?.type === 'institution' && targetNode?.type === 'scholar') ||
+                                     (sourceNode?.type === 'scholar' && targetNode?.type === 'institution')
+        
+        if (isInstitutionToScholar) return darkMode ? '#10B981' : '#059669'
         return darkMode ? '#374151' : '#999'
       })
       .attr('stroke-opacity', (d: any) => {
-        if (d.type === 'affiliation') return darkMode ? 0.6 : 0.8
+        // 基于节点类型组合决定透明度
+        const sourceNode = data.nodes.find(n => n.id === d.source)
+        const targetNode = data.nodes.find(n => n.id === d.target)
+        const isInstitutionToScholar = (sourceNode?.type === 'institution' && targetNode?.type === 'scholar') ||
+                                     (sourceNode?.type === 'scholar' && targetNode?.type === 'institution')
+        
+        if (isInstitutionToScholar) return darkMode ? 0.6 : 0.8
         return darkMode ? 0.3 : 0.6
       })
       .attr('stroke-width', (d: any) => d.strength * 1.5)
-      .attr('stroke-dasharray', (d: any) => d.type === 'affiliation' ? '5,5' : 'none')
+      .attr('stroke-dasharray', (d: any) => {
+        // 基于节点类型组合决定线型：机构-学者连线使用虚线
+        const sourceNode = data.nodes.find(n => n.id === d.source)
+        const targetNode = data.nodes.find(n => n.id === d.target)
+        const isInstitutionToScholar = (sourceNode?.type === 'institution' && targetNode?.type === 'scholar') ||
+                                     (sourceNode?.type === 'scholar' && targetNode?.type === 'institution')
+        
+        return isInstitutionToScholar ? '5,5' : 'none'
+      })
       .style('filter', darkMode ? 'drop-shadow(0 0 1px rgba(59, 130, 246, 0.2))' : 'none')
 
     // 添加节点组
@@ -136,25 +199,29 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
         .on('drag', dragged)
         .on('end', dragended))
 
-    // 根据节点类型创建不同形状
+    // 计算所有节点的最大尺寸，用于归一化
+    const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
+    const maxRadius = Math.sqrt(maxHIndex) * 2
+    
+    // 根据节点类型创建不同形状，使用照片作为背景
     node.each(function(d: NetworkNode) {
       const nodeGroup = d3.select(this)
       const categoryData = data.categories[d.category]
       const nodeStyle = categoryData?.nodeStyle || 'circle'
       
       if (nodeStyle === 'rect') {
-        // 机构节点使用矩形，尺寸是学者节点的一半
-        const baseRadius = Math.sqrt(d.hIndex) * 2
-        const rectSize = isMobile ? Math.min(baseRadius, 12) : baseRadius
-        const finalRectSize = rectSize / 2 // 机构节点是学者节点的一半大小
+        // 机构节点使用矩形，边长等于最大学者节点的直径
+        const rectSize = maxRadius * 2 // 边长 = 直径
+        const finalRectSize = isMobile ? Math.min(rectSize, 24) : rectSize // 移动端限制最大尺寸
         
+        // 添加矩形形状
         nodeGroup.append('rect')
           .attr('x', -finalRectSize/2)
           .attr('y', -finalRectSize/2)
           .attr('width', finalRectSize)
           .attr('height', finalRectSize)
           .attr('rx', 4) // 圆角
-          .attr('fill', gradients[d.category] ? `url(#gradient-${d.category})` : '#10B981')
+          .attr('fill', d.image ? `url(#image-${d.id})` : (gradients[d.category] ? `url(#gradient-${d.category})` : '#10B981'))
           .attr('stroke', darkMode ? '#1F2937' : '#fff')
           .attr('stroke-width', isMobile ? 1.5 : 2)
           .style('cursor', 'pointer')
@@ -163,13 +230,14 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
             'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
           )
       } else {
-        // 学者节点使用圆形
+        // 学者节点使用圆形，尺寸与hIndex成正比
         const radius = Math.sqrt(d.hIndex) * 2
         const finalRadius = isMobile ? Math.min(radius, 12) : radius
         
+        // 添加圆形形状
         nodeGroup.append('circle')
           .attr('r', finalRadius)
-          .attr('fill', gradients[d.category] ? `url(#gradient-${d.category})` : '#3B82F6')
+          .attr('fill', d.image ? `url(#image-${d.id})` : (gradients[d.category] ? `url(#gradient-${d.category})` : '#3B82F6'))
           .attr('stroke', darkMode ? '#1F2937' : '#fff')
           .attr('stroke-width', isMobile ? 1.5 : 2)
           .style('cursor', 'pointer')

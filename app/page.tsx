@@ -121,23 +121,6 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* 图例 */}
-                <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-black/50 backdrop-blur-sm rounded-lg p-2 md:p-4 border border-gray-700">
-                  <h3 className="text-white font-semibold mb-2 md:mb-3 text-xs md:text-sm">节点类型</h3>
-                  <div className="space-y-1 md:space-y-2">
-                    {Object.entries(networkData.categories).map(([categoryKey, categoryData]: [string, any]) => (
-                      <div key={categoryKey} className="flex items-center space-x-1 md:space-x-2">
-                        <div 
-                          className={`w-2 h-2 md:w-3 md:h-3 ${categoryData.nodeStyle === 'rect' ? 'rounded' : 'rounded-full'}`}
-                          style={{ background: categoryData.color }}
-                        />
-                        <span className="text-gray-300 text-xs">
-                          {categoryData.name}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </section>
