@@ -159,6 +159,38 @@
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "神经影像分析奠基人，SPM核心开发者"
       }
+    },
+    {
+      "id": "jakob-hohwy-scholar-analysis-report",
+      "filename": "jakob_hohwy_report.html",
+      "title": "学者信息分析报告：Jakob Hohwy",
+      "description": "全面分析丹麦哲学家与认知科学家Jakob Hohwy的学术档案、思想体系、核心贡献、学术影响力及其未来发展趋势",
+      "author": "ScholarInsight AI",
+      "date": "2025-08-26",
+      "category": "学者分析",
+      "tags": ["预测性加工", "心灵哲学", "认知科学", "神经科学", "意识科学", "Jakob Hohwy", "预测心智"],
+      "subject": {
+        "type": "scholar",
+        "name": "Jakob Hohwy",
+        "institution": "Monash University",
+        "field": "Philosophy of Mind, Cognitive Science, Predictive Processing"
+      },
+      "summary": "本报告全面分析了Jakob Hohwy的学术生涯、核心贡献和影响力。作为当代将'预测性加工'框架从神经科学模型提升为统一心智理论的关键阐释者，他系统性地阐述了'预测心智'理论框架，提出了'自证伪主体'的哲学概念，并开创性地应用预测性加工解释精神病理学。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/croped/images/15d2d0c5dd01ee9cf9f82c1d32f064ac_crop.jpg",
+      "networkNode": {
+        "id": "jakob-hohwy",
+        "name": "Jakob Hohwy",
+        "shortName": "J. Hohwy",
+        "type": "scholar",
+        "institution": "Monash University",
+        "field": "Philosophy of Mind, Predictive Processing",
+        "category": "scholar",
+        "hIndex": 40,
+        "image": "https://agents-download.skywork.ai/croped/images/15d2d0c5dd01ee9cf9f82c1d32f064ac_crop.jpg",
+        "connections": ["karl-friston", "wellcome-centre"],
+        "description": "预测性加工理论核心阐释者，预测心智理论提出者"
+      }
     }
   ],
   "connections": [
@@ -202,6 +234,18 @@
       "source": "wellcome-centre",
       "target": "john-ashburner",
       "strength": 0.9,
+      "type": "affiliation"
+    },
+    {
+      "source": "karl-friston",
+      "target": "jakob-hohwy",
+      "strength": 0.85,
+      "type": "collaboration"
+    },
+    {
+      "source": "wellcome-centre",
+      "target": "jakob-hohwy",
+      "strength": 0.7,
       "type": "affiliation"
     }
   ],
