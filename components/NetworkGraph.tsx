@@ -85,42 +85,48 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       }
     })
 
+    // 计算移动端缩放比例
+    const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
+    const maxRadius = Math.sqrt(maxHIndex) * 2
+    const maxRectSize = maxRadius * 2
+    const mobileScale = isMobile ? Math.min(1, 24 / maxRectSize) : 1 // 移动端缩放比例，保持相对大小
+    
     // 为每个节点创建照片图案
     data.nodes.forEach(node => {
       if (node.image) {
         if (node.category === 'institution') {
           // 机构节点：矩形照片，边长等于最大学者节点的直径
-          const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
-          const maxRadius = Math.sqrt(maxHIndex) * 2
-          const rectSize = maxRadius * 2 // 边长 = 直径
+          const rectSize = maxRectSize
+          const finalRectSize = rectSize * mobileScale // 应用移动端缩放
           
           defs.append('pattern')
             .attr('id', `image-${node.id}`)
             .attr('patternUnits', 'userSpaceOnUse')
-            .attr('width', rectSize)
-            .attr('height', rectSize)
+            .attr('width', finalRectSize)
+            .attr('height', finalRectSize)
             .append('image')
             .attr('xlink:href', node.image)
-            .attr('width', rectSize)
-            .attr('height', rectSize)
+            .attr('width', finalRectSize)
+            .attr('height', finalRectSize)
             .attr('preserveAspectRatio', 'xMidYMid slice')
         } else {
           // 学者节点：圆形照片
           const radius = Math.sqrt(node.hIndex) * 2
+          const finalRadius = radius * mobileScale // 应用移动端缩放
           
           defs.append('pattern')
             .attr('id', `image-${node.id}`)
             .attr('patternUnits', 'userSpaceOnUse')
-            .attr('x', -radius)
-            .attr('y', -radius)
-            .attr('width', radius * 2)
-            .attr('height', radius * 2)
+            .attr('x', -finalRadius)
+            .attr('y', -finalRadius)
+            .attr('width', finalRadius * 2)
+            .attr('height', finalRadius * 2)
             .append('image')
             .attr('xlink:href', node.image)
             .attr('x', 0)
             .attr('y', 0)
-            .attr('width', radius * 2)
-            .attr('height', radius * 2)
+            .attr('width', finalRadius * 2)
+            .attr('height', finalRadius * 2)
             .attr('preserveAspectRatio', 'xMidYMid slice')
         }
       }
@@ -134,13 +140,10 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       .force('collision', d3.forceCollide().radius((d: any) => {
         if (d.type === 'institution') {
           // 机构节点碰撞检测：边长等于最大学者节点的直径
-          const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
-          const maxRadius = Math.sqrt(maxHIndex) * 2
-          const rectSize = maxRadius * 2 // 边长 = 直径
-          return isMobile ? Math.min(rectSize, 24) : rectSize
+          return maxRectSize * mobileScale
         } else {
           const baseRadius = Math.sqrt(d.hIndex) * 2
-          return isMobile ? Math.min(baseRadius, 12) : baseRadius
+          return baseRadius * mobileScale
         }
       }))
 
@@ -199,10 +202,6 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
         .on('drag', dragged)
         .on('end', dragended))
 
-    // 计算所有节点的最大尺寸，用于归一化
-    const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
-    const maxRadius = Math.sqrt(maxHIndex) * 2
-    
     // 根据节点类型创建不同形状，使用照片作为背景
     node.each(function(d: NetworkNode) {
       const nodeGroup = d3.select(this)
@@ -211,8 +210,7 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       
       if (nodeStyle === 'rect') {
         // 机构节点使用矩形，边长等于最大学者节点的直径
-        const rectSize = maxRadius * 2 // 边长 = 直径
-        const finalRectSize = isMobile ? Math.min(rectSize, 24) : rectSize // 移动端限制最大尺寸
+        const finalRectSize = maxRectSize * mobileScale // 应用移动端缩放
         
         // 添加矩形形状
         nodeGroup.append('rect')
@@ -232,7 +230,7 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       } else {
         // 学者节点使用圆形，尺寸与hIndex成正比
         const radius = Math.sqrt(d.hIndex) * 2
-        const finalRadius = isMobile ? Math.min(radius, 12) : radius
+        const finalRadius = radius * mobileScale // 应用移动端缩放
         
         // 添加圆形形状
         nodeGroup.append('circle')
