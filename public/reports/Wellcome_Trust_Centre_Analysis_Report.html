@@ -33,7 +33,10 @@ body {
     margin: 0 24px 0 24px;
     padding: 0;
     max-width: None;
-    }
+    
+                overflow-x: hidden;
+                word-wrap: break-word;
+                overflow-wrap: break-word;}
 h1, h2, h3, h4 {
     font-family: "Georgia", "Times New Roman", serif;
     color: #1a1a1a;
@@ -65,7 +68,13 @@ p {
 a {
     color: #1a73e8;
     text-decoration: none;
-    }
+    
+                word-wrap: break-word;
+                word-break: break-all;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;}
 a:hover {
     text-decoration: underline;
     }
@@ -81,7 +90,10 @@ table {
     border-collapse: collapse;
     margin: 2em 0;
     font-size: 0.9em;
-    }
+    
+                overflow-x: auto;
+                display: block;
+                white-space: nowrap;}
 th, td {
     border: 1px solid #ddd;
     padding: 12px;
@@ -173,7 +185,10 @@ li {
                 font-family: PingFang SC;
                 font-size: 15px;
                 line-height: 1.5;
-            }
+            
+                overflow-x: hidden;
+                word-wrap: break-word;
+                overflow-wrap: break-word;}
 
             .container {
                 padding: 0;

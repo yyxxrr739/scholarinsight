@@ -33,6 +33,9 @@ body {
     padding: 0;
     font-size: 16px;
     max-width: None;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     }
 main {
     max-width: 800px;
@@ -74,10 +77,15 @@ h4 {
 p {
     margin-bottom: 1.2em;
     text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     }
 a {
     color: #07c;
     text-decoration: none;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
     }
 a:hover {
     text-decoration: underline;
@@ -87,7 +95,10 @@ table {
     border-collapse: collapse;
     margin: 1.5em 0;
     font-size: 0.95em;
-    }
+    
+                overflow-x: auto;
+                display: block;
+                white-space: nowrap;}
 th, td {
     border: 1px solid #ddd;
     padding: 12px;
@@ -113,6 +124,8 @@ ul, ol {
     }
 li {
     margin-bottom: 0.5em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     }
 figure {
     margin: 2em auto;
@@ -141,7 +154,13 @@ figcaption {
     padding: 20px;
     margin-bottom: 30px;
     border-radius: 4px;
-    }
+    
+                word-wrap: break-word;
+                word-break: break-all;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;}
 .report-meta p {
     margin: 0.5em 0;
     }
@@ -164,9 +183,33 @@ figcaption {
 .toc ul ul {
     padding-left: 20px;
     }
-.toc li a {
+            .toc li a {
     color: #333;
-    }
+    
+                word-wrap: break-word;
+                word-break: break-all;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;}
+            
+            /* Mobile-specific styles for links and text wrapping */
+            a {
+                word-wrap: break-word;
+                word-break: break-all;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+            }
+            
+            p, li {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+            }
         .chart-container canvas {
             width: 100% !important;
             height: 100% !important;
@@ -180,6 +223,9 @@ figcaption {
                 font-family: PingFang SC;
                 font-size: 15px;
                 line-height: 1.5;
+                overflow-x: hidden;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
 
             .container {
@@ -188,12 +234,18 @@ figcaption {
                 box-shadow: none;
                 max-width: 100%;
                 width: auto;
+                overflow-x: hidden;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
             
             main {
                 margin: 20px auto;
                 padding: 15px;
                 max-width: 100%;
+                overflow-x: hidden;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
             
             table {
