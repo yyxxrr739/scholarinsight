@@ -95,6 +95,38 @@
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "神经影像学奠基人，FIL实验室创始人"
       }
+    },
+    {
+      "id": "philipp-schwartenbeck-analysis-report",
+      "filename": "philipp_schwartenbeck_analysis_report.html",
+      "title": "应用领域核心人物信息分析报告：Philipp Schwartenbeck",
+      "description": "深度分析计算神经科学家Philipp Schwartenbeck的学术成就、思想脉络及其日益增长的行业影响力",
+      "author": "ScholarInsight AI",
+      "date": "2024-10-26",
+      "category": "学者分析",
+      "tags": ["计算神经科学", "主动推断", "生成式重放", "Philipp Schwartenbeck", "自由能原理", "AI"],
+      "subject": {
+        "type": "scholar",
+        "name": "Philipp Schwartenbeck",
+        "institution": "AI Center Tuebingen, Max Planck Institute",
+        "field": "Computational Neuroscience, Active Inference, Generative AI"
+      },
+      "summary": "本报告全面分析了Philipp Schwartenbeck的学术生涯、核心贡献和影响力。作为计算神经科学领域的关键创新者，他提出了'生成式重放'理论，系统性地阐述了好奇心驱动的目标导向探索行为，并开始向工业界生成式AI项目拓展其影响力。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/ea78632e4fcd90fe46962d9c306e4802.jpg",
+      "networkNode": {
+        "id": "philipp-schwartenbeck",
+        "name": "Philipp Schwartenbeck",
+        "shortName": "P. Schwartenbeck",
+        "type": "scholar",
+        "institution": "AI Center Tuebingen, Max Planck Institute",
+        "field": "Computational Neuroscience, Active Inference",
+        "category": "scholar",
+        "hIndex": 30,
+        "image": "https://agents-download.skywork.ai/image/rt/ea78632e4fcd90fe46962d9c306e4802.jpg",
+        "connections": ["karl-friston", "wellcome-centre"],
+        "description": "计算神经科学家，生成式重放理论提出者"
+      }
     }
   ],
   "connections": [
@@ -114,6 +146,18 @@
       "source": "wellcome-centre",
       "target": "richard-frackowiak",
       "strength": 0.7,
+      "type": "affiliation"
+    },
+    {
+      "source": "karl-friston",
+      "target": "philipp-schwartenbeck",
+      "strength": 0.9,
+      "type": "mentorship"
+    },
+    {
+      "source": "wellcome-centre",
+      "target": "philipp-schwartenbeck",
+      "strength": 0.8,
       "type": "affiliation"
     }
   ],
