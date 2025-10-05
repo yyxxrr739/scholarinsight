@@ -1,0 +1,1420 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>John Ashburner 学者信息分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>/* Academic Report Responsive Template */
+/* Extracted from Karl Friston report for mobile optimization */
+
+/* Base styles for desktop */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.chart-container {
+    position: relative;
+    margin: 3em auto;
+    max-width: 700px;
+    min-height: 200px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    aspect-ratio: 7/5;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background-color: #fdfdfd;
+    margin: 0 24px 0 24px;
+    padding: 0;
+    font-size: 16px;
+    max-width: none;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2, h3, h4 {
+    font-family: "Georgia", "Times New Roman", "KaiTi", "STKaiTi", "SimSun", serif;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin-top: 24px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 0.3em;
+    font-size: 28px;
+}
+
+h1 {
+    font-size: 28px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+    margin-top: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 20px;
+    border-bottom: none;
+}
+
+h4 {
+    font-size: 18px;
+    border-bottom: none;
+    color: #555;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+a {
+    color: #07c;
+    text-decoration: none;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.95em;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 20px;
+    margin: 2em 0;
+    color: #666;
+    font-style: italic;
+}
+
+ul, ol {
+    padding-left: 2em;
+    margin-bottom: 1.2em;
+}
+
+li {
+    margin-bottom: 0.5em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+figure {
+    margin: 2em auto;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 4px;
+    border-radius: 8px;
+    display: block;
+    overflow: hidden;
+    max-height: 280px;
+    margin: 1em auto;
+}
+
+figcaption {
+    margin-top: 0.8em;
+    font-size: 0.9em;
+    color: #555;
+    font-style: italic;
+}
+
+.report-meta {
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.report-meta p {
+    margin: 0.5em 0;
+}
+
+.toc {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px 20px;
+    margin: 2em 0;
+    border-radius: 5px;
+}
+
+.toc h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.5em;
+}
+
+.toc ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.toc ul ul {
+    padding-left: 20px;
+}
+
+.toc li a {
+    color: #333;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+/* Mobile-specific styles for links and text wrapping */
+a {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+p, li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+}
+
+/* Mobile responsive styles */
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: PingFang SC;
+        font-size: 15px;
+        line-height: 1.5;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .container {
+        padding: 0;
+        margin: 16px 10px 30px;
+        box-shadow: none;
+        max-width: 100%;
+        width: auto;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    main {
+        margin: 20px auto;
+        padding: 15px;
+        max-width: 100%;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    table {
+        font-size: 14px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+        margin: 1em 0;
+    }
+    
+    th, td {
+        padding: 6px 4px;
+        min-width: 60px;
+        font-size: 13px;
+    }
+    
+    .chart-container {
+        max-width: 100%;
+        margin: 2em auto;
+        overflow-x: auto;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: PingFang SC;
+    }
+
+    h1 {
+        font-size: 1.87em;
+        line-height: 1.6;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.6em;
+        font-weight: 600;
+        margin-top: 1.3em;
+        margin-bottom: 0.8em;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+        font-weight: 600;
+        margin-top: 1em;
+        margin-bottom: 0.6em;
+    }
+
+    h4 {
+        font-size: 1.1em;
+        font-weight: 500;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-style: normal;
+    }
+
+    h5 {
+        font-size: 1em;
+        font-weight: 500;
+        margin-bottom: 1.2em;
+    }
+
+    ul, ol {
+        font-size: 1em;
+        font-weight: 400;
+        margin-bottom: 1.2em;
+        line-height: 1.8;
+    }
+
+    p {
+        font-size: 1em;
+        line-height: 1.8;
+        font-weight: 400;
+        margin-top: 0.8em;
+        margin-bottom: 0.8em;
+    }
+
+    blockquote {
+        padding: 1em 1.2em;
+    }
+
+    blockquote p {
+        margin: 0;
+    }
+
+    figcaption {
+        margin-top: 0.5em;
+        font-size: 0.8em;
+        font-weight: 400;
+        text-align: center;
+        font-style: normal;
+        color: #7F8896;
+    }
+
+    img {
+        display: block;
+        overflow: hidden;
+        max-width: 100%;
+        max-height: 335px;
+        margin: 1em auto;
+        border-radius: 8px;
+    }
+}
+
+/* Additional styles for report-specific elements */
+.executive-summary, .report-meta {
+    background-color: #f5f7fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 2em;
+    border: 1px solid #e1e8ed;
+}
+
+.key-points {
+    background: #eaf6ff;
+    border-left: 5px solid #1a5a99;
+    padding: 15px 20px;
+    margin: 2em 0;
+}
+
+.key-points h4 {
+    margin-top: 0;
+    color: #1a5a99;
+}
+
+.key-points ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.key-points li {
+    margin-bottom: 0.5em;
+}</style>
+<link rel="stylesheet" href="https://static.skywork.ai/fe/skywork-site-assets/styles/doc_reference_style.css?v=1973244362870804480"/></head>
+<body><div class="container">
+<h1 id="section-1">John Ashburner 学者信息分析报告</h1>
+<div class="toc">
+<h3 id="section-0-1">报告目录</h3>
+<ul>
+<li><a href="#section-executive-summary">执行摘要</a></li>
+<li><a href="#section-chapter-1">第一章 学者档案：奠定神经影像分析基石的科学家</a>
+<ul>
+<li><a href="#section-section-1-1">1.1 基础信息</a></li>
+<li><a href="#section-section-1-2">1.2 教育背景</a></li>
+<li><a href="#section-section-1-3">1.3 职业生涯与荣誉</a></li>
+</ul>
+</li>
+<li><a href="#section-chapter-2">第二章 学术影响力评估：量化衡量的世界级影响力</a>
+<ul>
+<li><a href="#section-section-2-1">2.1 文献计量指标</a></li>
+<li><a href="#section-section-2-2">2.2 影响力评估结论</a></li>
+</ul>
+</li>
+<li><a href="#section-chapter-3">第三章 学术贡献分析：塑造现代神经影像分析的基石</a>
+<ul>
+<li><a href="#section-section-3-1">3.1 研究脉络演进</a></li>
+<li><a href="#section-section-3-2">3.2 核心学术贡献</a></li>
+<li><a href="#section-section-3-3">3.3 主要出版物分析</a></li>
+</ul>
+</li>
+<li><a href="#section-chapter-4">第四章 学术网络与合作：构建全球神经影像社区</a>
+<ul>
+<li><a href="#section-section-4-1">4.1 机构网络与合作模式</a></li>
+<li><a href="#section-section-4-2">4.2 核心合作者与学术传承</a></li>
+</ul>
+</li>
+<li><a href="#section-chapter-5">第五章 思想画像与未来展望：从生成模型到人工智能</a>
+<ul>
+<li><a href="#section-section-5-1">5.1 核心思想体系</a></li>
+<li><a href="#section-section-5-2">5.2 与人工智能的关联及未来趋势</a></li>
+<li><a href="#section-section-5-3">5.3 潜在争议与方法学思辨</a></li>
+</ul>
+</li>
+<li><a href="#section-chapter-6">第六章 知识传播与转化：赋能全球的开源工具</a>
+<ul>
+<li><a href="#section-section-6-1">6.1 软件工具与知识传播</a></li>
+</ul>
+</li>
+<li><a href="#section-chapter-7">第七章 综合评估与展望</a>
+<ul>
+<li><a href="#section-section-7-1">7.1 综合评估结论</a></li>
+<li><a href="#section-section-7-2">7.2 未来发展展望</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="report-meta">
+<p><strong>报告类型：</strong> 学者信息分析报告</p>
+<p><strong>目标学者：</strong> John Ashburner</p>
+<p><strong>报告日期：</strong> 2025-10-01</p>
+<p><strong>分析机构：</strong> 学术型HTML内容架构专家系统</p>
+<p><strong>报告版本：</strong> v1.0</p>
+</div>
+<h2 id="section-executive-summary">执行摘要</h2>
+<div class="executive-summary">
+<h3 id="section-1-1">分析目标</h3>
+<p>全面、准确地获取伦敦大学学院（University College London, UCL）John Ashburner教授的学术信息，通过多源交叉验证，构建其完整的学术与思想画像，深度剖析其在神经影像分析领域的卓越贡献与深远影响。</p>
+<h3 id="section-1-2">关键发现</h3>
+<ul>
+<li><strong>学术地位：</strong> 全球神经影像分析领域的奠基人与核心开发者之一，尤其在计算解剖学（Computational Anatomy）和图像配准（Image Registration）方法上享有世界顶级的声誉。</li>
+<li><strong>核心贡献：</strong> 作为核心开发者，对国际标准神经影像分析软件 <strong>SPM (Statistical Parametric Mapping)</strong> 的发展做出了决定性贡献；开创了包括<strong>体素形态学分析 (Voxel-Based Morphometry, VBM)</strong>、<strong>统一分割 (Unified Segmentation)</strong> 和 <strong>DARTEL</strong> 在内的一系列关键算法，深刻改变了脑结构与功能的研究范式。</li>
+<li><strong>影响力指标：</strong> 学术影响力极其卓著，Google Scholar总被引次数超过10万，h-index高达107，是全球被引用次数最多的科学家之一。</li>
+<li><strong>当前研究方向：</strong> 持续推动计算解剖学发展，并积极将生成模型、模式识别与深度学习等人工智能技术应用于神经影像分析，解决临床问题（如中风病灶分割）。</li>
+<li><strong>未来趋势：</strong> 预计将继续引领神经影像分析方法与人工智能的深度融合，推动大规模、多模态脑影像数据库的构建与分析，并致力于将研究成果转化为临床诊断工具。</li>
+</ul>
+<h3 id="section-1-3">信息完整度与可靠性评估</h3>
+<ul>
+<li><strong>信息完整度：高。</strong>通过UCL官网、Google Scholar、PubMed Central (PMC)、ResearchGate等多平台数据，可构建其完整的职业生涯、学术产出和合作网络。</li>
+<li><strong>数据可靠性：高。</strong>关键信息（如职位、核心论文、ORCID）在多个权威来源得到一致验证。引用数据虽在各平台有差异，但量级和趋势高度一致，反映了其巨大的学术影响力。</li>
+</ul>
+</div>
+<h2 id="section-chapter-1">第一章 学者档案：奠定神经影像分析基石的科学家</h2>
+<p>本章旨在追溯John Ashburner教授从早期教育到成为领域权威的完整职业轨迹。通过梳理其个人履历、学术头衔和职业发展脉络，我们可以理解其深厚的数理背景如何为其在神经影像这一交叉学科的辉煌成就奠定基础。他的职业生涯几乎完全与UCL惠康人类神经影像中心绑定，这种高度的专注和机构忠诚度，使其能够深度参与并主导SPM这一划时代工具的长期演进。</p>
+<figure>
+<img alt="John Ashburner教授" src="https://agents-download.skywork.ai/image/rt/fcd94c937b1a6c36551c580357103996.jpg" style="max-height: 280px; max-width: 100%;"/>
+<figcaption>伦敦大学学院影像科学教授John Ashburner</figcaption>
+</figure>
+<h3 id="section-section-1-1">1.1 基础信息</h3>
+<p>以下表格汇总了John Ashburner教授经过多源交叉验证的基础信息，这些信息构成了其学术身份的核心标识。</p>
+<table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>详细信息</th>
+<th>数据来源</th>
+<th>验证状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>学者全名</strong></td>
+<td>John Ashburner</td>
+<td><a href="https://profiles.ucl.ac.uk/10283-john-ashburner" target="_blank">UCL Profiles</a>, <a href="https://scholar.google.com/citations?user=UWi2lukAAAAJ&amp;hl=en" target="_blank">Google Scholar</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>ORCID ID</strong></td>
+<td><a href="https://orcid.org/0000-0001-7605-2518" target="_blank">0000-0001-7605-2518</a></td>
+<td>ORCID, UCL Profiles</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>当前机构</strong></td>
+<td>伦敦大学学院 (University College London, UCL), 惠康人类神经影像中心 (Wellcome Centre for Human Neuroimaging)</td>
+<td>UCL Profiles, LinkedIn</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>学术头衔</strong></td>
+<td>影像科学教授 (Professor of Imaging Science)</td>
+<td>UCL Profiles, <a href="https://eambes.org/fellow/john-ashburner/" target="_blank">EAMBES</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>个人主页</strong></td>
+<td><a href="https://www.fil.ion.ucl.ac.uk/~john/" target="_blank">https://www.fil.ion.ucl.ac.uk/~john/</a></td>
+<td>FIL Website</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>主要研究领域</strong></td>
+<td>神经影像 (Neuroimaging), 计算解剖学 (Computational Anatomy), 图像配准 (Image Registration), 图像分割 (Image Segmentation), 体素形态学分析 (Voxel-Based Morphometry, VBM), 模式识别 (Pattern Recognition)</td>
+<td><a href="https://www.researchgate.net/profile/John-Ashburner" target="_blank">ResearchGate</a>, UCL Profiles</td>
+<td>已验证</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-section-1-2">1.2 教育背景</h3>
+<p>John Ashburner教授的教育背景揭示了他从物理、数学到神经科学的知识结构演进，这种跨学科的训练为其后续在计算神经科学领域的开拓性工作提供了坚实的基础。</p>
+<table>
+<thead>
+<tr>
+<th>学位类型</th>
+<th>专业领域</th>
+<th>毕业院校</th>
+<th>国家</th>
+<th>年份</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>博士 (Ph.D.)</strong></td>
+<td>神经科学 (Neuroscience)</td>
+<td>伦敦大学学院 (University College London)</td>
+<td>英国</td>
+<td>~2000</td>
+<td>其博士论文《Computational neuroanatomy》为后续研究奠定了基础。</td>
+</tr>
+<tr>
+<td><strong>硕士 (M.Sc.)</strong></td>
+<td>理学硕士</td>
+<td>阿斯顿大学 (Aston University)</td>
+<td>英国</td>
+<td>1989</td>
+<td>早期的学术训练，可能涉及计算机科学或相关工程领域。</td>
+</tr>
+<tr>
+<td><strong>学士 (B.Sc.)</strong></td>
+<td>理学学士</td>
+<td>信息待补充</td>
+<td>英国</td>
+<td>信息待补充</td>
+<td>其个人主页提及对数学和信息论的兴趣，暗示其本科可能具有强大的数理背景。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-section-1-3">1.3 职业生涯与荣誉</h3>
+<p>Ashburner教授的职业生涯高度聚焦于UCL的惠康人类神经影像中心，他从一名初级研究人员成长为该领域的顶级教授，其职业轨迹与SPM软件的发展史紧密交织。这种长期的专注使其能够对一个核心问题——如何准确、可靠地分析脑图像——进行持续数十年的深入探索。</p>
+<h4>职业发展轨迹</h4>
+<p>Ashburner教授自1996年9月起便在惠康神经影像中心（及其前身）工作，至今已超过28年。这种非凡的机构忠诚度和研究定力，是其能够取得系统性、突破性成就的关键因素。他的晋升路径清晰地反映了其在学术界的成长历程：</p>
+<ul>
+<li><strong>讲师 (Lecturer) &amp; 高级讲师 (Senior Lecturer) &amp; Reader:</strong> 在加入UCL后，他历经了英国学术体系中的标准晋升阶梯。在这一时期，他作为SPM开发团队的核心成员，开始崭露头角，并发表了VBM、统一分割等一系列奠基性工作。</li>
+<li><strong>影像科学教授 (Professor of Imaging Science):</strong> <a href="https://www.mps-ucl-centre.mpg.de/12096/centre-symposium-2014-biosketches" target="_blank">晋升为正教授</a>，标志着其学术地位和贡献得到了机构的最高认可。他不仅是方法的开发者，也成为了该领域的思想领袖和教育者。</li>
+</ul>
+<h4>重要荣誉与身份</h4>
+<p>Ashburner教授获得的荣誉或许不像某些理论科学家那样广为人知，但它们精准地反映了其在工程、方法学和开放科学领域的杰出贡献。</p>
+<ul>
+<li><strong>欧洲医学与生物工程及科学联盟会士 (Fellow of The European Alliance of Medical and Biological Engineering and Science, EAMBES) (2013):</strong> <a href="https://eambes.org/fellow/john-ashburner/" target="_blank">该荣誉</a>表彰了他在医学与生物工程领域的卓越成就，突显了其工作的工程技术属性。</li>
+<li><strong>Research.com英国工程与技术领域领军人物奖 (2024, 2025):</strong> <a href="https://research.com/u/john-ashburner" target="_blank">此奖项</a>基于文献计量指标，将他评为英国乃至全球在工程技术领域的顶尖科学家之一，量化地证明了其研究成果的巨大影响力。</li>
+<li><strong>人类脑图谱组织 (OHBM) 开放科学奖 (2023, 作为SPM团队成员):</strong> <a href="https://www.ohbmbrainmappingblog.com/blog/interview-with-the-spm-team-winner-of-the-open-science-award-2023" target="_blank">这一奖项</a>极具代表性，它不仅认可了SPM的技术先进性，更赞扬了其团队三十年如一日坚持开放、共享的科学精神。Ashburner作为核心开发者，是这一精神的重要践行者。</li>
+</ul>
+<h2 id="section-chapter-2">第二章 学术影响力评估：量化衡量的世界级影响力</h2>
+<p>学术影响力是评价一位科学家贡献的重要维度。对于John Ashburner教授而言，其影响力不仅体现在传统的文献计量指标上，更体现在他所开发的工具被全球研究者广泛采用的深度和广度上。本章将通过多平台数据对比，客观、量化地评估其在全球学术界的地位。</p>
+<h3 id="section-section-2-1">2.1 文献计量指标</h3>
+<p>文献计量指标，如h-index和总被引次数，是衡量学者学术产出质量和影响力的通行标准。通过对多个主流学术数据库的数据进行交叉验证，我们可以看到Ashburner教授惊人的学术影响力。</p>
+<h4>多平台数据对比</h4>
+<table>
+<thead>
+<tr>
+<th>数据源</th>
+<th>h-index</th>
+<th>总被引次数</th>
+<th>发表文章总数</th>
+<th>统计截止日期</th>
+<th>数据质量与解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Google Scholar</strong></td>
+<td>107</td>
+<td>109,592+</td>
+<td>~300+</td>
+<td>2025-10</td>
+<td>收录范围最广，包括期刊、会议、预印本，最能全面反映其总体学术影响力。</td>
+</tr>
+<tr>
+<td><strong>Scopus / ScienceDirect</strong></td>
+<td>91</td>
+<td>66,865+</td>
+<td>235</td>
+<td>2025-10</td>
+<td><a href="https://www.sciencedirect.com/author/7004536701/john-t-ashburner" target="_blank">侧重于同行评议的核心期刊</a>，数据虽略低于Google Scholar，但同样证实其在顶级学术出版物中的超凡影响力。</td>
+</tr>
+<tr>
+<td><strong>ResearchGate</strong></td>
+<td>-</td>
+<td>89,649+</td>
+<td>337</td>
+<td>2025-10</td>
+<td>由学者自行维护，引用数据介于前两者之间，提供了另一个维度的参考。</td>
+</tr>
+<tr>
+<td><strong>OpenAlex</strong></td>
+<td>96</td>
+<td>81,379</td>
+<td>321</td>
+<td>2025-10</td>
+<td>作为一个开放的学术图谱，其数据具有较高的参考价值，与其它平台趋势一致。</td>
+</tr>
+</tbody>
+</table>
+<h4>影响力增长趋势分析</h4>
+<p>Ashburner教授的学术影响力并非一成不变，而是呈现出持续高速增长的态势。根据资料，<a href="https://www.mps-ucl-centre.mpg.de/12096/centre-symposium-2014-biosketches" target="_blank">在2014年左右，其h-index为60，总引用量约为14,000次</a>。而在大约十年后的今天，其h-index已增长至107，总引用量增长了近7倍。这种指数级的增长曲线清晰地表明，他早年开发的奠基性方法（如VBM, DARTEL）在过去十年中被学术界以前所未有的规模采纳和应用，其影响力随着时间的推移非但没有减弱，反而愈发强大。</p>
+<div class="chart-container" id="canvas-parent-1" style="height: 450px;" data-sk-source-id="1973242226308640768" data-sk-source-type="pro_data" data-sk-source-container="chart">
+<canvas id="impactGrowthChart"></canvas>
+</div>
+<h3 id="section-section-2-2">2.2 影响力评估结论</h3>
+<blockquote>
+            John Ashburner教授是神经影像乃至整个神经科学领域中，被引用次数最多、影响力最深远的学者之一。他的工作不仅是理论上的创新，更是通过开源软件（SPM）赋能了全球数千个实验室，其影响力已超越传统学术论文的范畴，成为该领域研究的基础设施。
+        </blockquote>
+<p>综合各项指标，Ashburner教授的学术影响力可以被明确地评定为 **国际顶尖 (World-Leading)** 级别。他不仅是一位高产且高被引的作者，更是一位“工具的创造者”和“范式的定义者”。他的每一项核心贡献，都直接或间接地催生了成千上万篇后续研究，深刻地影响了我们对大脑结构、功能、发育、衰老及疾病的理解。他的名字与SPM、VBM、DARTEL等术语紧密相连，这些术语本身就构成了现代神经影像分析的通用语言。</p>
+<h2 id="section-chapter-3">第三章 学术贡献分析：塑造现代神经影像分析的基石</h2>
+<p>John Ashburner教授的学术生涯是一部持续解决神经影像分析核心难题的创新史。他以一种工程师般的严谨和物理学家般的深刻，将复杂的数学模型转化为稳定、高效且被广泛使用的计算工具。本章将深入剖析其研究脉络、核心贡献和思想体系，重点阐述其如何通过一系列方法学创新，推动了整个领域的发展。</p>
+<h3 id="section-section-3-1">3.1 研究脉络演进</h3>
+<p>Ashburner教授的学术生涯可以清晰地划分为三个相互关联、层层递进的阶段，展现出其从解决基础问题到追求更高精度，再到拥抱前沿技术的演进路径。</p>
+<h4>3.1.1 奠基与发展阶段 (约1995-2005年)</h4>
+<p>这一阶段，Ashburner教授聚焦于解决脑图像分析中最根本的两个问题：如何将不同人的大脑对齐到同一个空间（<strong>空间标准化</strong>），以及如何将大脑分割成不同的组织类型（<strong>组织分割</strong>）。</p>
+<ul>
+<li><strong>研究焦点：</strong> 空间标准化 (Spatial Normalization) 和组织分割 (Tissue Segmentation)。这是进行任何跨被试比较分析的前提。</li>
+<li><strong>方法论创新：</strong> 他与Karl Friston等人合作，摒弃了早期依赖于手动标记解剖标志点的方法，转而开发基于图像整体信息的自动化算法。</li>
+<li><strong>关键成果：</strong>
+<ul>
+<li><strong>基于基函数的非线性空间标准化 (1999):</strong> 在其<a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/(SICI)1097-0193(1999)7:4%3C254::AID-HBM4%3E3.0.CO;2-G" target="_blank">1999年的经典论文</a>中，提出了一种使用离散余弦变换基函数来参数化非线性形变场的方法。这种方法在计算效率和配准精度之间取得了良好平衡，成为SPM99和SPM2的核心配准算法，被广泛使用了近十年。</li>
+<li><strong>体素形态学分析 (Voxel-Based Morphometry, VBM) (2000):</strong> 这是Ashburner最具里程碑意义的贡献之一。在<a href="https://pubmed.ncbi.nlm.nih.gov/10860804/" target="_blank">2000年发表于NeuroImage的论文</a>中，他和Friston系统地阐述了VBM的方法学。VBM通过空间标准化、分割、平滑等一系列自动化步骤，实现了在全脑范围内对局部脑组织体积/浓度的体素级别统计比较。这一方法极大地推动了对精神分裂症、阿尔茨海默病等疾病的神经解剖学研究。</li>
+<li><strong>统一分割模型 (Unified Segmentation) (2005):</strong> 在<a href="https://www.sciencedirect.com/science/article/pii/S1053811905001102" target="_blank">2005年的另一篇经典之作</a>中，Ashburner提出了一个优雅的生成模型，将组织分割、偏置场校正和空间标准化这三个相互依赖的步骤整合进一个统一的概率框架中。该模型巧妙地解决了“先配准还是先分割”的循环依赖问题，通过迭代优化同时估计所有参数，显著提升了分割的准确性和鲁棒性，至今仍是SPM软件的核心技术。</li>
+</ul>
+</li>
+</ul>
+<h4>3.1.2 深化与创新阶段 (约2006-2015年)</h4>
+<p>在解决了基本的配准和分割问题后，Ashburner教授将目光投向了更高精度的图像配准，即追求拓扑结构保持的微分同胚映射（Diffeomorphic mapping），这标志着其研究进入了更复杂的计算解剖学领域。</p>
+<ul>
+<li><strong>研究焦点：</strong> 高精度、可逆的图像配准，以及更精确的计算解剖学模型。</li>
+<li><strong>核心成果：</strong>
+<ul>
+<li><strong>DARTEL算法 (2007):</strong> 在<a href="https://www.sciencedirect.com/science/article/pii/S1053811907005848" target="_blank">2007年发表的论文</a>中，Ashburner介绍了一种名为DARTEL (Diffeomorphic Anatomical Registration using Exponentiated Lie algebra) 的快速微分同胚图像配准算法。DARTEL通过迭代地将所有被试的图像配准到一个共同生成的平均模板上，极大地提高了群体研究中个体间脑结构对齐的精度。该算法因其速度快、精度高、易于使用，迅速成为VBM分析的新标准。</li>
+<li><strong>计算解剖学工具箱：</strong> 在DARTEL之后，他继续开发了如<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12421888/" target="_blank">Geodesic Shooting和MultiBrain</a>等更先进的工具箱，这些工具基于更复杂的数学理论（如测地线流），旨在为研究者提供更精确测量大脑形态变异性的方法。</li>
+</ul>
+</li>
+</ul>
+<h4>3.1.3 融合与前沿阶段 (约2016年至今)</h4>
+<p>进入大数据和人工智能时代，Ashburner教授的研究兴趣也随之演进，开始将他深耕多年的生成模型思想与数据驱动的模式识别、机器学习乃至深度学习方法相融合。</p>
+<ul>
+<li><strong>研究焦点：</strong> 结合模式识别与机器学习进行多变量分析，探索深度学习在神经影像分析中的应用。</li>
+<li><strong>核心成果：</strong>
+<ul>
+<li><strong>PRoNTo工具箱：</strong> 他是<a href="https://uk.linkedin.com/in/john-ashburner-9874834" target="_blank">PRoNTo (Pattern Recognition for Neuroimaging Toolbox)</a> 的原始开发团队成员之一。PRoNTo是一个基于SPM的机器学习工具箱，它使得神经影像研究者可以方便地应用支持向量机（SVM）等模式识别方法进行分类或回归分析（例如，根据脑影像诊断疾病），标志着分析范式从单变量（univariate）向多变量（multivariate）的扩展。</li>
+<li><strong>深度学习应用：</strong> 近期的研究，如<a href="https://arxiv.org/html/2404.01946v3" target="_blank">利用合成数据进行鲁棒的中风病灶分割</a>，清晰地表明他正在积极拥抱深度学习技术。他利用生成模型的思想来创造大量逼真的训练数据，以解决医学影像领域标注数据稀缺的难题，这体现了他将自己经典思想与前沿技术巧妙结合的智慧。</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-section-3-2">3.2 核心学术贡献</h3>
+<p>John Ashburner教授的贡献是系统性且具有变革性的。他不仅提出了理论，更重要的是，他将这些理论转化为了全球数万名研究者可以日常使用的、稳定可靠的软件工具。</p>
+<div class="key-points">
+<h4>关键贡献总结</h4>
+<ul>
+<li><strong>SPM的图像预处理框架：</strong> 作为SPM的核心开发者，他构建了软件中最为关键的图像预处理部分，尤其是<strong>空间标准化</strong>和<strong>分割</strong>模块。这些模块是所有后续统计分析（如fMRI激活分析）的基础，保证了多被试数据比较的有效性。</li>
+<li><strong>体素形态学分析 (VBM)：</strong> 他是VBM方法的主要提出者和实现者。VBM允许研究者在全脑范围内以体素为单位比较不同组别（如患者与健康人）的脑组织密度/体积差异，已成为神经精神疾病、发育与老化研究的经典方法，催生了数以万计的研究论文。</li>
+<li><strong>统一分割模型 (Unified Segmentation)：</strong> 这一生成模型巧妙地解决了配准和分割的“鸡生蛋，蛋生鸡”问题，通过一个统一的概率框架同时优化，极大地提升了分割的准确性和鲁棒性，是SPM12及后续版本的核心技术。</li>
+<li><strong>微分同胚配准 (DARTEL)：</strong> DARTEL算法在保证拓扑结构不变的前提下，实现了高精度的脑图像对齐，为群体模板的创建和更精细的形态学分析提供了强大工具，至今仍被广泛使用。</li>
+</ul>
+</div>
+<p>这些贡献的深远意义在于，它们共同构建了一套标准化的、自动化的脑结构图像分析流程。在此之前，脑形态的量化分析往往依赖于耗时、主观且难以重复的手动勾画。Ashburner的工作将这一过程转变为客观、高效、可重复的计算过程，极大地促进了大规模神经影像研究的开展，使得研究者能够发现过去难以察觉的、微小的脑结构差异。</p>
+<h3 id="section-section-3-3">3.3 主要出版物分析</h3>
+<p>Ashburner教授的论文以其方法学的原创性、阐述的清晰性和巨大的引用量而著称。他的高被引论文几乎每一篇都对应着一个被广泛采用的新方法或新工具。</p>
+<h4>Top 5 高被引论文分析</h4>
+<p>下表列出了他被引用次数最高的五篇论文，这些论文共同定义了现代计算解剖学的基础。</p>
+<div class="chart-container" id="canvas-parent-2" style="height: 400px;" data-sk-source-container="chart" data-sk-source-id="1973241970110849025" data-sk-source-type="pro_data">
+<canvas id="topPapersChart"></canvas>
+</div>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>论文标题</th>
+<th>期刊 &amp; 年份</th>
+<th>引用次数 (Google Scholar)</th>
+<th>核心贡献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://www.sciencedirect.com/science/article/pii/S1053811900905822" target="_blank">Voxel-based morphometry—the methods</a></td>
+<td>NeuroImage, 2000</td>
+<td>11,012+</td>
+<td>系统性地提出并阐述了VBM方法，成为脑结构差异研究的黄金标准。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://www.sciencedirect.com/science/article/pii/S1053811905001102" target="_blank">Unified segmentation</a></td>
+<td>NeuroImage, 2005</td>
+<td>9,373+</td>
+<td>提出了将配准、分割、偏置场校正统一起来的生成模型，是SPM的核心技术。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://www.sciencedirect.com/science/article/pii/S1053811907005848" target="_blank">A fast diffeomorphic image registration algorithm</a></td>
+<td>NeuroImage, 2007</td>
+<td>9,282+</td>
+<td>引入了DARTEL算法，显著提升了脑图像配准的精度和效率。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.460030303" target="_blank">Spatial registration and normalization of images</a></td>
+<td>Human Brain Mapping, 1995</td>
+<td>4,609+</td>
+<td>与K. Friston等人合作，奠定了SPM中空间标准化的早期理论和方法基础。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/(SICI)1097-0193(1999)7:4%3C254::AID-HBM4%3E3.0.CO;2-G" target="_blank">Nonlinear spatial normalization using basis functions</a></td>
+<td>Human Brain Mapping, 1999</td>
+<td>2,502+</td>
+<td>提出了基于基函数的非线性配准方法，是SPM99/SPM2的核心算法。</td>
+</tr>
+</tbody>
+</table>
+<p>这些论文的发表期刊高度集中于神经影像领域的顶级期刊，如 <em>NeuroImage</em> 和 <em>Human Brain Mapping</em>，这反映了其研究成果在该领域的权威性和专业性。惊人的引用次数不仅证明了这些方法的创新性，更证明了它们在实际研究中的巨大应用价值。</p>
+<h2 id="section-chapter-4">第四章 学术网络与合作：构建全球神经影像社区</h2>
+<p>任何一位顶尖科学家的成就都离不开其所处的学术生态系统。John Ashburner教授的成功，在很大程度上得益于他在UCL惠康人类神经影像中心这一世界顶级研究机构中的核心地位，以及他与Karl Friston等巨擘的长期紧密合作。他不仅是知识的创造者，更是通过合作与开源工具，成为了全球神经影像社区的构建者和赋能者。</p>
+<h3 id="section-section-4-1">4.1 机构网络与合作模式</h3>
+<p>Ashburner教授的学术生涯与一个机构的名字紧密相连：<strong>UCL惠康人类神经影像中心 (Wellcome Centre for Human Neuroimaging)</strong>。这个前身为功能成像实验室（FIL）的机构，是SPM软件的诞生地和持续发展的摇篮。</p>
+<ul>
+<li><strong>核心机构的中心地位：</strong> UCL惠康中心是全球神经影像研究的圣地之一，汇集了从物理学家、数学家、计算机科学家到神经科学家和临床医生的顶尖人才。这种多学科交叉的环境为Ashburner提供了将复杂数学理论应用于实际神经科学问题的理想土壤。他在此工作超过28年，深度融入并塑造了该中心的方法学文化。</li>
+<li><strong>独特的合作模式：</strong> Ashburner的合作模式超越了传统的共同发表论文。他以<strong>方法学开发</strong>为核心，与全球应用神经影像的研究者形成了一种独特的“赋能-反馈”生态系统。他通过SPM提供分析工具，全球数千个实验室的用户应用这些工具进行科学研究，并将遇到的问题、挑战和新需求反馈给SPM社区。这种持续的反馈驱动了Ashburner和SPM团队对方法的不断迭代和完善。因此，他的合作网络实际上是整个SPM用户社区。</li>
+</ul>
+<h3 id="section-section-4-2">4.2 核心合作者与学术传承</h3>
+<p>在Ashburner教授的合作网络中，有几位人物至关重要，他们共同定义了SPM乃至整个神经影像分析领域的面貌。</p>
+<h4>核心合作者：Karl J. Friston</h4>
+<blockquote>
+            如果说Karl Friston是SPM的“总设计师”和“理论灵魂”，那么John Ashburner就是实现其宏伟蓝图的“首席工程师”和“建造大师”。
+        </blockquote>
+<p>Ashburner与<a href="https://en.wikipedia.org/wiki/Karl_J._Friston" target="_blank">Karl J. Friston</a>的合作是科学史上理论与实践完美结合的典范。Friston是一位理论神经科学家，他发明了SPM的统计框架（如通用线性模型GLM、动态因果模型DCM）和VBM等核心概念。而Ashburner则凭借其深厚的计算机科学和数学功底，专注于将这些理论概念转化为具体、高效、稳健的图像处理算法。他们的关系可以从<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12421888/" target="_blank">一篇回顾SPM历史的文章</a>中窥见一斑：Friston等人提出的诸多分析方法，其可靠性“都依赖于高质量的图像配准，而这正是由John Ashburner的团队通过不断发展日益复杂的空间标准化方法所实现的”。他们的几乎所有高被引论文都是共同署名，这种长达数十年的互补性合作，共同铸就了SPM的辉煌。</p>
+<h4>SPM开发团队与其他合作者</h4>
+<p>除了Friston，Ashburner还与SPM开发团队的其他核心成员，如Gareth Barnes, Guillaume Flandin, Stefan Kiebel等人，构成了SPM开发与维护的中坚力量。他们共同确保了SPM软件的持续更新和对社区的支持。此外，他的工作也影响和启发了其他神经影像软件包的开发者，例如FSL（FMRIB Software Library）的开发者也曾在论文中引用和比较Ashburner的方法。</p>
+<h4>学术传承与学生培养</h4>
+<p>作为UCL的教授和博士生导师，Ashburner正在将他的学术思想和技术专长传递给下一代研究者。例如，他指导的博士生<a href="https://liamchalcroft.github.io/" target="_blank">Liam Chalcroft</a>的研究方向是“应用深度学习进行中风病灶分割”。这清晰地表明，Ashburner的学术思想正在向人工智能领域延伸，并通过学生培养得以传承和发展。他不仅教授学生如何使用工具，更重要的是教授他们如何创造工具，以及背后严谨的科学思想。</p>
+<h2 id="section-chapter-5">第五章 思想画像与未来展望：从生成模型到人工智能</h2>
+<p>要真正理解John Ashburner的贡献，必须深入其研究背后一以贯之的学术思想。他并非简单地追逐技术潮流，而是以一种深刻的哲学观指导其方法学创新。本章旨在提炼其核心思想体系，分析其与当前人工智能浪潮的深刻关联，并展望其未来的研究方向。</p>
+<h3 id="section-section-5-1">5.1 核心思想体系</h3>
+<p>Ashburner教授的整个学术生涯，贯穿着对一类特定模型的执着与信念——<strong>生成模型 (Generative Models)</strong>。</p>
+<blockquote>
+            “在设计一个模型时，思考该模型如何生成数据是很有用的。随机生成的数据的分布应该与真实数据的分布相匹配。” —— John Ashburner &amp; Karl J. Friston, <a href="https://www.sciencedirect.com/science/article/pii/S1053811905001102" target="_blank">Unified Segmentation (2005)</a>
+</blockquote>
+<ul>
+<li><strong>核心思想：第一性原理建模。</strong> 与许多直接从数据中学习模式的“判别模型”不同，Ashburner倾向于从第一性原理出发，思考“我们观察到的脑图像数据是如何产生的？”。他试图构建一个能够模拟这一过程的数学模型。例如，在他的“统一分割”模型中，他假设图像的强度是由组织类型（灰质、白质、脑脊液）、强度不均匀性（偏置场）和空间形变共同决定的。然后，他的算法目标就是反向推断出这些潜在的、不可见的参数。</li>
+<li><strong>方法论特点：</strong>
+<ul>
+<li><strong>贝叶斯框架的广泛应用：</strong> 他的模型几乎总是构建在贝叶斯概率框架之下。他善于利用先验知识（Prior），例如标准的组织概率图谱（Tissue Probability Maps），来约束模型的解空间，从而在数据信噪比不高的情况下获得更稳定、更符合解剖学现实的结果。这体现了“模型驱动”与“数据驱动”的结合。</li>
+<li><strong>对实用主义与计算效率的极致追求：</strong> 尽管其模型背后的数学理论（如李代数、微分几何）非常复杂，但Ashburner在实现时极为注重算法的计算效率和实用性。他开发的DARTEL算法就是一个典型例子，它在保证微分同胚性质的同时，实现了比当时其他同类算法快得多的计算速度，使其能够被广大研究者在普通工作站上使用。</li>
+<li><strong>开放与共享的科学精神：</strong> 他是开放科学的坚定践行者。他不仅将自己的核心成果以开源软件（SPM）的形式无偿分享给全世界，还通过撰写详尽的<a href="https://www.fil.ion.ucl.ac.uk/spm/doc/spm12_manual.pdf" target="_blank">手册</a>、录制教学视频、亲自授课等方式，不遗余力地传播知识。</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-section-5-2">5.2 与人工智能的关联及未来趋势</h3>
+<p>在当前人工智能（AI）席卷科研领域的浪潮下，Ashburner教授的工作非但没有过时，反而因其深刻的思想内涵而与AI前沿产生了强烈的共鸣，并展现出新的活力。</p>
+<h4>与AI的深刻关联</h4>
+<ol>
+<li><strong>生成模型的先驱：</strong> Ashburner长期坚持的生成模型方法论，与当前AI领域火热的生成式AI（如生成对抗网络GANs、变分自编码器VAEs）在核心思想上高度一致。他的工作可以被看作是在神经影像这一特定领域内，对生成模型思想长达二十年的成功实践和深度探索。他近期利用生成模型思想<a href="https://arxiv.org/html/2404.01946v3" target="_blank">创造合成中风数据</a>来训练深度学习网络，正是这种思想的自然延伸。</li>
+<li><strong>从“建模”到“学习”的演进：</strong> 他参与开发的PRoNTo工具箱，标志着其研究范式的一次重要扩展。PRoNTo将多变量模式分析（MVPA）引入SPM生态，让研究者可以利用机器学习模型（如SVM）直接从数据中“学习”区分不同被试群体（如患者vs健康人）的脑影像模式。这表明他早已认识到纯粹的模型驱动方法的局限性，并积极拥抱数据驱动的机器学习方法。</li>
+<li><strong>拥抱深度学习：</strong> 在<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12421888/" target="_blank">一篇近期的回顾文章</a>中，他明确指出“许多成像方法现在都将随着深度神经网络（特别是U-Net类型架构）的出现而改变”。他并未排斥这一新技术，而是以一种开放和审慎的态度进行探索，并思考如何将其与自己擅长的生成模型相结合，甚至思考如何“逆向工程”机器学习模型以理解其内在的生成机制。</li>
+</ol>
+<h4>未来发展趋势预测</h4>
+<p>基于其深厚的学术积累和对前沿技术的敏锐洞察，可以预测John Ashburner教授未来的研究将沿着以下方向发展：</p>
+<ul>
+<li><strong>可解释AI与生成模型的融合：</strong> 他可能会致力于开发新一代的神经影像分析方法，将深度学习强大的特征表征能力与传统生成模型的理论严谨性和可解释性相结合。目标是创造出既高效、准确，又能让科学家和医生理解其决策过程的“白盒”AI模型。</li>
+<li><strong>大规模临床数据库的构建与应用：</strong> 他在其个人主页上已表示出对“建立大型扫描数据库”的兴趣。未来，他极有可能利用其开发的先进算法，在超大规模的生物样本库（如UK Biobank）和临床数据集上，挖掘与疾病（如阿尔茨海默病、精神分裂症、中风）相关的、更精细、更可靠的脑结构与功能生物标志物。</li>
+<li><strong>推动临床转化：</strong> 随着其研究越来越关注具体的临床问题（如中风病灶分割），预计其未来的工作将更加侧重于开发能够直接应用于临床辅助诊断、预后预测和治疗方案制定的自动化、高精度AI工具，真正实现从“研究工具”到“临床产品”的转化。</li>
+</ul>
+<div class="chart-container" id="canvas-parent-3" style="height: 500px;" data-sk-source-container="chart" data-sk-source-id="1973241946526277632" data-sk-source-type="pro_data">
+<canvas id="researchFocusChart"></canvas>
+</div>
+<h3 id="section-section-5-3">5.3 潜在争议与方法学思辨</h3>
+<p>任何具有革命性的方法都会引发讨论和争议，Ashburner教授的工作也不例外。这些讨论非但没有减损其贡献，反而促进了整个领域的成熟和发展。</p>
+<ul>
+<li><strong>VBM的早期争议：</strong> VBM方法在诞生之初，曾受到一些学者的批评，认为其结果可能受到空间标准化不完美的影响。批评者认为，如果图像配准不准确，那么观察到的“灰质密度”差异可能仅仅是配准误差，而非真实的解剖差异。这场辩论促使Ashburner和整个社区更加关注配准算法的精度，并最终催生了DARTEL等更先进的配准工具。Ashburner本人也撰写了<a href="https://www.fil.ion.ucl.ac.uk/spm/doc/papers/john_should.pdf" target="_blank">文章回应这些批评</a>，清晰地阐明了VBM的假设和适用范围。</li>
+<li><strong>DARTEL算法的比较评估：</strong> 在<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12421888/" target="_blank">一篇回顾文章</a>中，Ashburner坦诚地提到了一个“主要的遗憾”。在一个大型的非线性图像配准算法比较研究（Klein et al., 2009）中，他们要求组织者使用经过“颅骨剥离”（skull-stripped）的图像来运行基于SPM的方法。后来的研究表明，如果不进行颅骨剥离，DARTEL的表现会远超其他软件。这个例子反映了方法学评估中细节的重要性，也体现了Ashburner严谨和自我批判的科学态度。</li>
+</ul>
+<p>这些思辨和讨论，展现了一个健康科学领域的典型特征：通过不断的自我审视和相互辩论来推动知识的进步。Ashburner教授始终身处这些讨论的中心，以其深刻的理解和开放的态度，引领着方法学的演进。</p>
+<h2 id="section-chapter-6">第六章 知识传播与转化：赋能全球的开源工具</h2>
+<p>John Ashburner教授最与众不同的特质之一，是他不仅仅将自己的研究成果发表在期刊上，而是将其固化为稳定、易用、开放的软件工具，从而极大地加速了知识的传播和转化。他是一位真正的“基础设施建设者”，为整个神经影像领域铺设了高速公路。</p>
+<h3 id="section-section-6-1">6.1 软件工具与知识传播</h3>
+<p>Ashburner教授的贡献与两款核心软件紧密相连：SPM和PRoNTo。</p>
+<h4>SPM (Statistical Parametric Mapping)</h4>
+<ul>
+<li><strong>角色与贡献：</strong> SPM是一个用于分析脑成像数据（fMRI, PET, EEG/MEG等）的完整软件包。根据<a href="https://www.fil.ion.ucl.ac.uk/spm/" target="_blank">SPM官网的历史介绍</a>，Ashburner自SPM&#39;94版本起就是其核心开发者，主要负责将Friston的统计理论转化为实际的图像处理代码。他贡献了SPM中几乎所有的核心预处理模块，包括空间标准化、分割、配准等，据称<a href="https://www.mps-ucl-centre.mpg.de/12096/centre-symposium-2014-biosketches" target="_blank">贡献了约45,000行代码</a>。</li>
+<li><strong>影响力：</strong> SPM是神经影像分析领域“事实上的标准”之一，与FSL、AFNI等软件齐名。其免费、开源的特性极大地降低了研究门槛，使得全球数千个资源有限的实验室也能够开展前沿的脑功能和结构研究。可以说，过去三十年认知神经科学的繁荣，很大程度上建立在SPM这类开源工具的基础之上。</li>
+</ul>
+<h4>PRoNTo (Pattern Recognition for Neuroimaging Toolbox)</h4>
+<ul>
+<li><strong>功能与动机：</strong> PRoNTo是一个基于MATLAB和SPM的机器学习工具箱，旨在将模式识别技术应用于神经影像数据。根据<a href="http://www.mlnl.cs.ucl.ac.uk/pronto/prthistory.html" target="_blank">其开发历史</a>，开发PRoNTo的动机是为不熟悉机器学习的神经影像研究者提供一个灵活、安全的分析框架。Ashburner作为原始开发团队的一员，利用其在SPM文件处理和界面设计方面的经验，为PRoNTo的开发做出了重要贡献。</li>
+<li><strong>影响力：</strong> PRoNTo推动了多变量模式分析（MVPA）方法在神经影像界的普及。它使得研究者能够从“哪里有激活？”（单变量分析）的问题，转向“脑区的激活模式能否预测行为或诊断疾病？”（多变量分析）这一更深层次的问题，为脑解码和神经生物标志物研究提供了有力工具。</li>
+</ul>
+<h4>知识传播</h4>
+<p>Ashburner教授的知识传播工作同样令人印象深刻。他不仅是代码的编写者，更是知识的传播者。他亲自撰写了大量的<a href="https://www.fil.ion.ucl.ac.uk/spm/doc/spm12_manual.pdf" target="_blank">SPM手册和教程</a>，并长期在全球各地举办的SPM课程中担任讲师。在这些课程中，他以其清晰的逻辑和深入浅出的讲解，向一代又一代的研究生和博士后传授神经影像分析的最佳实践。许多课程的<a href="https://www.fil.ion.ucl.ac.uk/spm/course/video/" target="_blank">教学视频</a>被发布在网上，惠及了更广泛的学习者群体。这种系统性的教育工作，对于规范整个领域的研究方法、提高研究质量起到了不可估量的作用。</p>
+<h2 id="section-chapter-7">第七章 综合评估与展望</h2>
+<p>在对John Ashburner教授的学者档案、学术影响力、核心贡献、合作网络及思想体系进行全面剖析后，本章将对其学术地位进行高度凝练的综合评估，并对其未来的发展方向进行展望。</p>
+<h3 id="section-section-7-1">7.1 综合评估结论</h3>
+<blockquote>
+            John Ashburner不仅是一位产出高质量论文的顶尖科学家，更是一位通过构建和分享强大开源工具而深刻塑造了整个研究领域的“基础设施建设者”。他在计算解剖学和图像配准方面的贡献是开创性的，其开发的算法和软件已成为现代脑科学研究不可或缺的一部分。
+        </blockquote>
+<p>Ashburner教授的学术地位超越了单一维度的评价体系。他是一位罕见的、集理论家、工程师和教育家于一身的学者。他的核心优势可以概括为以下三点：</p>
+<ol>
+<li><strong>深厚的数学与计算功底：</strong> 他拥有将复杂的数学理论（如微分几何、概率图模型、李代数）转化为高效、稳健的计算算法的非凡能力。这是他所有方法学创新的基石。</li>
+<li><strong>理论与实践的完美结合：</strong> 他不仅能提出创新的理论模型（如统一分割），更能亲手编写数万行高质量的代码，将其实现为全球研究者可以信赖和使用的工具。这种从理论到实践的闭环能力，在学术界极为罕见。</li>
+<li><strong>前瞻性的视野与开放的心态：</strong> 他能够敏锐地把握技术发展的脉搏，从早期的贝叶斯生成模型，到中期的微分同胚几何，再到如今积极拥抱机器学习和深度学习，他始终站在方法学创新的最前沿。同时，他坚定的开放科学信念，使其个人成就最大化地转化为整个社区的共同财富。</li>
+</ol>
+<p>因此，John Ashburner教授被评定为<strong>国际顶尖 (World-Leading)</strong> 级别的学者，他在神经影像方法学领域的历史地位，如同基因测序领域的Sanger，是定义了一个时代技术基础的关键人物。</p>
+<h3 id="section-section-7-2">7.2 未来发展展望</h3>
+<p>John Ashburner教授正处在其学术思想与影响力的巅峰时期，其未来的研究轨迹将继续对神经科学和临床医学产生深远影响。</p>
+<p>展望未来，Ashburner教授将继续扮演连接经典计算解剖学与前沿人工智能方法的桥梁角色。我们有理由相信，他将利用其在生成模型领域的深厚积累，为当前略显“黑盒”的深度学习方法注入更多的理论深度和可解释性。他的工作将不仅继续推动基础神经科学对大脑奥秘的探索，更有可能在精准医疗和临床神经影像诊断领域（如早期痴呆预测、中风康复评估）产生革命性的影响。他所代表的这种开放、协作、工具驱动的科研范式，将继续引领神经影像乃至更广泛的计算科学领域走向一个更加开放和高效的未来。</p>
+<script>
+        // Chart 1: Academic Impact Growth
+        const impactGrowthCtx = document.getElementById('impactGrowthChart').getContext('2d');
+        new Chart(impactGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['2014', '2025'],
+                datasets: [{
+                    label: '总引用次数',
+                    data: [14000, 109592],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    yAxisID: 'y',
+                    tension: 0.1,
+                    fill: true
+                }, {
+                    label: 'h-index',
+                    data: [60, 107],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    yAxisID: 'y1',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'John Ashburner 学术影响力增长趋势 (2014-2025)',
+                        font: { size: 18 }
+                    },
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '年份'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: '总引用次数'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'h-index'
+                        },
+                        grid: {
+                            drawOnChartArea: false, 
+                        },
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Top Cited Papers
+        const topPapersCtx = document.getElementById('topPapersChart').getContext('2d');
+        new Chart(topPapersCtx, {
+            type: 'bar',
+            data: {
+                labels: ['VBM (2000)', 'Unified Seg. (2005)', 'DARTEL (2007)', 'Spatial Reg. (1995)', 'Nonlinear Norm. (1999)'],
+                datasets: [{
+                    label: '引用次数 (Google Scholar)',
+                    data: [11012, 9373, 9282, 4609, 2502],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'John Ashburner Top 5 高被引论文',
+                        font: { size: 18 }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '引用次数'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Research Focus Evolution
+        const researchFocusCtx = document.getElementById('researchFocusChart').getContext('2d');
+        new Chart(researchFocusCtx, {
+            type: 'bar',
+            data: {
+                labels: ['奠基与发展 (1995-2005)', '深化与创新 (2006-2015)', '融合与前沿 (2016-至今)'],
+                datasets: [
+                    {
+                        label: '基础方法 (Normalization, Segmentation, VBM)',
+                        data: [3, 1, 0],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    },
+                    {
+                        label: '计算解剖学 (Diffeomorphic, DARTEL)',
+                        data: [0, 2, 1],
+                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                    },
+                    {
+                        label: 'AI/机器学习 (Pattern Recognition, Deep Learning)',
+                        data: [0, 0, 2],
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '研究脉络中核心关键词演进分析',
+                        font: { size: 18 }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: '相关核心论文/项目数量'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+<div class="reference-container">
+			<div class="reference-section">
+				<h3 class="reference-title">参考资料</h3>
+				<div class="reference-list">
+					
+					<div class="reference-item">
+						<span class="reference-number">[1]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text"></span>
+									
+									<i class="reference-professional"></i>
+									
+							</div>
+							<a href="" class="reference-link" target="_blank">
+								
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[2]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">‪John Ashburner‬ - ‪Google Scholar‬</span>
+									
+							</div>
+							<a href="https://scholar.google.com/citations?user=UWi2lukAAAAJ&amp;hl=en" class="reference-link" target="_blank">
+								https://scholar.google.com/citations?user=UWi2lukAAAAJ&amp;hl=en
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[3]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John Ashburner | About - UCL Profiles - University College London</span>
+									
+							</div>
+							<a href="https://profiles.ucl.ac.uk/10283-john-ashburner" class="reference-link" target="_blank">
+								https://profiles.ucl.ac.uk/10283-john-ashburner
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[4]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John Ashburner | Research | University College London</span>
+									
+							</div>
+							<a href="https://profiles.ucl.ac.uk/10283-john-ashburner/grants" class="reference-link" target="_blank">
+								https://profiles.ucl.ac.uk/10283-john-ashburner/grants
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[5]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John Ashburner - Imaging Neuroscience, UCL | LinkedIn</span>
+									
+							</div>
+							<a href="https://uk.linkedin.com/in/john-ashburner-9874834" class="reference-link" target="_blank">
+								https://uk.linkedin.com/in/john-ashburner-9874834
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[6]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Biosketches - UCL - Max-Planck-Gesellschaft</span>
+									
+							</div>
+							<a href="https://www.mps-ucl-centre.mpg.de/12096/centre-symposium-2014-biosketches" class="reference-link" target="_blank">
+								https://www.mps-ucl-centre.mpg.de/12096/centre-symposium-2014-biosketches
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[7]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John Ashburner: Engineering and Technology H-index &amp; Awards</span>
+									
+							</div>
+							<a href="https://research.com/u/john-ashburner" class="reference-link" target="_blank">
+								https://research.com/u/john-ashburner
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[8]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John Ashburner - University College London - AD Scientific Index</span>
+									
+							</div>
+							<a href="https://www.adscientificindex.com/scientist.php?id=1355652" class="reference-link" target="_blank">
+								https://www.adscientificindex.com/scientist.php?id=1355652
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[9]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Computational anatomy with the SPM software - PubMed</span>
+									
+							</div>
+							<a href="https://pubmed.ncbi.nlm.nih.gov/19249168/" class="reference-link" target="_blank">
+								https://pubmed.ncbi.nlm.nih.gov/19249168/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[10]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Optimization of DARTEL Settings for the Detection of Alzheimer ...</span>
+									
+							</div>
+							<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7655334/" class="reference-link" target="_blank">
+								https://pmc.ncbi.nlm.nih.gov/articles/PMC7655334/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[11]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Voxel-based morphometry--the methods - PubMed</span>
+									
+							</div>
+							<a href="https://pubmed.ncbi.nlm.nih.gov/10860804/" class="reference-link" target="_blank">
+								https://pubmed.ncbi.nlm.nih.gov/10860804/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[12]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">SPM Course Videos</span>
+									
+							</div>
+							<a href="https://www.fil.ion.ucl.ac.uk/spm/course/video/" class="reference-link" target="_blank">
+								https://www.fil.ion.ucl.ac.uk/spm/course/video/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[13]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">PRoNTo History - MLNL</span>
+									
+							</div>
+							<a href="http://www.mlnl.cs.ucl.ac.uk/pronto/prthistory.html" class="reference-link" target="_blank">
+								http://www.mlnl.cs.ucl.ac.uk/pronto/prthistory.html
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[14]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">A comparison between voxel-based cortical thickness and voxel ...</span>
+									
+							</div>
+							<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2741580/" class="reference-link" target="_blank">
+								https://pmc.ncbi.nlm.nih.gov/articles/PMC2741580/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[15]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Reproducibility and Bias in Healthy Brain Segmentation</span>
+									
+							</div>
+							<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5101202/" class="reference-link" target="_blank">
+								https://pmc.ncbi.nlm.nih.gov/articles/PMC5101202/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[16]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">[PDF] PRoNTo Manual - MLNL</span>
+									
+							</div>
+							<a href="http://www.mlnl.cs.ucl.ac.uk/pronto/prt_manual.pdf" class="reference-link" target="_blank">
+								http://www.mlnl.cs.ucl.ac.uk/pronto/prt_manual.pdf
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[17]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John ASHBURNER | Eambes</span>
+									
+							</div>
+							<a href="https://eambes.org/fellow/john-ashburner/" class="reference-link" target="_blank">
+								https://eambes.org/fellow/john-ashburner/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[18]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John Ashburner</span>
+									
+							</div>
+							<a href="https://www.fil.ion.ucl.ac.uk/~john/" class="reference-link" target="_blank">
+								https://www.fil.ion.ucl.ac.uk/~john/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[19]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">SPM—30 years and beyond - PMC</span>
+									
+							</div>
+							<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12421888/" class="reference-link" target="_blank">
+								https://pmc.ncbi.nlm.nih.gov/articles/PMC12421888/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[20]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Liam Chalcroft: About me</span>
+									
+							</div>
+							<a href="https://liamchalcroft.github.io/" class="reference-link" target="_blank">
+								https://liamchalcroft.github.io/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[21]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John ASHBURNER | Professor (Full) | UCL | Research profile</span>
+									
+							</div>
+							<a href="https://www.researchgate.net/profile/John-Ashburner" class="reference-link" target="_blank">
+								https://www.researchgate.net/profile/John-Ashburner
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[22]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Interview with the SPM Team, winner of the Open Science Award 2023</span>
+									
+							</div>
+							<a href="https://www.ohbmbrainmappingblog.com/blog/interview-with-the-spm-team-winner-of-the-open-science-award-2023" class="reference-link" target="_blank">
+								https://www.ohbmbrainmappingblog.com/blog/interview-with-the-spm-team-winner-of-the-open-science-award-2023
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[23]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John T. Ashburner | ScienceDirect</span>
+									
+							</div>
+							<a href="https://www.sciencedirect.com/author/7004536701/john-t-ashburner" class="reference-link" target="_blank">
+								https://www.sciencedirect.com/author/7004536701/john-t-ashburner
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[24]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Voxel-Based Morphometry—The Methods - ScienceDirect.com</span>
+									
+							</div>
+							<a href="https://www.sciencedirect.com/science/article/pii/S1053811900905822" class="reference-link" target="_blank">
+								https://www.sciencedirect.com/science/article/pii/S1053811900905822
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[25]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">SPM - Statistical Parametric Mapping</span>
+									
+							</div>
+							<a href="https://www.fil.ion.ucl.ac.uk/spm/" class="reference-link" target="_blank">
+								https://www.fil.ion.ucl.ac.uk/spm/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[26]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">John Ashburner (0000-0001-7605-2518) - ORCID</span>
+									
+							</div>
+							<a href="https://orcid.org/0000-0001-7605-2518" class="reference-link" target="_blank">
+								https://orcid.org/0000-0001-7605-2518
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[27]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Synthetic Data for Robust Stroke Segmentation - arXiv</span>
+									
+							</div>
+							<a href="https://arxiv.org/html/2404.01946v3" class="reference-link" target="_blank">
+								https://arxiv.org/html/2404.01946v3
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[28]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">[PDF] Why Voxel-Based Morphometry Should Be Used</span>
+									
+							</div>
+							<a href="https://www.fil.ion.ucl.ac.uk/spm/doc/papers/john_should.pdf" class="reference-link" target="_blank">
+								https://www.fil.ion.ucl.ac.uk/spm/doc/papers/john_should.pdf
+							</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div></div>
+</body></html>

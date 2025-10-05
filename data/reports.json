@@ -127,6 +127,38 @@
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "计算神经科学家，生成式重放理论提出者"
       }
+    },
+    {
+      "id": "john-ashburner-scholar-analysis-report",
+      "filename": "John_Ashburner_Scholar_Analysis_Report.html",
+      "title": "John Ashburner 学者信息分析报告",
+      "description": "全面分析神经影像分析领域奠基人John Ashburner的学术贡献、影响力与合作网络",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["神经科学", "神经影像", "SPM", "VBM", "DARTEL", "John Ashburner", "计算解剖学"],
+      "subject": {
+        "type": "scholar",
+        "name": "John Ashburner",
+        "institution": "University College London",
+        "field": "Neuroimaging, Computational Anatomy, Image Registration"
+      },
+      "summary": "本报告全面分析了John Ashburner的学术生涯、核心贡献和影响力。作为神经影像分析领域的奠基人与核心开发者之一，他作为SPM软件的核心开发者，开创了VBM、统一分割和DARTEL等关键算法，深刻改变了脑结构与功能的研究范式。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/fcd94c937b1a6c36551c580357103996.jpg",
+      "networkNode": {
+        "id": "john-ashburner",
+        "name": "John Ashburner",
+        "shortName": "J. Ashburner",
+        "type": "scholar",
+        "institution": "University College London",
+        "field": "Neuroimaging, Computational Anatomy",
+        "category": "scholar",
+        "hIndex": 107,
+        "image": "https://agents-download.skywork.ai/image/rt/fcd94c937b1a6c36551c580357103996.jpg",
+        "connections": ["karl-friston", "wellcome-centre"],
+        "description": "神经影像分析奠基人，SPM核心开发者"
+      }
     }
   ],
   "connections": [
@@ -158,6 +190,18 @@
       "source": "wellcome-centre",
       "target": "philipp-schwartenbeck",
       "strength": 0.8,
+      "type": "affiliation"
+    },
+    {
+      "source": "karl-friston",
+      "target": "john-ashburner",
+      "strength": 0.95,
+      "type": "collaboration"
+    },
+    {
+      "source": "wellcome-centre",
+      "target": "john-ashburner",
+      "strength": 0.9,
       "type": "affiliation"
     }
   ],
