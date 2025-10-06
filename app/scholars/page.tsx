@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Search, Filter, SortAsc, SortDesc } from 'lucide-react'
+import { Search, Filter, ChevronDown } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import reportsData from '@/data/reports.json'
@@ -70,13 +70,21 @@ export default function ScholarsPage() {
       }
     })
 
-  const handleSort = (field: SortField) => {
-    if (sortField === field) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-    } else {
-      setSortField(field)
-      setSortOrder('desc')
-    }
+  const handleSortChange = (value: string) => {
+    const [field, order] = value.split('-') as [SortField, SortOrder]
+    setSortField(field)
+    setSortOrder(order)
+  }
+
+  const getSortDisplayValue = () => {
+    const orderText = sortOrder === 'asc' ? '升序' : '降序'
+    const fieldText = {
+      'name': 'A-Z',
+      'hIndex': 'H-index',
+      'citations': '引用量',
+      'publications': '论文数'
+    }[sortField]
+    return `${fieldText} (${orderText})`
   }
 
   const getUniqueFields = () => {
@@ -145,41 +153,25 @@ export default function ScholarsPage() {
                 共找到 {filteredAndSortedScholars.length} 位学者
               </div>
               
-              <div className="flex items-center space-x-4 text-sm">
+              <div className="flex items-center space-x-2 text-sm">
                 <span className="text-academic-600">排序方式：</span>
-                <button
-                  onClick={() => handleSort('name')}
-                  className={`flex items-center space-x-1 px-3 py-1 rounded-lg transition-colors ${
-                    sortField === 'name' ? 'bg-primary-100 text-primary-700' : 'hover:bg-academic-100'
-                  }`}
-                >
-                  <span>姓名</span>
-                  {sortField === 'name' && (
-                    sortOrder === 'asc' ? <SortAsc className="w-3 h-3" /> : <SortDesc className="w-3 h-3" />
-                  )}
-                </button>
-                <button
-                  onClick={() => handleSort('hIndex')}
-                  className={`flex items-center space-x-1 px-3 py-1 rounded-lg transition-colors ${
-                    sortField === 'hIndex' ? 'bg-primary-100 text-primary-700' : 'hover:bg-academic-100'
-                  }`}
-                >
-                  <span>H-index</span>
-                  {sortField === 'hIndex' && (
-                    sortOrder === 'asc' ? <SortAsc className="w-3 h-3" /> : <SortDesc className="w-3 h-3" />
-                  )}
-                </button>
-                <button
-                  onClick={() => handleSort('citations')}
-                  className={`flex items-center space-x-1 px-3 py-1 rounded-lg transition-colors ${
-                    sortField === 'citations' ? 'bg-primary-100 text-primary-700' : 'hover:bg-academic-100'
-                  }`}
-                >
-                  <span>引用量</span>
-                  {sortField === 'citations' && (
-                    sortOrder === 'asc' ? <SortAsc className="w-3 h-3" /> : <SortDesc className="w-3 h-3" />
-                  )}
-                </button>
+                <div className="relative">
+                  <select
+                    value={`${sortField}-${sortOrder}`}
+                    onChange={(e) => handleSortChange(e.target.value)}
+                    className="appearance-none bg-white border border-academic-300 rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm min-w-[140px]"
+                  >
+                    <option value="name-asc">A-Z (升序)</option>
+                    <option value="name-desc">A-Z (降序)</option>
+                    <option value="hIndex-desc">H-index (降序)</option>
+                    <option value="hIndex-asc">H-index (升序)</option>
+                    <option value="citations-desc">引用量 (降序)</option>
+                    <option value="citations-asc">引用量 (升序)</option>
+                    <option value="publications-desc">论文数 (降序)</option>
+                    <option value="publications-asc">论文数 (升序)</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-academic-400 pointer-events-none" />
+                </div>
               </div>
             </div>
 
