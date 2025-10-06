@@ -120,7 +120,7 @@ export default function HtmlReportContent({ reportFilename, selectedSection, onT
   return (
     <div className="card overflow-hidden p-0">
       <div 
-        className="w-full"
+        className="w-full mobile-report-content"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>

@@ -30,4 +30,39 @@
   .input-field {
     @apply w-full px-3 py-2 border border-academic-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
   }
+
+  /* Mobile-specific styles for better report reading experience */
+  @media (max-width: 1024px) {
+    .mobile-report-container {
+      @apply px-4 py-4;
+    }
+    
+    .mobile-report-content {
+      @apply text-sm leading-relaxed;
+    }
+    
+    .mobile-report-content h1 {
+      @apply text-xl font-bold mb-4;
+    }
+    
+    .mobile-report-content h2 {
+      @apply text-lg font-semibold mb-3;
+    }
+    
+    .mobile-report-content h3 {
+      @apply text-base font-medium mb-2;
+    }
+    
+    .mobile-report-content p {
+      @apply mb-3;
+    }
+    
+    .mobile-report-content table {
+      @apply text-xs;
+    }
+    
+    .mobile-report-content img {
+      @apply max-w-full h-auto;
+    }
+  }
 }

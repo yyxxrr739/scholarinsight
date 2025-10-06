@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ChevronRight, Users, BookOpen, Search } from 'lucide-react'
+import { ChevronDown, ChevronRight, Users, BookOpen, Search, X } from 'lucide-react'
 import { TocSection } from '@/utils/tocGenerator'
 
 interface Scholar {
@@ -21,6 +21,7 @@ interface ScholarSidebarProps {
   selectedSection: string
   onSectionSelect: (section: string) => void
   dynamicToc?: TocSection[]
+  onClose?: () => void
 }
 
 // 报告目录结构
@@ -109,7 +110,8 @@ export default function ScholarSidebar({
   currentScholar, 
   selectedSection, 
   onSectionSelect,
-  dynamicToc 
+  dynamicToc,
+  onClose
 }: ScholarSidebarProps) {
   const [expandedSections, setExpandedSections] = useState<string[]>([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -140,6 +142,18 @@ export default function ScholarSidebar({
 
   return (
     <div className="h-screen flex flex-col sticky top-16 overflow-hidden">
+      {/* 移动端关闭按钮 */}
+      {onClose && (
+        <div className="lg:hidden flex justify-end p-3 border-b border-academic-200">
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg hover:bg-academic-100 transition-colors"
+          >
+            <X className="w-5 h-5 text-academic-700" />
+          </button>
+        </div>
+      )}
+
       {/* 学者列表 */}
       <div className="p-3 border-b border-academic-200">
         <div className="flex items-center space-x-2 mb-2">

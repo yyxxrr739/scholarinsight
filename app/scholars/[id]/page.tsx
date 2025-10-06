@@ -1,20 +1,19 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, BookOpen, MessageSquare, Share2 } from 'lucide-react'
+import { ChevronLeft, BookOpen, Share2, Menu, X } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ScholarSidebar from '@/components/ScholarSidebar'
 import ReportContent from '@/components/ReportContent'
 import HtmlReportContent from '@/components/HtmlReportContent'
-import AnnotationPanel from '@/components/AnnotationPanel'
 import reportsData from '@/data/reports.json'
 import { TocSection } from '@/utils/tocGenerator'
 
 export default function ScholarPage({ params }: { params: { id: string } }) {
   const [selectedSection, setSelectedSection] = useState<string>('')
-  const [showAnnotations, setShowAnnotations] = useState(false)
   const [dynamicToc, setDynamicToc] = useState<TocSection[]>([])
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   
   // Extract scholars from reports data
   const scholars = reportsData.reports
@@ -52,24 +51,46 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
       <Header />
       
       <main className="flex-1 flex pt-16">
+        {/* 移动端侧边栏遮罩 */}
+        {sidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
         {/* 左侧边栏 */}
-        <div className="w-80 bg-white border-r border-academic-200 flex-shrink-0 relative">
+        <div className={`
+          fixed lg:static inset-y-0 left-0 z-50 lg:z-auto
+          w-80 bg-white border-r border-academic-200 flex-shrink-0
+          transform transition-transform duration-300 ease-in-out
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}>
           <ScholarSidebar 
             scholars={scholars}
             currentScholar={currentScholar}
             selectedSection={selectedSection}
             onSectionSelect={setSelectedSection}
             dynamicToc={dynamicToc}
+            onClose={() => setSidebarOpen(false)}
           />
         </div>
 
         {/* 主内容区域 */}
-        <div className="flex-1 flex">
+        <div className="flex-1">
           {/* 报告内容 */}
           <div className="flex-1 bg-academic-50">
-            <div className="p-6">
+            <div className="p-6 mobile-report-container">
+              {/* 移动端菜单按钮 */}
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="lg:hidden fixed top-20 left-4 z-30 bg-white border border-academic-300 rounded-lg p-2 shadow-md hover:bg-academic-50 transition-colors"
+              >
+                <Menu className="w-5 h-5 text-academic-700" />
+              </button>
+
               {/* 页面头部 */}
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-6 lg:ml-0 ml-12">
                 <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden bg-academic-200">
                     {currentScholar.image && (
@@ -122,22 +143,7 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
               )}
             </div>
           </div>
-
-          {/* 右侧批注面板 */}
-          {showAnnotations && (
-            <div className="w-80 bg-white border-l border-academic-200 flex-shrink-0">
-              <AnnotationPanel />
-            </div>
-          )}
         </div>
-
-        {/* 批注切换按钮 */}
-        <button
-          onClick={() => setShowAnnotations(!showAnnotations)}
-          className="fixed bottom-6 right-6 bg-primary-600 text-white p-3 rounded-full shadow-lg hover:bg-primary-700 transition-colors"
-        >
-          <MessageSquare className="w-6 h-6" />
-        </button>
       </main>
 
       <Footer />
