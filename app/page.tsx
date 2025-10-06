@@ -71,7 +71,7 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col bg-black">
       <Header />
       
-      <main className="flex-1 relative flex flex-col">
+      <main className="flex-1 relative flex flex-col pt-16">
         {/* 星空背景效果 */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black">
           {/* 动态星星效果 */}

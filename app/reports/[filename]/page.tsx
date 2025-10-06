@@ -88,7 +88,7 @@ export default function ReportDetailPage() {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 flex items-center justify-center">
+        <main className="flex-1 flex items-center justify-center pt-16">
           <div className="text-center">
             <div className="w-16 h-16 bg-academic-200 rounded-full flex items-center justify-center mx-auto mb-4">
               <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin"></div>
@@ -106,7 +106,7 @@ export default function ReportDetailPage() {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 flex items-center justify-center">
+        <main className="flex-1 flex items-center justify-center pt-16">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-academic-900 mb-4">报告未找到</h1>
             <p className="text-academic-600 mb-6">抱歉，您查找的报告不存在。</p>
@@ -148,7 +148,7 @@ export default function ReportDetailPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         {/* 报告头部信息 */}
         <section className="bg-white border-b border-academic-200 py-6">
           <div className="container mx-auto px-4">

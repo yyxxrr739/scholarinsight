@@ -6,48 +6,27 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ScholarSidebar from '@/components/ScholarSidebar'
 import ReportContent from '@/components/ReportContent'
+import HtmlReportContent from '@/components/HtmlReportContent'
 import AnnotationPanel from '@/components/AnnotationPanel'
-
-// 模拟学者数据
-const scholars = [
-  {
-    id: 'karl-friston',
-    name: 'Karl J. Friston',
-    hIndex: 285,
-    institution: 'University College London',
-    field: 'Theoretical Neuroscience',
-    image: 'https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg',
-    reportFile: '学者信息分析报告_Karl_Friston_ZH.md'
-  },
-  {
-    id: 'yoshua-bengio',
-    name: 'Yoshua Bengio',
-    hIndex: 245,
-    institution: 'University of Montreal',
-    field: 'Deep Learning',
-    reportFile: null
-  },
-  {
-    id: 'geoffrey-hinton',
-    name: 'Geoffrey Hinton',
-    hIndex: 235,
-    institution: 'University of Toronto',
-    field: 'Deep Learning',
-    reportFile: null
-  },
-  {
-    id: 'andrew-ng',
-    name: 'Andrew Ng',
-    hIndex: 185,
-    institution: 'Stanford University',
-    field: 'Machine Learning',
-    reportFile: null
-  }
-]
+import reportsData from '@/data/reports.json'
 
 export default function ScholarPage({ params }: { params: { id: string } }) {
   const [selectedSection, setSelectedSection] = useState<string>('')
   const [showAnnotations, setShowAnnotations] = useState(false)
+  
+  // Extract scholars from reports data
+  const scholars = reportsData.reports
+    .filter(report => report.subject.type === 'scholar')
+    .map(report => ({
+      id: report.networkNode.id,
+      name: report.networkNode.name,
+      hIndex: report.networkNode.hIndex,
+      institution: report.networkNode.institution,
+      field: report.networkNode.field,
+      image: report.networkNode.image,
+      reportFile: null,
+      htmlReportFile: report.filename
+    }))
   
   const currentScholar = scholars.find(s => s.id === params.id)
   
@@ -55,12 +34,12 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-academic-900 mb-4">学者未找到</h1>
-            <p className="text-academic-600">抱歉，您查找的学者信息不存在。</p>
-          </div>
-        </main>
+      <main className="flex-1 flex items-center justify-center pt-16">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-academic-900 mb-4">学者未找到</h1>
+          <p className="text-academic-600">抱歉，您查找的学者信息不存在。</p>
+        </div>
+      </main>
         <Footer />
       </div>
     )
@@ -70,7 +49,7 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-1 flex">
+      <main className="flex-1 flex pt-16">
         {/* 左侧边栏 */}
         <div className="w-80 bg-white border-r border-academic-200 flex-shrink-0">
           <ScholarSidebar 
@@ -119,7 +98,12 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* 报告内容 */}
-              {currentScholar.reportFile ? (
+              {currentScholar.htmlReportFile ? (
+                <HtmlReportContent 
+                  reportFilename={currentScholar.htmlReportFile}
+                  selectedSection={selectedSection}
+                />
+              ) : currentScholar.reportFile ? (
                 <ReportContent 
                   reportFile={currentScholar.reportFile}
                   selectedSection={selectedSection}
