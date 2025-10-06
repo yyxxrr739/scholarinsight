@@ -99,12 +99,12 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
     // 获取容器尺寸并设置响应式画布尺寸
     const container = svgRef.current.parentElement
     const containerWidth = container?.clientWidth || 1000
-    const containerHeight = Math.min(600, window.innerHeight * 0.6) // 限制最大高度为屏幕高度的60%
+    const containerHeight = Math.min(600, window.innerHeight * 0.5) // 限制最大高度为屏幕高度的60%
     
     // 移动端适配
     const isMobile = window.innerWidth < 768
     const width = isMobile ? Math.min(containerWidth - 40, 400) : Math.min(containerWidth - 40, 1000)
-    const height = isMobile ? Math.min(containerHeight, 400) : Math.min(containerHeight, 600)
+    const height = isMobile ? Math.min(containerHeight * 0.5, 350) : Math.min(containerHeight, 600)
     
     const margin = { top: 20, right: 20, bottom: 20, left: 20 }
 
@@ -220,8 +220,8 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
 
     // 创建力导向图
     const simulation = d3.forceSimulation<NetworkNode>(data.nodes)
-      .force('link', d3.forceLink<NetworkNode, any>().id((d) => d.id).distance(100))
-      .force('charge', d3.forceManyBody().strength(-300))
+      .force('link', d3.forceLink<NetworkNode, any>().id((d) => d.id).distance(150))
+      .force('charge', d3.forceManyBody().strength(-500))
       .force('center', d3.forceCenter(width / 2, height / 2).strength(0.05)) // 整体中心力较弱
       .force('fieldPosition', (alpha: number) => {
         // 自定义力：将节点拉向各自领域的中心点
@@ -241,11 +241,11 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
       })
       .force('collision', d3.forceCollide().radius((d: any) => {
         if (d.type === 'institution') {
-          // 机构节点碰撞检测：边长等于最大学者节点的直径
-          return maxRectSize * mobileScale
+          // 机构节点碰撞检测：边长等于最大学者节点的直径 + 额外间距
+          return (maxRectSize * mobileScale) + 20
         } else {
           const baseRadius = Math.max(Math.sqrt(d.hIndex || 1) * 2, 8) // 最小半径8px
-          return baseRadius * mobileScale
+          return (baseRadius * mobileScale) + 15
         }
       }))
 
@@ -385,25 +385,66 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
           )
       })
 
-    // 添加节点标签 - 使用短名称
-    node.append('text')
-      .text((d: NetworkNode) => d.shortName)
-      .attr('text-anchor', 'middle')
-      .attr('dy', '.35em')
-      .attr('font-size', isMobile ? '10px' : '11px') // 移动端稍微增大字体
-      .attr('font-weight', '600')
-      .attr('fill', darkMode ? '#FFFFFF' : '#000000')
-      .style('text-shadow', darkMode ? '0 0 3px rgba(0,0,0,0.9)' : '0 0 2px rgba(255,255,255,0.9)')
-      .style('pointer-events', 'none')
-      .style('user-select', 'none') // 防止文本选择
+    // 添加节点标签 - 使用短名称，放在节点形状正下方
+    node.each(function(d: NetworkNode) {
+      const nodeGroup = d3.select(this)
+      const categoryData = data.categories[d.category]
+      const nodeStyle = categoryData?.nodeStyle || 'circle'
+      
+      // 计算标签的垂直偏移量
+      let labelOffsetY = 0
+      if (nodeStyle === 'rect') {
+        // 机构节点：矩形边长的一半 + 动态间距
+        const finalRectSize = maxRectSize * mobileScale
+        const spacing = Math.max(12, finalRectSize * 0.2) // 最小12px，或节点大小的20%
+        labelOffsetY = finalRectSize / 2 + spacing
+      } else {
+        // 学者节点：圆形半径 + 动态间距
+        const radius = Math.max(Math.sqrt(d.hIndex || 1) * 2, 8)
+        const finalRadius = radius * mobileScale
+        const spacing = Math.max(12, finalRadius * 0.25) // 最小12px，或节点大小的25%
+        labelOffsetY = finalRadius + spacing
+      }
+      
+      // 计算合适的字体大小
+      let fontSize = isMobile ? '10px' : '11px'
+      if (nodeStyle === 'rect') {
+        const finalRectSize = maxRectSize * mobileScale
+        // 机构节点字体稍大，基于节点大小调整
+        fontSize = isMobile ? '11px' : '12px'
+      } else {
+        const radius = Math.max(Math.sqrt(d.hIndex || 1) * 2, 8)
+        const finalRadius = radius * mobileScale
+        // 学者节点字体基于节点大小动态调整
+        if (finalRadius > 20) {
+          fontSize = isMobile ? '11px' : '12px'
+        } else if (finalRadius > 15) {
+          fontSize = isMobile ? '10px' : '11px'
+        } else {
+          fontSize = isMobile ? '9px' : '10px'
+        }
+      }
+      
+      // 添加文本标签
+      nodeGroup.append('text')
+        .text(d.shortName)
+        .attr('text-anchor', 'middle')
+        .attr('dy', labelOffsetY) // 使用计算出的偏移量
+        .attr('font-size', fontSize)
+        .attr('font-weight', '600')
+        .attr('fill', darkMode ? '#FFFFFF' : '#000000')
+        .style('text-shadow', darkMode ? '0 0 3px rgba(0,0,0,0.9)' : '0 0 2px rgba(255,255,255,0.9)')
+        .style('pointer-events', 'none')
+        .style('user-select', 'none') // 防止文本选择
+    })
 
     // 更新力导向图
     simulation.nodes(data.nodes)
     simulation.force<d3.ForceLink<NetworkNode, any>>('link')!.links(links)
     
     // 设置模拟参数，让它在稳定后停止
-    simulation.alphaDecay(0.05) // 降低alpha衰减率，让模拟更稳定
-    simulation.velocityDecay(0.4) // 增加速度衰减，减少震荡
+    simulation.alphaDecay(0.08) // 稍微增加alpha衰减率，让模拟更快稳定
+    simulation.velocityDecay(0.5) // 增加速度衰减，减少震荡
 
     // 自适应显示所有节点的函数
     const fitToView = () => {
@@ -497,7 +538,7 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
         
         const isMobile = window.innerWidth < 768
         const newWidth = isMobile ? Math.min(containerWidth - 40, 400) : Math.min(containerWidth - 40, 1000)
-        const newHeight = isMobile ? Math.min(containerHeight, 400) : Math.min(containerHeight, 600)
+        const newHeight = isMobile ? Math.min(containerHeight * 0.875, 350) : Math.min(containerHeight, 600)
         
         // 更新SVG尺寸
         d3.select(svgRef.current)
