@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { Search, Filter, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
+import { Search, Filter } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NetworkGraph, { NetworkGraphRef } from '@/components/NetworkGraph'
@@ -30,9 +30,33 @@ export default function NetworkPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterField, setFilterField] = useState<string>('all')
   const [selectedScholar, setSelectedScholar] = useState<string | null>(null)
-  const [zoomLevel, setZoomLevel] = useState(1)
   const [isMobile, setIsMobile] = useState(false)
   const networkGraphRef = useRef<NetworkGraphRef>(null)
+
+  // Function to map specific fields to broader categories
+  const mapFieldToCategory = (field: string): string => {
+    const fieldLower = field.toLowerCase()
+    
+    // Philosophy category
+    if (fieldLower.includes('philosophy') || fieldLower.includes('mind') || fieldLower.includes('cognitive science')) {
+      return '哲学'
+    }
+    
+    // Neuroscience category
+    if (fieldLower.includes('neuroscience') || fieldLower.includes('neuroimaging') || fieldLower.includes('brain') || 
+        fieldLower.includes('theoretical') || fieldLower.includes('computational') || fieldLower.includes('anatomy')) {
+      return '神经科学'
+    }
+    
+    // Artificial Intelligence category
+    if (fieldLower.includes('artificial intelligence') || fieldLower.includes('deep learning') || 
+        fieldLower.includes('ai') || fieldLower.includes('machine learning') || fieldLower.includes('neural network')) {
+      return '人工智能'
+    }
+    
+    // Default fallback
+    return '神经科学'
+  }
 
   // 检测移动端
   React.useEffect(() => {
@@ -45,40 +69,24 @@ export default function NetworkPage() {
   }, [])
 
   const filteredScholars = scholars.filter((scholar: any) => {
+    const scholarCategory = mapFieldToCategory(scholar.field)
     const matchesSearch = 
       scholar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       scholar.institution.toLowerCase().includes(searchQuery.toLowerCase()) ||
       scholar.field.toLowerCase().includes(searchQuery.toLowerCase())
     
-    const matchesField = filterField === 'all' || scholar.field === filterField
+    const matchesField = filterField === 'all' || scholarCategory === filterField
     
     return matchesSearch && matchesField
   })
 
   const getUniqueFields = () => {
-    const fields = scholars.map((s: any) => s.field)
-    return ['all', ...Array.from(new Set(fields))]
+    const categories = scholars.map((s: any) => mapFieldToCategory(s.field))
+    return ['all', ...Array.from(new Set(categories))]
   }
 
   const handleScholarClick = (scholarId: string) => {
     setSelectedScholar(selectedScholar === scholarId ? null : scholarId)
-  }
-
-  // 缩放控制函数
-  const handleZoomIn = () => {
-    networkGraphRef.current?.zoomIn()
-  }
-
-  const handleZoomOut = () => {
-    networkGraphRef.current?.zoomOut()
-  }
-
-  const handleResetView = () => {
-    networkGraphRef.current?.resetView()
-  }
-
-  const handleZoomChange = (level: number) => {
-    setZoomLevel(level)
   }
 
   return (
@@ -112,52 +120,20 @@ export default function NetworkPage() {
                 />
               </div>
 
-              {/* 筛选器和控制按钮 */}
-              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                {/* 筛选器 */}
-                <div className="flex items-center space-x-2">
-                  <Filter className="w-4 h-4 text-academic-600" />
-                  <select
-                    value={filterField}
-                    onChange={(e) => setFilterField(e.target.value)}
-                    className="px-3 py-2 border border-academic-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  >
-                    {getUniqueFields().map((field: any) => (
-                      <option key={field} value={field}>
-                        {field === 'all' ? '所有领域' : field}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* 网络图控制按钮 */}
-                <div className="flex items-center space-x-2 bg-academic-50 rounded-lg p-2">
-                  <button 
-                    onClick={handleZoomIn}
-                    className="p-2 text-academic-600 hover:text-primary-600 transition-colors touch-manipulation" 
-                    title="放大"
-                  >
-                    <ZoomIn className="w-5 h-5" />
-                  </button>
-                  <button 
-                    onClick={handleZoomOut}
-                    className="p-2 text-academic-600 hover:text-primary-600 transition-colors touch-manipulation" 
-                    title="缩小"
-                  >
-                    <ZoomOut className="w-5 h-5" />
-                  </button>
-                  <button 
-                    onClick={handleResetView}
-                    className="p-2 text-academic-600 hover:text-primary-600 transition-colors touch-manipulation" 
-                    title="重置视图"
-                  >
-                    <RotateCcw className="w-5 h-5" />
-                  </button>
-                  {/* 显示当前缩放级别 */}
-                  <div className="text-sm text-academic-500 ml-2 px-2 py-1 bg-white rounded border">
-                    {Math.round(zoomLevel * 100)}%
-                  </div>
-                </div>
+              {/* 筛选器 */}
+              <div className="flex items-center space-x-2">
+                <Filter className="w-4 h-4 text-academic-600" />
+                <select
+                  value={filterField}
+                  onChange={(e) => setFilterField(e.target.value)}
+                  className="px-3 py-2 border border-academic-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 max-w-[120px] sm:max-w-none"
+                >
+                  {getUniqueFields().map((field: any) => (
+                    <option key={field} value={field}>
+                      {field === 'all' ? '所有领域' : field}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
@@ -178,7 +154,6 @@ export default function NetworkPage() {
                 <NetworkGraph 
                   ref={networkGraphRef}
                   data={networkData} 
-                  onZoomChange={handleZoomChange}
                 />
               </div>
             </div>
@@ -221,7 +196,7 @@ export default function NetworkPage() {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-academic-900 truncate">{scholar.name}</h3>
                       <p className="text-sm text-academic-600 truncate">{scholar.institution}</p>
-                      <p className="text-xs text-academic-500">{scholar.field}</p>
+                      <p className="text-xs text-academic-500">{mapFieldToCategory(scholar.field)}</p>
                     </div>
                     
                     <div className="text-right">
