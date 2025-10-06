@@ -89,4 +89,26 @@
       @apply p-3;
     }
   }
+
+  /* Smooth scroll behavior for better mobile experience */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Mobile scroll indicator styles */
+  @media (max-width: 768px) {
+    .scroll-indicator {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .scroll-indicator button {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .scroll-indicator button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+  }
 }

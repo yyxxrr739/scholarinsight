@@ -5,6 +5,7 @@ import { Search, Filter, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NetworkGraph, { NetworkGraphRef } from '@/components/NetworkGraph'
+import ScrollIndicator from '@/components/ScrollIndicator'
 import reportsDataRaw from '@/data/reports.json'
 
 // 类型断言确保数据符合 ReportsData 接口
@@ -185,7 +186,7 @@ export default function NetworkPage() {
         </section>
 
         {/* 学者列表 */}
-        <section className="py-8 bg-academic-50">
+        <section id="scholars-list" className="py-8 bg-academic-50">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold text-academic-900 mb-6">网络中的学者</h2>
             
@@ -265,6 +266,12 @@ export default function NetworkPage() {
       </main>
 
       <Footer />
+      
+      {/* 移动端滚动提示 */}
+      <ScrollIndicator 
+        targetId="scholars-list"
+        text="向下滚动查看更多学者"
+      />
     </div>
   )
 }

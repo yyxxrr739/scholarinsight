@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Search, Filter, Calendar, User, Building2, Tag } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ScrollIndicator from '@/components/ScrollIndicator'
 
 // 报告数据类型定义
 interface ReportSubject {
@@ -199,7 +200,7 @@ export default function ReportsPage() {
         </section>
 
         {/* 报告列表 */}
-        <section className="py-8">
+        <section id="reports-list" className="py-8">
           <div className="container mx-auto px-4">
             {loading ? (
               <div className="text-center py-12">
@@ -371,6 +372,12 @@ export default function ReportsPage() {
       </main>
 
       <Footer />
+      
+      {/* 移动端滚动提示 */}
+      <ScrollIndicator 
+        targetId="reports-list"
+        text="向下滚动查看更多报告"
+      />
     </div>
   )
 }

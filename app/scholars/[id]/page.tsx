@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import ScholarSidebar from '@/components/ScholarSidebar'
 import ReportContent from '@/components/ReportContent'
 import HtmlReportContent from '@/components/HtmlReportContent'
+import ScrollIndicator from '@/components/ScrollIndicator'
 import reportsData from '@/data/reports.json'
 import { TocSection } from '@/utils/tocGenerator'
 
@@ -111,34 +112,42 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* 报告内容 */}
-              {currentScholar.htmlReportFile ? (
-                <HtmlReportContent 
-                  reportFilename={currentScholar.htmlReportFile}
-                  selectedSection={selectedSection}
-                  onTocGenerated={setDynamicToc}
-                />
-              ) : currentScholar.reportFile ? (
-                <ReportContent 
-                  reportFile={currentScholar.reportFile}
-                  selectedSection={selectedSection}
-                />
-              ) : (
-                <div className="card text-center">
-                  <BookOpen className="w-16 h-16 text-academic-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-academic-900 mb-2">
-                    报告正在准备中
-                  </h3>
-                  <p className="text-academic-600">
-                    该学者的详细分析报告正在制作中，敬请期待。
-                  </p>
-                </div>
-              )}
+              <div id="report-content">
+                {currentScholar.htmlReportFile ? (
+                  <HtmlReportContent 
+                    reportFilename={currentScholar.htmlReportFile}
+                    selectedSection={selectedSection}
+                    onTocGenerated={setDynamicToc}
+                  />
+                ) : currentScholar.reportFile ? (
+                  <ReportContent 
+                    reportFile={currentScholar.reportFile}
+                    selectedSection={selectedSection}
+                  />
+                ) : (
+                  <div className="card text-center">
+                    <BookOpen className="w-16 h-16 text-academic-400 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-academic-900 mb-2">
+                      报告正在准备中
+                    </h3>
+                    <p className="text-academic-600">
+                      该学者的详细分析报告正在制作中，敬请期待。
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </main>
 
       <Footer />
+      
+      {/* 移动端滚动提示 */}
+      <ScrollIndicator 
+        targetId="report-content"
+        text="向下滚动查看报告内容"
+      />
     </div>
   )
 }

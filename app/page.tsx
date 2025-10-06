@@ -6,6 +6,7 @@ import { Search, Calendar, User, Building2, ArrowRight } from 'lucide-react'
 import NetworkGraph from '@/components/NetworkGraph'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ScrollIndicator from '@/components/ScrollIndicator'
 import reportsDataRaw from '@/data/reports.json'
 
 // 类型断言确保数据符合 ReportsData 接口
@@ -111,7 +112,7 @@ export default function HomePage() {
           </section>
 
           {/* 合作网络图 */}
-          <section className="flex-1 flex items-center justify-center px-4">
+          <section id="network-section" className="flex-1 flex items-center justify-center px-4">
             <div className="w-full max-w-6xl">
               <div className="relative">
                 {/* 网络图容器 */}
@@ -129,7 +130,7 @@ export default function HomePage() {
           </section>
 
           {/* 最新报告展示 */}
-          <section className="py-12 px-4">
+          <section id="reports-section" className="py-12 px-4">
             <div className="container mx-auto">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-white mb-4">最新研究报告</h2>
@@ -220,6 +221,12 @@ export default function HomePage() {
       </main>
 
       <Footer />
+      
+      {/* 移动端滚动提示 */}
+      <ScrollIndicator 
+        targetId="reports-section"
+        text="查看更多报告"
+      />
     </div>
   )
 }
