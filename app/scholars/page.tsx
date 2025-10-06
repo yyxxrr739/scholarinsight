@@ -26,8 +26,13 @@ export default function ScholarsPage() {
       institution: report.networkNode.institution,
       field: report.networkNode.field,
       image: report.networkNode.image,
-      citations: report.networkNode.hIndex * 1000, // Estimate citations based on h-index
-      publications: Math.floor(report.networkNode.hIndex * 3), // Estimate publications based on h-index
+      citations: report.networkNode.citations || (report.networkNode.hIndex || 0) * 1000, // Use actual citations or estimate
+      citationsIsEstimated: !report.networkNode.citations, // Track if citations is estimated
+      publications: report.networkNode.papers || Math.floor((report.networkNode.hIndex || 0) * 3), // Use actual papers or estimate
+      publicationsIsEstimated: !report.networkNode.papers || 
+        // Mark specific scholars as having estimated papers data
+        (report.networkNode.id === 'richard-frackowiak' && report.networkNode.papers === 450) ||
+        (report.networkNode.id === 'philipp-schwartenbeck' && report.networkNode.papers === 65), // Track if publications is estimated
       country: report.networkNode.institution.includes('UK') || report.networkNode.institution.includes('London') ? 'UK' :
                report.networkNode.institution.includes('Canada') || report.networkNode.institution.includes('Montreal') ? 'Canada' :
                report.networkNode.institution.includes('USA') || report.networkNode.institution.includes('Stanford') || report.networkNode.institution.includes('Berkeley') ? 'USA' :
@@ -225,9 +230,11 @@ export default function ScholarsPage() {
                         </div>
                         <div>
                           <span className="font-medium">引用:</span> {(scholar.citations / 1000).toFixed(0)}k
+                          {scholar.citationsIsEstimated && <span className="text-academic-500 ml-1">（估算）</span>}
                         </div>
                         <div>
                           <span className="font-medium">论文:</span> {scholar.publications}
+                          {scholar.publicationsIsEstimated && <span className="text-academic-500 ml-1">（估算）</span>}
                         </div>
                       </div>
                     </div>

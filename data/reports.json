@@ -27,6 +27,8 @@
         "field": "Theoretical Neuroscience",
         "category": "scholar",
         "hIndex": 285,
+        "citations": 379000,
+        "papers": 1250,
         "image": "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg",
         "connections": ["wellcome-centre", "richard-frackowiak"],
         "description": "自由能原理提出者，SPM软件开发者"
@@ -90,7 +92,9 @@
         "institution": "洛桑联邦理工学院 / 伦敦大学学院",
         "field": "Neuroimaging, Brain Mapping",
         "category": "scholar",
-        "hIndex": 195,
+        "hIndex": 221,
+        "citations": 198600,
+        "papers": 450,
         "image": "https://agents-download.skywork.ai/croped/images/db39daf203a8b46b7950ec8baae768cc_crop.jpg",
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "神经影像学奠基人，FIL实验室创始人"
@@ -123,6 +127,8 @@
         "field": "Computational Neuroscience, Active Inference",
         "category": "scholar",
         "hIndex": 30,
+        "citations": 5159,
+        "papers": 65,
         "image": "https://agents-download.skywork.ai/image/rt/ea78632e4fcd90fe46962d9c306e4802.jpg",
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "计算神经科学家，生成式重放理论提出者"
@@ -155,6 +161,8 @@
         "field": "Neuroimaging, Computational Anatomy",
         "category": "scholar",
         "hIndex": 107,
+        "citations": 109592,
+        "papers": 300,
         "image": "https://agents-download.skywork.ai/image/rt/fcd94c937b1a6c36551c580357103996.jpg",
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "神经影像分析奠基人，SPM核心开发者"
@@ -187,6 +195,8 @@
         "field": "Philosophy of Mind, Predictive Processing",
         "category": "scholar",
         "hIndex": 40,
+        "citations": 11970,
+        "papers": 247,
         "image": "https://agents-download.skywork.ai/croped/images/15d2d0c5dd01ee9cf9f82c1d32f064ac_crop.jpg",
         "connections": ["karl-friston"],
         "description": "预测性加工理论核心阐释者，预测心智理论提出者"
@@ -218,7 +228,9 @@
         "institution": "Safe Superintelligence Inc. (SSI)",
         "field": "Deep Learning, AI Safety",
         "category": "scholar",
-        "hIndex": 85,
+        "hIndex": null,
+        "citations": 695246,
+        "papers": 74,
         "image": "https://agents-download.skywork.ai/image/rt/0d56efdf331eb261022fcdff97d98bdc.jpg",
         "connections": [],
         "description": "深度学习奠基人，GPT系列模型领导者，AI安全倡导者"
