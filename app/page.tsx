@@ -55,16 +55,19 @@ export default function HomePage() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      // TODO: 实现搜索功能
-      console.log('Searching for:', searchQuery)
+      // Find the scholar by name and navigate to their page
+      const scholar = scholars.find((s: any) => s.name === searchQuery.trim())
+      if (scholar) {
+        window.location.href = `/scholars/${scholar.id}`
+      }
     }
   }
 
   const handleSuggestionClick = (suggestion: string) => {
-    setSearchQuery(suggestion)
-    setShowSuggestions(false)
-    // TODO: 导航到学者页面
-    console.log('Selected:', suggestion)
+    const scholar = scholars.find((s: any) => s.name === suggestion)
+    if (scholar) {
+      window.location.href = `/scholars/${scholar.id}`
+    }
   }
 
   return (

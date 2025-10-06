@@ -5,77 +5,7 @@ import Link from 'next/link'
 import { Search, Filter, SortAsc, SortDesc } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-
-// 模拟学者数据
-const scholars = [
-  {
-    id: 'karl-friston',
-    name: 'Karl J. Friston',
-    hIndex: 285,
-    institution: 'University College London',
-    field: 'Theoretical Neuroscience',
-    image: 'https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg',
-    citations: 370000,
-    publications: 1200,
-    country: 'UK',
-    hasReport: true
-  },
-  {
-    id: 'yoshua-bengio',
-    name: 'Yoshua Bengio',
-    hIndex: 245,
-    institution: 'University of Montreal',
-    field: 'Deep Learning',
-    citations: 320000,
-    publications: 800,
-    country: 'Canada',
-    hasReport: false
-  },
-  {
-    id: 'geoffrey-hinton',
-    name: 'Geoffrey Hinton',
-    hIndex: 235,
-    institution: 'University of Toronto',
-    field: 'Deep Learning',
-    citations: 310000,
-    publications: 750,
-    country: 'Canada',
-    hasReport: false
-  },
-  {
-    id: 'andrew-ng',
-    name: 'Andrew Ng',
-    hIndex: 185,
-    institution: 'Stanford University',
-    field: 'Machine Learning',
-    citations: 250000,
-    publications: 600,
-    country: 'USA',
-    hasReport: false
-  },
-  {
-    id: 'yann-lecun',
-    name: 'Yann LeCun',
-    hIndex: 175,
-    institution: 'New York University',
-    field: 'Computer Vision',
-    citations: 220000,
-    publications: 550,
-    country: 'USA',
-    hasReport: false
-  },
-  {
-    id: 'jordan-michael',
-    name: 'Michael I. Jordan',
-    hIndex: 165,
-    institution: 'University of California, Berkeley',
-    field: 'Machine Learning',
-    citations: 200000,
-    publications: 500,
-    country: 'USA',
-    hasReport: false
-  }
-]
+import reportsData from '@/data/reports.json'
 
 type SortField = 'name' | 'hIndex' | 'citations' | 'publications'
 type SortOrder = 'asc' | 'desc'
@@ -85,6 +15,27 @@ export default function ScholarsPage() {
   const [sortField, setSortField] = useState<SortField>('hIndex')
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc')
   const [filterField, setFilterField] = useState<string>('all')
+
+  // Extract scholars from reports data - only those with reports
+  const scholars = reportsData.reports
+    .filter(report => report.subject.type === 'scholar')
+    .map(report => ({
+      id: report.networkNode.id,
+      name: report.networkNode.name,
+      hIndex: report.networkNode.hIndex,
+      institution: report.networkNode.institution,
+      field: report.networkNode.field,
+      image: report.networkNode.image,
+      citations: report.networkNode.hIndex * 1000, // Estimate citations based on h-index
+      publications: Math.floor(report.networkNode.hIndex * 3), // Estimate publications based on h-index
+      country: report.networkNode.institution.includes('UK') || report.networkNode.institution.includes('London') ? 'UK' :
+               report.networkNode.institution.includes('Canada') || report.networkNode.institution.includes('Montreal') ? 'Canada' :
+               report.networkNode.institution.includes('USA') || report.networkNode.institution.includes('Stanford') || report.networkNode.institution.includes('Berkeley') ? 'USA' :
+               report.networkNode.institution.includes('Australia') || report.networkNode.institution.includes('Monash') ? 'Australia' :
+               report.networkNode.institution.includes('Germany') || report.networkNode.institution.includes('Tuebingen') ? 'Germany' :
+               report.networkNode.institution.includes('Denmark') ? 'Denmark' : 'Other',
+      hasReport: true
+    }))
 
   // 过滤和排序学者
   const filteredAndSortedScholars = scholars

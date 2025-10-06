@@ -3,18 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, Search } from 'lucide-react'
-
-// 学者数据用于搜索建议
-const scholars = [
-  { id: 'karl-friston', name: 'Karl J. Friston', shortName: 'K. Friston' },
-  { id: 'yoshua-bengio', name: 'Yoshua Bengio', shortName: 'Y. Bengio' },
-  { id: 'geoffrey-hinton', name: 'Geoffrey Hinton', shortName: 'G. Hinton' },
-  { id: 'andrew-ng', name: 'Andrew Ng', shortName: 'A. Ng' },
-  { id: 'yann-lecun', name: 'Yann LeCun', shortName: 'Y. LeCun' },
-  { id: 'jordan-michael', name: 'Michael I. Jordan', shortName: 'M. Jordan' },
-  { id: 'demis-hassabis', name: 'Demis Hassabis', shortName: 'D. Hassabis' },
-  { id: 'fei-fei-li', name: 'Fei-Fei Li', shortName: 'F. Li' }
-]
+import reportsData from '@/data/reports.json'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -23,7 +12,16 @@ export default function Header() {
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
-  // 生成搜索建议
+  // Extract scholars from reports data for search suggestions
+  const scholars = reportsData.reports
+    .filter(report => report.subject.type === 'scholar')
+    .map(report => ({
+      id: report.networkNode.id,
+      name: report.networkNode.name,
+      shortName: report.networkNode.shortName
+    }))
+
+  // Generate search suggestions
   useEffect(() => {
     if (searchQuery.trim()) {
       const filtered = scholars
@@ -44,17 +42,19 @@ export default function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      // TODO: 实现搜索功能
-      console.log('Searching for:', searchQuery)
+      // Find the scholar by name and navigate to their page
+      const scholar = scholars.find(s => s.name === searchQuery.trim())
+      if (scholar) {
+        window.location.href = `/scholars/${scholar.id}`
+      }
     }
   }
 
   const handleSuggestionClick = (suggestion: string) => {
-    setSearchQuery(suggestion)
-    setShowSuggestions(false)
-    setIsSearchExpanded(false)
-    // TODO: 导航到学者页面
-    console.log('Selected:', suggestion)
+    const scholar = scholars.find(s => s.name === suggestion)
+    if (scholar) {
+      window.location.href = `/scholars/${scholar.id}`
+    }
   }
 
   return (
