@@ -70,6 +70,32 @@ export default function HtmlReportContent({ reportFilename, selectedSection, onT
             .html-report-content * {
               box-sizing: border-box;
             }
+            /* Override inline styles from HTML reports - desktop first */
+            .html-report-content body {
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+            .html-report-content .container {
+              margin: 0 !important;
+              padding: 24px 40px !important;
+              max-width: 960px !important;
+            }
+            .html-report-content main {
+              margin: 0 !important;
+              padding: 20px !important;
+              max-width: 960px !important;
+            }
+            /* Mobile-specific overrides - only for mobile */
+            @media (max-width: 1024px) {
+              .html-report-content .container {
+                padding: 8px !important;
+                max-width: none !important;
+              }
+              .html-report-content main {
+                padding: 8px !important;
+                max-width: none !important;
+              }
+            }
             ${scopedStyles}
           </style>
           <div class="html-report-content">

@@ -34,7 +34,7 @@
   /* Mobile-specific styles for better report reading experience */
   @media (max-width: 1024px) {
     .mobile-report-container {
-      @apply px-4 py-4;
+      @apply px-2 py-2;
     }
     
     .mobile-report-content {
@@ -63,6 +63,16 @@
     
     .mobile-report-content img {
       @apply max-w-full h-auto;
+    }
+    
+    /* Reduce card padding on mobile for report content */
+    .mobile-report-content .card {
+      @apply p-3;
+    }
+    
+    /* Specific mobile styles for HTML report content cards */
+    .mobile-report-container .card {
+      @apply p-3;
     }
   }
 }

@@ -80,7 +80,7 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
         <div className="flex-1">
           {/* 报告内容 */}
           <div className="flex-1 bg-academic-50">
-            <div className="p-6 mobile-report-container">
+            <div className="p-1 lg:p-2 mobile-report-container">
               {/* 移动端菜单按钮 */}
               <button
                 onClick={() => setSidebarOpen(true)}
