@@ -35,6 +35,18 @@
   @media (max-width: 1024px) {
     .mobile-report-container {
       @apply px-2 py-2;
+      width: 20%; /* Reduce to 2/5 of current width - Test 1: outermost container */
+    }
+    
+    /* 确保顶部区域也跟随容器宽度变化 */
+    .mobile-report-container .flex.items-center.justify-between {
+      width: 80%;
+      max-width: 100%;
+    }
+    
+    /* 限制Header宽度，使其与内容容器保持一致 - 仅限学者页面 */
+    body:has(.mobile-report-container) header[class*="bg-black"] {
+      width: 25% !important; /* 与mobile-report-container保持一致 */
     }
     
     .mobile-report-content {
