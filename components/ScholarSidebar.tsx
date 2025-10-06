@@ -1,13 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ChevronDown, ChevronRight, Users, BookOpen, Search } from 'lucide-react'
+import { TocSection } from '@/utils/tocGenerator'
 
 interface Scholar {
   id: string
   name: string
-  hIndex: number
+  hIndex: number | null
   institution: string
   field: string
   image?: string
@@ -19,6 +20,7 @@ interface ScholarSidebarProps {
   currentScholar: Scholar
   selectedSection: string
   onSectionSelect: (section: string) => void
+  dynamicToc?: TocSection[]
 }
 
 // 报告目录结构
@@ -106,10 +108,21 @@ export default function ScholarSidebar({
   scholars, 
   currentScholar, 
   selectedSection, 
-  onSectionSelect 
+  onSectionSelect,
+  dynamicToc 
 }: ScholarSidebarProps) {
-  const [expandedSections, setExpandedSections] = useState<string[]>(['executive-summary'])
+  const [expandedSections, setExpandedSections] = useState<string[]>([])
   const [searchQuery, setSearchQuery] = useState('')
+
+  // 使用动态目录或默认目录
+  const tocSections = dynamicToc && dynamicToc.length > 0 ? dynamicToc : reportSections
+
+  // 当动态目录加载时，自动展开第一个章节
+  useEffect(() => {
+    if (dynamicToc && dynamicToc.length > 0 && expandedSections.length === 0) {
+      setExpandedSections([dynamicToc[0].id])
+    }
+  }, [dynamicToc, expandedSections.length])
 
   const toggleSection = (sectionId: string) => {
     setExpandedSections(prev => 
@@ -126,40 +139,40 @@ export default function ScholarSidebar({
   )
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-screen flex flex-col sticky top-16 overflow-hidden">
       {/* 学者列表 */}
-      <div className="p-4 border-b border-academic-200">
-        <div className="flex items-center space-x-2 mb-3">
-          <Users className="w-4 h-4 text-academic-600" />
-          <h3 className="font-semibold text-academic-900">学者列表</h3>
+      <div className="p-3 border-b border-academic-200">
+        <div className="flex items-center space-x-2 mb-2">
+          <Users className="w-3 h-3 text-academic-600" />
+          <h3 className="font-medium text-academic-900 text-sm">学者</h3>
         </div>
         
         {/* 搜索框 */}
-        <div className="relative mb-3">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-academic-400" />
+        <div className="relative mb-2">
+          <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-academic-400" />
           <input
             type="text"
-            placeholder="搜索学者..."
+            placeholder="搜索..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 text-sm border border-academic-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="w-full pl-7 pr-2 py-1.5 text-xs border border-academic-300 rounded focus:outline-none focus:ring-1 focus:ring-primary-500"
           />
         </div>
 
         {/* 学者列表 */}
-        <div className="space-y-2 max-h-60 overflow-y-auto">
+        <div className="space-y-1 max-h-40 overflow-y-auto">
           {filteredScholars.map((scholar) => (
             <Link
               key={scholar.id}
               href={`/scholars/${scholar.id}`}
-              className={`block p-3 rounded-lg transition-colors ${
+              className={`block p-2 rounded transition-colors ${
                 scholar.id === currentScholar.id
                   ? 'bg-primary-100 text-primary-700 border border-primary-200'
                   : 'hover:bg-academic-100 text-academic-700'
               }`}
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-full overflow-hidden bg-academic-200 flex-shrink-0">
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 rounded-full overflow-hidden bg-academic-200 flex-shrink-0">
                   {scholar.image && (
                     <img 
                       src={scholar.image} 
@@ -169,11 +182,11 @@ export default function ScholarSidebar({
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-medium text-sm truncate">{scholar.name}</div>
+                  <div className="font-medium text-xs truncate">{scholar.name}</div>
                   <div className="text-xs text-academic-500 truncate">{scholar.institution}</div>
                 </div>
-                <div className="text-xs bg-academic-200 text-academic-700 px-2 py-1 rounded">
-                  {scholar.hIndex}
+                <div className="text-xs bg-academic-200 text-academic-700 px-1.5 py-0.5 rounded text-xs">
+                  {scholar.hIndex || 'N/A'}
                 </div>
               </div>
             </Link>
@@ -182,44 +195,44 @@ export default function ScholarSidebar({
       </div>
 
       {/* 报告目录 */}
-      <div className="flex-1 p-4 overflow-y-auto">
-        <div className="flex items-center space-x-2 mb-3">
-          <BookOpen className="w-4 h-4 text-academic-600" />
-          <h3 className="font-semibold text-academic-900">报告目录</h3>
+      <div className="flex-1 p-3 overflow-y-auto">
+        <div className="flex items-center space-x-2 mb-2">
+          <BookOpen className="w-3 h-3 text-academic-600" />
+          <h3 className="font-medium text-academic-900 text-sm">目录</h3>
         </div>
 
-        <div className="space-y-1">
-          {reportSections.map((section) => (
+        <div className="space-y-0.5">
+          {tocSections.map((section) => (
             <div key={section.id}>
               <button
                 onClick={() => toggleSection(section.id)}
-                className={`w-full text-left p-2 rounded-lg transition-colors flex items-center justify-between ${
+                className={`w-full text-left p-1.5 rounded transition-colors flex items-center justify-between ${
                   expandedSections.includes(section.id)
                     ? 'bg-academic-100 text-academic-900'
                     : 'hover:bg-academic-50 text-academic-700'
                 }`}
               >
-                <span className="text-sm font-medium">{section.title}</span>
+                <span className="text-xs font-medium truncate flex-1">{section.title}</span>
                 {expandedSections.includes(section.id) ? (
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3 h-3 flex-shrink-0" />
                 ) : (
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-3 h-3 flex-shrink-0" />
                 )}
               </button>
               
               {expandedSections.includes(section.id) && (
-                <div className="ml-4 mt-1 space-y-1">
-                  {section.subsections.map((subsection) => (
+                <div className="ml-3 mt-0.5 space-y-0.5">
+                  {section.subsections?.map((subsection) => (
                     <button
                       key={subsection.id}
                       onClick={() => onSectionSelect(subsection.id)}
-                      className={`w-full text-left p-2 rounded-lg transition-colors text-sm ${
+                      className={`w-full text-left p-1.5 rounded transition-colors text-xs ${
                         selectedSection === subsection.id
                           ? 'bg-primary-100 text-primary-700'
                           : 'hover:bg-academic-50 text-academic-600'
                       }`}
                     >
-                      {subsection.title}
+                      <span className="truncate block">{subsection.title}</span>
                     </button>
                   ))}
                 </div>

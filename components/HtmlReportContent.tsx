@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from 'react'
 import { Loader2 } from 'lucide-react'
+import { extractTocFromHtml, filterTocSections, TocSection, scrollToSection } from '@/utils/tocGenerator'
 
 interface HtmlReportContentProps {
   reportFilename: string
   selectedSection: string
+  onTocGenerated?: (toc: TocSection[]) => void
 }
 
-export default function HtmlReportContent({ reportFilename, selectedSection }: HtmlReportContentProps) {
+export default function HtmlReportContent({ reportFilename, selectedSection, onTocGenerated }: HtmlReportContentProps) {
   const [content, setContent] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -26,6 +28,15 @@ export default function HtmlReportContent({ reportFilename, selectedSection }: H
         }
         
         const htmlContent = await response.text()
+        
+        // 提取目录结构
+        const rawToc = extractTocFromHtml(htmlContent)
+        const filteredToc = filterTocSections(rawToc)
+        
+        // 通知父组件目录已生成
+        if (onTocGenerated) {
+          onTocGenerated(filteredToc)
+        }
         
         // 提取body内容，避免HTML文档结构影响页面
         const parser = new DOMParser()
@@ -77,6 +88,16 @@ export default function HtmlReportContent({ reportFilename, selectedSection }: H
 
     loadReport()
   }, [reportFilename])
+
+  // 处理选中章节的滚动
+  useEffect(() => {
+    if (selectedSection && content) {
+      // 延迟执行以确保DOM已渲染
+      setTimeout(() => {
+        scrollToSection(selectedSection)
+      }, 100)
+    }
+  }, [selectedSection, content])
 
   if (loading) {
     return (

@@ -9,10 +9,12 @@ import ReportContent from '@/components/ReportContent'
 import HtmlReportContent from '@/components/HtmlReportContent'
 import AnnotationPanel from '@/components/AnnotationPanel'
 import reportsData from '@/data/reports.json'
+import { TocSection } from '@/utils/tocGenerator'
 
 export default function ScholarPage({ params }: { params: { id: string } }) {
   const [selectedSection, setSelectedSection] = useState<string>('')
   const [showAnnotations, setShowAnnotations] = useState(false)
+  const [dynamicToc, setDynamicToc] = useState<TocSection[]>([])
   
   // Extract scholars from reports data
   const scholars = reportsData.reports
@@ -51,12 +53,13 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
       
       <main className="flex-1 flex pt-16">
         {/* 左侧边栏 */}
-        <div className="w-80 bg-white border-r border-academic-200 flex-shrink-0">
+        <div className="w-80 bg-white border-r border-academic-200 flex-shrink-0 relative">
           <ScholarSidebar 
             scholars={scholars}
             currentScholar={currentScholar}
             selectedSection={selectedSection}
             onSectionSelect={setSelectedSection}
+            dynamicToc={dynamicToc}
           />
         </div>
 
@@ -86,7 +89,7 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
                 
                 <div className="flex items-center space-x-2">
                   <div className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
-                    H-index: {currentScholar.hIndex}
+                    H-index: {currentScholar.hIndex || 'N/A'}
                   </div>
                   <button className="btn-secondary">
                     <Share2 className="w-4 h-4" />
@@ -99,6 +102,7 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
                 <HtmlReportContent 
                   reportFilename={currentScholar.htmlReportFile}
                   selectedSection={selectedSection}
+                  onTocGenerated={setDynamicToc}
                 />
               ) : currentScholar.reportFile ? (
                 <ReportContent 
