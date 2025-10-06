@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Share2, Download } from 'lucide-react'
+import { ArrowLeft, Share2 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -55,12 +55,6 @@ export default function StaticReportPage() {
     }
   }
 
-  const handleDownload = () => {
-    const link = document.createElement('a')
-    link.href = `/reports/${filename}.html`
-    link.download = `${filename}.html`
-    link.click()
-  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -86,13 +80,6 @@ export default function StaticReportPage() {
                 >
                   <Share2 className="w-4 h-4" />
                   <span>分享</span>
-                </button>
-                <button
-                  onClick={handleDownload}
-                  className="flex items-center space-x-2 btn-secondary"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>下载</span>
                 </button>
               </div>
             </div>

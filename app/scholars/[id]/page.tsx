@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, BookOpen, MessageSquare, Share2, Download } from 'lucide-react'
+import { ChevronLeft, BookOpen, MessageSquare, Share2 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ScholarSidebar from '@/components/ScholarSidebar'
@@ -90,9 +90,6 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
                   </div>
                   <button className="btn-secondary">
                     <Share2 className="w-4 h-4" />
-                  </button>
-                  <button className="btn-secondary">
-                    <Download className="w-4 h-4" />
                   </button>
                 </div>
               </div>
