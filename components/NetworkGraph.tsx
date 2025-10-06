@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useImperativeHandle, forwardRef } from 'react'
 import * as d3 from 'd3'
 
 interface NetworkNode extends d3.SimulationNodeDatum {
@@ -37,10 +37,58 @@ interface NetworkData {
 interface NetworkGraphProps {
   data?: NetworkData
   darkMode?: boolean
+  onZoomChange?: (zoomLevel: number) => void
 }
 
-export default function NetworkGraph({ data, darkMode = false }: NetworkGraphProps) {
+export interface NetworkGraphRef {
+  zoomIn: () => void
+  zoomOut: () => void
+  resetView: () => void
+}
+
+const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, darkMode = false, onZoomChange }, ref) => {
   const svgRef = useRef<SVGSVGElement>(null)
+  const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null)
+  const currentZoomRef = useRef<d3.ZoomTransform>(d3.zoomIdentity)
+  const fitToViewRef = useRef<(() => void) | null>(null)
+
+  // 缩放控制函数
+  const zoomIn = () => {
+    if (zoomRef.current && svgRef.current) {
+      const currentTransform = currentZoomRef.current
+      const newScale = Math.min(currentTransform.k * 1.5, 4)
+      const newTransform = currentTransform.scale(newScale)
+      d3.select(svgRef.current)
+        .transition()
+        .duration(300)
+        .call(zoomRef.current.transform, newTransform)
+    }
+  }
+
+  const zoomOut = () => {
+    if (zoomRef.current && svgRef.current) {
+      const currentTransform = currentZoomRef.current
+      const newScale = Math.max(currentTransform.k / 1.5, 0.1)
+      const newTransform = currentTransform.scale(newScale)
+      d3.select(svgRef.current)
+        .transition()
+        .duration(300)
+        .call(zoomRef.current.transform, newTransform)
+    }
+  }
+
+  const resetView = () => {
+    if (fitToViewRef.current) {
+      fitToViewRef.current()
+    }
+  }
+
+  // 将控制函数暴露给父组件
+  useImperativeHandle(ref, () => ({
+    zoomIn,
+    zoomOut,
+    resetView
+  }))
 
   useEffect(() => {
     if (!svgRef.current || !data || data.nodes.length === 0) return
@@ -64,6 +112,29 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       .attr('width', width)
       .attr('height', height)
       .style('background', 'transparent')
+
+    // 创建缩放行为
+    const zoom = d3.zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.1, 4]) // 缩放范围：0.1x 到 4x
+      .filter((event) => {
+        // 移动端优化：允许触摸手势和鼠标滚轮
+        if (isMobile) {
+          return !event.ctrlKey && !event.button
+        }
+        return true
+      })
+      .on('zoom', (event) => {
+        const { transform } = event
+        currentZoomRef.current = transform
+        onZoomChange?.(transform.k)
+        
+        // 应用变换到所有图形元素
+        svg.selectAll('g.zoomable').attr('transform', transform)
+      })
+
+    // 将缩放行为应用到SVG
+    svg.call(zoom)
+    zoomRef.current = zoom
 
     // 定义渐变
     const defs = svg.append('defs')
@@ -89,7 +160,8 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
     const maxHIndex = Math.max(...data.nodes.map(n => n.hIndex || 0))
     const maxRadius = Math.sqrt(maxHIndex) * 2
     const maxRectSize = maxRadius * 2
-    const mobileScale = isMobile ? Math.min(1, 24 / maxRectSize) : 1 // 移动端缩放比例，保持相对大小
+    // 移动端使用更大的基础尺寸，确保触摸友好
+    const mobileScale = isMobile ? Math.min(1.2, 32 / maxRectSize) : 1
     
     // 为每个节点创建照片图案
     data.nodes.forEach(node => {
@@ -185,8 +257,11 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       type: conn.type
     }))
 
+    // 创建可缩放的组
+    const zoomableGroup = svg.append('g').attr('class', 'zoomable')
+
     // 添加连接线
-    const link = svg.append('g')
+    const link = zoomableGroup.append('g')
       .selectAll('line')
       .data(links)
       .enter().append('line')
@@ -224,11 +299,18 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
 
 
     // 添加节点组
-    const node = svg.append('g')
+    const node = zoomableGroup.append('g')
       .selectAll('g')
       .data(data.nodes)
       .enter().append('g')
       .call(d3.drag<SVGGElement, NetworkNode>()
+        .filter((event) => {
+          // 移动端优化：防止与缩放手势冲突
+          if (isMobile) {
+            return event.touches ? event.touches.length === 1 : true
+          }
+          return true
+        })
         .on('start', dragstarted)
         .on('drag', dragged)
         .on('end', dragended))
@@ -308,11 +390,12 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
       .text((d: NetworkNode) => d.shortName)
       .attr('text-anchor', 'middle')
       .attr('dy', '.35em')
-      .attr('font-size', isMobile ? '9px' : '11px') // 移动端使用更小的字体
+      .attr('font-size', isMobile ? '10px' : '11px') // 移动端稍微增大字体
       .attr('font-weight', '600')
       .attr('fill', darkMode ? '#FFFFFF' : '#000000')
       .style('text-shadow', darkMode ? '0 0 3px rgba(0,0,0,0.9)' : '0 0 2px rgba(255,255,255,0.9)')
       .style('pointer-events', 'none')
+      .style('user-select', 'none') // 防止文本选择
 
     // 更新力导向图
     simulation.nodes(data.nodes)
@@ -321,6 +404,49 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
     // 设置模拟参数，让它在稳定后停止
     simulation.alphaDecay(0.05) // 降低alpha衰减率，让模拟更稳定
     simulation.velocityDecay(0.4) // 增加速度衰减，减少震荡
+
+    // 自适应显示所有节点的函数
+    const fitToView = () => {
+      if (!data.nodes.length) return
+      
+      // 计算所有节点的边界框
+      const xCoords = data.nodes.map(n => n.x || 0)
+      const yCoords = data.nodes.map(n => n.y || 0)
+      const minX = Math.min(...xCoords)
+      const maxX = Math.max(...xCoords)
+      const minY = Math.min(...yCoords)
+      const maxY = Math.max(...yCoords)
+      
+      // 添加一些边距，移动端使用更大的边距
+      const padding = isMobile ? 80 : 50
+      const bounds = {
+        x: minX - padding,
+        y: minY - padding,
+        width: maxX - minX + 2 * padding,
+        height: maxY - minY + 2 * padding
+      }
+      
+      // 计算适合的缩放比例
+      const scaleX = width / bounds.width
+      const scaleY = height / bounds.height
+      const scale = Math.min(scaleX, scaleY, 1) // 不超过1倍缩放
+      
+      // 计算居中位置
+      const translateX = (width - bounds.width * scale) / 2 - bounds.x * scale
+      const translateY = (height - bounds.height * scale) / 2 - bounds.y * scale
+      
+      // 应用变换
+      const transform = d3.zoomIdentity
+        .translate(translateX, translateY)
+        .scale(scale)
+      
+      svg.transition()
+        .duration(750)
+        .call(zoom.transform, transform)
+    }
+
+    // 保存fitToView函数到ref中
+    fitToViewRef.current = fitToView
 
     // 更新位置 - 添加动态效果
     simulation.on('tick', () => {
@@ -332,6 +458,14 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
 
       node
         .attr('transform', (d: NetworkNode) => `translate(${d.x},${d.y})`)
+    })
+
+    // 模拟完成后自适应显示所有节点
+    simulation.on('end', () => {
+      // 延迟一点时间确保所有节点位置已更新
+      setTimeout(() => {
+        fitToView()
+      }, 100)
     })
 
 
@@ -386,12 +520,34 @@ export default function NetworkGraph({ data, darkMode = false }: NetworkGraphPro
   }, [data, darkMode])
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-hidden relative">
       <svg
         ref={svgRef}
-        className="mx-auto"
-        style={{ maxWidth: '100%', height: 'auto' }}
+        className="mx-auto touch-none select-none"
+        style={{ 
+          maxWidth: '100%', 
+          height: 'auto',
+          touchAction: 'none', // 防止默认触摸行为
+          userSelect: 'none'   // 防止文本选择
+        }}
       />
+      
+      {/* 归位按钮 - 悬浮在右上角 */}
+      <div className="absolute bottom-0.5 right-0.5">
+        <button
+          onClick={resetView}
+          className="p-1.5 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-200 touch-manipulation rounded-lg shadow-lg border border-white/30"
+          title="归位到默认位置"
+        >
+          <svg className="w-3 h-3 text-gray-600 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </button>
+      </div>
     </div>
   )
-}
+})
+
+NetworkGraph.displayName = 'NetworkGraph'
+
+export default NetworkGraph

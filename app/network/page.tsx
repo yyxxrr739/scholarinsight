@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Search, Filter, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import NetworkGraph from '@/components/NetworkGraph'
+import NetworkGraph, { NetworkGraphRef } from '@/components/NetworkGraph'
 import reportsDataRaw from '@/data/reports.json'
 
 // 类型断言确保数据符合 ReportsData 接口
@@ -29,6 +29,19 @@ export default function NetworkPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterField, setFilterField] = useState<string>('all')
   const [selectedScholar, setSelectedScholar] = useState<string | null>(null)
+  const [zoomLevel, setZoomLevel] = useState(1)
+  const [isMobile, setIsMobile] = useState(false)
+  const networkGraphRef = useRef<NetworkGraphRef>(null)
+
+  // 检测移动端
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const filteredScholars = scholars.filter((scholar: any) => {
     const matchesSearch = 
@@ -50,6 +63,23 @@ export default function NetworkPage() {
     setSelectedScholar(selectedScholar === scholarId ? null : scholarId)
   }
 
+  // 缩放控制函数
+  const handleZoomIn = () => {
+    networkGraphRef.current?.zoomIn()
+  }
+
+  const handleZoomOut = () => {
+    networkGraphRef.current?.zoomOut()
+  }
+
+  const handleResetView = () => {
+    networkGraphRef.current?.resetView()
+  }
+
+  const handleZoomChange = (level: number) => {
+    setZoomLevel(level)
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -68,7 +98,7 @@ export default function NetworkPage() {
         {/* 控制面板 */}
         <section className="bg-white border-b border-academic-200 py-6">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row gap-4 items-center">
+            <div className="flex flex-col gap-4">
               {/* 搜索框 */}
               <div className="flex-1 relative max-w-md">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-academic-400 w-5 h-5" />
@@ -81,8 +111,9 @@ export default function NetworkPage() {
                 />
               </div>
 
-              {/* 筛选器 */}
-              <div className="flex items-center space-x-4">
+              {/* 筛选器和控制按钮 */}
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                {/* 筛选器 */}
                 <div className="flex items-center space-x-2">
                   <Filter className="w-4 h-4 text-academic-600" />
                   <select
@@ -99,16 +130,32 @@ export default function NetworkPage() {
                 </div>
 
                 {/* 网络图控制按钮 */}
-                <div className="flex items-center space-x-2">
-                  <button className="p-2 text-academic-600 hover:text-primary-600 transition-colors" title="放大">
-                    <ZoomIn className="w-4 h-4" />
+                <div className="flex items-center space-x-2 bg-academic-50 rounded-lg p-2">
+                  <button 
+                    onClick={handleZoomIn}
+                    className="p-2 text-academic-600 hover:text-primary-600 transition-colors touch-manipulation" 
+                    title="放大"
+                  >
+                    <ZoomIn className="w-5 h-5" />
                   </button>
-                  <button className="p-2 text-academic-600 hover:text-primary-600 transition-colors" title="缩小">
-                    <ZoomOut className="w-4 h-4" />
+                  <button 
+                    onClick={handleZoomOut}
+                    className="p-2 text-academic-600 hover:text-primary-600 transition-colors touch-manipulation" 
+                    title="缩小"
+                  >
+                    <ZoomOut className="w-5 h-5" />
                   </button>
-                  <button className="p-2 text-academic-600 hover:text-primary-600 transition-colors" title="重置视图">
-                    <RotateCcw className="w-4 h-4" />
+                  <button 
+                    onClick={handleResetView}
+                    className="p-2 text-academic-600 hover:text-primary-600 transition-colors touch-manipulation" 
+                    title="重置视图"
+                  >
+                    <RotateCcw className="w-5 h-5" />
                   </button>
+                  {/* 显示当前缩放级别 */}
+                  <div className="text-sm text-academic-500 ml-2 px-2 py-1 bg-white rounded border">
+                    {Math.round(zoomLevel * 100)}%
+                  </div>
                 </div>
               </div>
             </div>
@@ -116,17 +163,23 @@ export default function NetworkPage() {
         </section>
 
         {/* 网络图 */}
-        <section className="py-8">
+        <section className="py-4 sm:py-8">
           <div className="container mx-auto px-4">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold text-academic-900 mb-2">合作网络图</h2>
-                <p className="text-academic-600">
-                  节点大小代表H指数，连线粗细表示合作强度。点击节点查看学者详情。
+            <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+              <div className="mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-academic-900 mb-2">合作网络图</h2>
+                <p className="text-sm sm:text-base text-academic-600">
+                  节点大小代表H指数，连线粗细表示合作强度。{isMobile ? '双指缩放，单指拖拽' : '点击节点查看学者详情'}。
                 </p>
               </div>
               
-              <NetworkGraph data={networkData} />
+              <div className="relative">
+                <NetworkGraph 
+                  ref={networkGraphRef}
+                  data={networkData} 
+                  onZoomChange={handleZoomChange}
+                />
+              </div>
             </div>
           </div>
         </section>
