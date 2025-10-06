@@ -46,8 +46,44 @@ export default function ScrollIndicator({
       setIsVisible(!shouldHide)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    // Ensure the page is fully loaded before checking scroll position
+    const initializeScrollDetection = () => {
+      // Check if the page has enough content to scroll
+      const documentHeight = document.documentElement.scrollHeight
+      const windowHeight = window.innerHeight
+      
+      // Only show indicator if there's content to scroll to
+      if (documentHeight > windowHeight + 100) {
+        handleScroll()
+        window.addEventListener('scroll', handleScroll)
+      } else {
+        setIsVisible(false)
+      }
+    }
+
+    // Use multiple strategies to ensure proper initialization
+    const timer1 = setTimeout(initializeScrollDetection, 100)
+    const timer2 = setTimeout(initializeScrollDetection, 500) // Fallback timer
+    
+    // Use requestAnimationFrame to ensure DOM is fully rendered
+    const rafTimer = requestAnimationFrame(() => {
+      requestAnimationFrame(initializeScrollDetection)
+    })
+    
+    // Also check when the page is fully loaded
+    if (document.readyState === 'complete') {
+      initializeScrollDetection()
+    } else {
+      window.addEventListener('load', initializeScrollDetection)
+    }
+
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
+      cancelAnimationFrame(rafTimer)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('load', initializeScrollDetection)
+    }
   }, [isMobile])
 
   const handleClick = () => {
