@@ -99,14 +99,14 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
     // 获取容器尺寸并设置响应式画布尺寸
     const container = svgRef.current.parentElement
     const containerWidth = container?.clientWidth || 1000
-    const containerHeight = Math.min(600, window.innerHeight * 0.5) // 限制最大高度为屏幕高度的60%
+    const containerHeight = Math.min(600, window.innerHeight * 0.7) // 限制最大高度为屏幕高度的70%
     
     // 移动端适配
     const isMobile = window.innerWidth < 768
     const width = isMobile ? Math.min(containerWidth - 40, 400) : Math.min(containerWidth - 40, 1000)
-    const height = isMobile ? Math.min(containerHeight * 0.5, 350) : Math.min(containerHeight, 600)
+    const height = isMobile ? Math.min(containerHeight * 0.8, 500) : Math.min(containerHeight, 600)
     
-    const margin = { top: 20, right: 20, bottom: 20, left: 20 }
+    const margin = isMobile ? { top: 10, right: 10, bottom: 10, left: 10 } : { top: 20, right: 20, bottom: 20, left: 20 }
 
     const svg = d3.select(svgRef.current)
       .attr('width', width)
@@ -534,11 +534,11 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
         // 重新计算尺寸并重新渲染
         const container = svgRef.current.parentElement
         const containerWidth = container?.clientWidth || 1000
-        const containerHeight = Math.min(600, window.innerHeight * 0.6)
+        const containerHeight = Math.min(600, window.innerHeight * 0.7)
         
         const isMobile = window.innerWidth < 768
         const newWidth = isMobile ? Math.min(containerWidth - 40, 400) : Math.min(containerWidth - 40, 1000)
-        const newHeight = isMobile ? Math.min(containerHeight * 0.875, 350) : Math.min(containerHeight, 600)
+        const newHeight = isMobile ? Math.min(containerHeight * 0.8, 500) : Math.min(containerHeight, 600)
         
         // 更新SVG尺寸
         d3.select(svgRef.current)
@@ -577,7 +577,7 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
       <div className="absolute bottom-0.5 right-0.5">
         <button
           onClick={resetView}
-          className="p-1.5 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-200 touch-manipulation rounded-lg shadow-lg border border-white/30"
+          className="p-1 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-200 touch-manipulation rounded-lg shadow-lg border border-white/30"
           title="归位到默认位置"
         >
           <svg className="w-3 h-3 text-gray-600 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
