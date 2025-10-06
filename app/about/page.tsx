@@ -183,8 +183,7 @@ export default function AboutPage() {
                   如果您对我们的平台有任何建议或合作意向，欢迎与我们联系。
                 </p>
                 <div className="flex items-center space-x-4 text-academic-600">
-                  <span>📧 Email: contact@scholarinsight.com</span>
-                  <span>🌐 Website: www.scholarinsight.com</span>
+                  <span>Email: sciences@yeah.net</span>
                 </div>
               </div>
             </section>
