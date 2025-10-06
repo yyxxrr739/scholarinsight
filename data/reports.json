@@ -267,6 +267,40 @@
         "connections": ["karl-friston"],
         "description": "主动推理理论推广与教育中心"
       }
+    },
+    {
+      "id": "chris-frith-scholar-analysis-report",
+      "filename": "chris_frith_scholar_analysis_report.html",
+      "title": "Chris D. Frith 学者信息分析报告",
+      "description": "全面分析认知神经科学家Chris D. Frith的学术贡献、影响力与合作网络",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["认知神经科学", "社会认知", "精神分裂症", "心智理论", "Chris Frith"],
+      "subject": {
+        "type": "scholar",
+        "name": "Christopher Donald Frith",
+        "institution": "University College London",
+        "field": "Cognitive Neuroscience, Social Cognition"
+      },
+      "summary": "本报告全面分析了Chris D. Frith的学术生涯、核心贡献和影响力。作为认知神经科学领域的奠基人之一，他在精神分裂症的认知模型、心智理论的神经基础以及社会认知神经科学方面做出了开创性贡献。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/ed5251566c6b547c98005d49eed3f36d.jpg",
+      "networkNode": {
+        "id": "chris-frith",
+        "name": "Chris D. Frith",
+        "shortName": "C. Frith",
+        "type": "scholar",
+        "institution": "University College London",
+        "field": "Cognitive Neuroscience, Social Cognition",
+        "category": "scholar",
+        "hIndex": 225,
+        "citations": 219294,
+        "papers": 500,
+        "image": "https://agents-download.skywork.ai/image/rt/ed5251566c6b547c98005d49eed3f36d.jpg",
+        "connections": ["karl-friston"],
+        "description": "认知神经科学奠基人，社会认知神经科学开创者"
+      }
     }
   ],
   "connections": [
@@ -321,6 +355,12 @@
     {
       "source": "karl-friston",
       "target": "active-inference-institute",
+      "strength": 0.9,
+      "type": "collaboration"
+    },
+    {
+      "source": "chris-frith",
+      "target": "karl-friston",
       "strength": 0.9,
       "type": "collaboration"
     }
