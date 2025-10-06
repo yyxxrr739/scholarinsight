@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, BookOpen, Share2, Menu, X } from 'lucide-react'
+import { ChevronLeft, BookOpen, Menu, X } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ScholarSidebar from '@/components/ScholarSidebar'
@@ -108,14 +108,6 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-2">
-                  <div className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
-                    H-index: {currentScholar.hIndex || 'N/A'}
-                  </div>
-                  <button className="btn-secondary">
-                    <Share2 className="w-4 h-4" />
-                  </button>
-                </div>
               </div>
 
               {/* 报告内容 */}
