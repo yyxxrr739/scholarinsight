@@ -16,6 +16,31 @@ export default function ScholarsPage() {
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc')
   const [filterField, setFilterField] = useState<string>('all')
 
+  // Function to map specific fields to broader categories
+  const mapFieldToCategory = (field: string): string => {
+    const fieldLower = field.toLowerCase()
+    
+    // Philosophy category
+    if (fieldLower.includes('philosophy') || fieldLower.includes('mind') || fieldLower.includes('cognitive science')) {
+      return '哲学'
+    }
+    
+    // Neuroscience category
+    if (fieldLower.includes('neuroscience') || fieldLower.includes('neuroimaging') || fieldLower.includes('brain') || 
+        fieldLower.includes('theoretical') || fieldLower.includes('computational') || fieldLower.includes('anatomy')) {
+      return '神经科学'
+    }
+    
+    // Artificial Intelligence category
+    if (fieldLower.includes('artificial intelligence') || fieldLower.includes('deep learning') || 
+        fieldLower.includes('ai') || fieldLower.includes('machine learning') || fieldLower.includes('neural network')) {
+      return '人工智能'
+    }
+    
+    // Default fallback
+    return '神经科学'
+  }
+
   // Extract scholars from reports data - only those with reports
   const scholars = reportsData.reports
     .filter(report => report.subject.type === 'scholar')
@@ -25,6 +50,7 @@ export default function ScholarsPage() {
       hIndex: report.networkNode.hIndex,
       institution: report.networkNode.institution,
       field: report.networkNode.field,
+      category: mapFieldToCategory(report.networkNode.field), // Add simplified category
       image: report.networkNode.image,
       citations: report.networkNode.citations || (report.networkNode.hIndex || 0) * 1000, // Use actual citations or estimate
       citationsIsEstimated: !report.networkNode.citations, // Track if citations is estimated
@@ -50,7 +76,7 @@ export default function ScholarsPage() {
         scholar.institution.toLowerCase().includes(searchQuery.toLowerCase()) ||
         scholar.field.toLowerCase().includes(searchQuery.toLowerCase())
       
-      const matchesField = filterField === 'all' || scholar.field === filterField
+      const matchesField = filterField === 'all' || scholar.category === filterField
       
       return matchesSearch && matchesField
     })
@@ -88,8 +114,8 @@ export default function ScholarsPage() {
   }
 
   const getUniqueFields = () => {
-    const fields = scholars.map(s => s.field)
-    return ['all', ...Array.from(new Set(fields))]
+    const categories = scholars.map(s => s.category)
+    return ['all', ...Array.from(new Set(categories))]
   }
 
   return (
@@ -213,7 +239,7 @@ export default function ScholarsPage() {
                       </div>
                       
                       <p className="text-sm text-academic-600 mb-1 truncate">{scholar.institution}</p>
-                      <p className="text-sm text-academic-500 mb-3">{scholar.field}</p>
+                      <p className="text-sm text-academic-500 mb-3">{scholar.category}</p>
                       
                       {/* 指标 */}
                       <div className="flex items-center space-x-4 text-xs text-academic-600">
