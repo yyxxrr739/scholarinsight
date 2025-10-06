@@ -235,6 +235,38 @@
         "connections": [],
         "description": "深度学习奠基人，GPT系列模型领导者，AI安全倡导者"
       }
+    },
+    {
+      "id": "active-inference-institute-analysis-report",
+      "filename": "Active_Inference_Institute_Analysis_Report.html",
+      "title": "Active Inference Institute学术组织信息分析报告",
+      "description": "深度分析主动推理研究所(AII)的组织架构、核心研究方向、学术成果与生态系统",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "机构分析",
+      "tags": ["主动推理", "自由能原理", "AII", "学术组织", "认知科学", "人工智能", "理论神经科学"],
+      "subject": {
+        "type": "institution",
+        "name": "Active Inference Institute",
+        "institution": "Global Non-profit Organization",
+        "field": "Active Inference, Free Energy Principle, Cognitive Science"
+      },
+      "summary": "本报告全面分析了Active Inference Institute的组织架构、发展脉络、核心研究方向与学术成果。作为推动主动推理理论发展的全球性跨学科中心，AII通过教育、开源和合作构建了一个强大的学术生态系统，在理论深化、计算应用和认知科学三大方向上取得了重要进展。",
+      "featured": true,
+      "thumbnail": "https://images.squarespace-cdn.com/content/v1/659718f5ee2ea73e83a08349/c50dc46a-8569-40f0-817c-c8977c1b86cb/actinf.jpg?format=1500w",
+      "networkNode": {
+        "id": "active-inference-institute",
+        "name": "Active Inference Institute",
+        "shortName": "AII",
+        "type": "institution",
+        "institution": "Global Non-profit Organization",
+        "field": "Active Inference, Free Energy Principle",
+        "category": "institution",
+        "hIndex": 0,
+        "image": "https://images.squarespace-cdn.com/content/v1/659718f5ee2ea73e83a08349/c50dc46a-8569-40f0-817c-c8977c1b86cb/actinf.jpg?format=1500w",
+        "connections": ["karl-friston"],
+        "description": "主动推理理论推广与教育中心"
+      }
     }
   ],
   "connections": [
@@ -284,6 +316,12 @@
       "source": "karl-friston",
       "target": "jakob-hohwy",
       "strength": 0.85,
+      "type": "collaboration"
+    },
+    {
+      "source": "karl-friston",
+      "target": "active-inference-institute",
+      "strength": 0.9,
       "type": "collaboration"
     }
   ],

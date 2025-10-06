@@ -1,5 +1,4 @@
-你是一个专业的HTML响应式设计优化专家。请根据提供的CSS模板，将以下学术报告HTML文件优化为移动端友好的版本。
-
+你是一个专业的HTML响应式设计优化专家。请根据提供的CSS模板@responsive-report-template.css ，将以下学术报告HTML文件.@Active_Inference_Institute_Analysis_Report.html  优化为移动端友好的版本，同时注意更新元数据 @reports.json 。
 ## 优化要求：
 
 1. **必须添加viewport元标签**（如果缺失）：
