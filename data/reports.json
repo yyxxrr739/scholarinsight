@@ -188,7 +188,7 @@
         "category": "scholar",
         "hIndex": 40,
         "image": "https://agents-download.skywork.ai/croped/images/15d2d0c5dd01ee9cf9f82c1d32f064ac_crop.jpg",
-        "connections": ["karl-friston", "wellcome-centre"],
+        "connections": ["karl-friston"],
         "description": "预测性加工理论核心阐释者，预测心智理论提出者"
       }
     },
@@ -273,12 +273,6 @@
       "target": "jakob-hohwy",
       "strength": 0.85,
       "type": "collaboration"
-    },
-    {
-      "source": "wellcome-centre",
-      "target": "jakob-hohwy",
-      "strength": 0.7,
-      "type": "affiliation"
     }
   ],
   "categories": {
