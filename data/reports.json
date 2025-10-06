@@ -62,7 +62,7 @@
         "category": "institution",
         "hIndex": 0,
         "image": "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg",
-        "connections": ["karl-friston", "richard-frackowiak"],
+        "connections": ["karl-friston", "richard-frackowiak", "john-ashburner", "chris-frith"],
         "description": "世界级神经影像研究中心"
       }
     },
@@ -298,7 +298,7 @@
         "citations": 219294,
         "papers": 500,
         "image": "https://agents-download.skywork.ai/image/rt/ed5251566c6b547c98005d49eed3f36d.jpg",
-        "connections": ["karl-friston"],
+        "connections": ["karl-friston", "wellcome-centre"],
         "description": "认知神经科学奠基人，社会认知神经科学开创者"
       }
     }
@@ -363,6 +363,12 @@
       "target": "karl-friston",
       "strength": 0.9,
       "type": "collaboration"
+    },
+    {
+      "source": "wellcome-centre",
+      "target": "chris-frith",
+      "strength": 0.8,
+      "type": "affiliation"
     }
   ],
   "categories": {
