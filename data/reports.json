@@ -301,6 +301,40 @@
         "connections": ["karl-friston", "wellcome-centre"],
         "description": "认知神经科学奠基人，社会认知神经科学开创者"
       }
+    },
+    {
+      "id": "anil-seth-scholar-analysis-report",
+      "filename": "anil_seth_scholar_analysis_report.html",
+      "title": "学者信息分析报告：Anil Seth (阿尼尔·塞思)",
+      "description": "全面分析意识科学领域领军人物Anil Seth的学术贡献、核心理论与影响力",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["意识科学", "预测性加工", "神经科学", "内感受推断", "Anil Seth", "受控幻觉", "野兽机器"],
+      "subject": {
+        "type": "scholar",
+        "name": "Anil Kumar Seth",
+        "institution": "University of Sussex",
+        "field": "Consciousness Science, Cognitive Neuroscience, Predictive Processing"
+      },
+      "summary": "本报告全面分析了Anil Seth的学术生涯、核心贡献和影响力。作为当代意识科学领域最具影响力的领军人物之一，他提出了'受控幻觉'和'野兽机器'理论，开创性地将预测性加工框架应用于意识研究，深刻影响了神经科学、认知科学和人工智能等多个领域。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/64621d4784dee18cc5b6e828799143bb.jpg",
+      "networkNode": {
+        "id": "anil-seth",
+        "name": "Anil K. Seth",
+        "shortName": "A. Seth",
+        "type": "scholar",
+        "institution": "University of Sussex",
+        "field": "Consciousness Science, Predictive Processing",
+        "category": "scholar",
+        "hIndex": 91,
+        "citations": 38224,
+        "papers": 200,
+        "image": "https://agents-download.skywork.ai/image/rt/64621d4784dee18cc5b6e828799143bb.jpg",
+        "connections": ["karl-friston"],
+        "description": "意识科学领军人物，预测性大脑理论核心推动者"
+      }
     }
   ],
   "connections": [
@@ -369,6 +403,12 @@
       "target": "chris-frith",
       "strength": 0.8,
       "type": "affiliation"
+    },
+    {
+      "source": "karl-friston",
+      "target": "anil-seth",
+      "strength": 0.85,
+      "type": "collaboration"
     }
   ],
   "categories": {
