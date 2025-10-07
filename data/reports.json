@@ -403,6 +403,40 @@
         "connections": [],
         "description": "深度学习先驱，AI教育领袖，Software 2.0理论提出者"
       }
+    },
+    {
+      "id": "alexander-huth-analysis-report",
+      "filename": "alexander_huth_analysis_report.html",
+      "title": "学者信息分析报告：Alexander (Alex) Huth",
+      "description": "全面分析计算神经科学领域杰出青年学者Alexander Huth的学术贡献、核心思想与脑解码技术突破",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["计算神经科学", "语言神经科学", "脑机接口", "fMRI", "语义地图", "大脑解码", "Alexander Huth"],
+      "subject": {
+        "type": "scholar",
+        "name": "Alexander (Alex) G. Huth",
+        "institution": "University of California, Berkeley",
+        "field": "Computational Neuroscience, Language Neuroscience, Brain Decoding"
+      },
+      "summary": "本报告全面分析了Alexander Huth的学术生涯、核心贡献和影响力。作为计算神经科学领域的杰出青年领袖，他提出了大脑语义表征的'连续空间图谱'理论，开创性地使用自然刺激结合fMRI研究大脑语言处理机制，并开发出全球领先的基于AI的非侵入式脑活动-文本解码器，实现了从思想到连续语言的重构，为失语症患者带来革命性的沟通辅助可能。",
+      "featured": true,
+      "thumbnail": "https://www.cs.utexas.edu/~huth/static/alexhuth.png",
+      "networkNode": {
+        "id": "alexander-huth",
+        "name": "Alexander G. Huth",
+        "shortName": "A. Huth",
+        "type": "scholar",
+        "institution": "University of California, Berkeley",
+        "field": "Computational Neuroscience, Language Neuroscience",
+        "category": "scholar",
+        "hIndex": 26,
+        "citations": 8308,
+        "papers": 90,
+        "image": "https://www.cs.utexas.edu/~huth/static/alexhuth.png",
+        "connections": [],
+        "description": "语言神经科学领军人物，大脑语义图谱开创者，脑活动解码技术突破者"
+      }
     }
   ],
   "connections": [
