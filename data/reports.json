@@ -335,6 +335,40 @@
         "connections": ["karl-friston"],
         "description": "意识科学领军人物，预测性大脑理论核心推动者"
       }
+    },
+    {
+      "id": "andy-clark-scholar-analysis-report",
+      "filename": "Andy_Clark_Scholar_Analysis_Report_v2.0.html",
+      "title": "安迪·克拉克（Andy Clark）学术分析报告",
+      "description": "深度分析心智哲学家Andy Clark的学术贡献、延展心智理论与预测加工框架的思想演进",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["心智哲学", "延展心智", "预测加工", "具身认知", "Andy Clark", "天生赛博格", "认知科学"],
+      "subject": {
+        "type": "scholar",
+        "name": "Andy Clark",
+        "institution": "University of Sussex",
+        "field": "Philosophy of Mind, Cognitive Science, Extended Mind, Predictive Processing"
+      },
+      "summary": "本报告全面分析了Andy Clark的学术生涯、核心贡献和影响力。作为当代最具影响力的心智哲学家之一，他提出了'延展心智'理论，并成为'预测心智'框架的重要推动者。他的'天生赛博格'观念深刻影响了认知科学、人工智能和技术哲学等多个领域，重新定义了心智与世界的边界。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/croped/images/757cc0ee5f25e1c64c6009bdcc31e364_crop.jpg",
+      "networkNode": {
+        "id": "andy-clark",
+        "name": "Andy Clark",
+        "shortName": "A. Clark",
+        "type": "scholar",
+        "institution": "University of Sussex",
+        "field": "Philosophy of Mind, Cognitive Science",
+        "category": "scholar",
+        "hIndex": 86,
+        "citations": 68173,
+        "papers": 400,
+        "image": "https://agents-download.skywork.ai/croped/images/757cc0ee5f25e1c64c6009bdcc31e364_crop.jpg",
+        "connections": ["karl-friston"],
+        "description": "延展心智理论提出者，预测加工框架核心推动者"
+      }
     }
   ],
   "connections": [
@@ -408,6 +442,12 @@
       "source": "karl-friston",
       "target": "anil-seth",
       "strength": 0.85,
+      "type": "collaboration"
+    },
+    {
+      "source": "karl-friston",
+      "target": "andy-clark",
+      "strength": 0.9,
       "type": "collaboration"
     }
   ],
