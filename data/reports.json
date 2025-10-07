@@ -369,6 +369,40 @@
         "connections": ["karl-friston"],
         "description": "延展心智理论提出者，预测加工框架核心推动者"
       }
+    },
+    {
+      "id": "andrej-karpathy-analysis-report",
+      "filename": "andrej_karpathy_analysis_report.html",
+      "title": "解码AI巨擘：Andrej Karpathy的技术思想、产业贡献与未来版图",
+      "description": "深度分析人工智能领域核心人物Andrej Karpathy的职业生涯、技术贡献、思想演变及其行业影响力",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["人工智能", "深度学习", "计算机视觉", "自动驾驶", "AI教育", "Andrej Karpathy", "OpenAI", "特斯拉", "Software 2.0"],
+      "subject": {
+        "type": "scholar",
+        "name": "Andrej Karpathy",
+        "institution": "Eureka Labs (创始人)",
+        "field": "Deep Learning, Computer Vision, Autonomous Driving, AI Education"
+      },
+      "summary": "本报告全面分析了Andrej Karpathy的学术生涯、核心贡献和影响力。作为深度学习领域的关键人物，他是OpenAI的创始成员之一，曾担任特斯拉AI高级总监，领导Autopilot视觉团队，并创办了AI教育公司Eureka Labs。他提出的'Software 2.0'和'Software 3.0'概念深刻影响了AI行业，其CS231n课程和开源项目启蒙了整整一代AI工程师。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/109532110770fa3261519f8122a0566f.jpg",
+      "networkNode": {
+        "id": "andrej-karpathy",
+        "name": "Andrej Karpathy",
+        "shortName": "A. Karpathy",
+        "type": "scholar",
+        "institution": "Eureka Labs",
+        "field": "Deep Learning, AI Education",
+        "category": "scholar",
+        "hIndex": 75,
+        "citations": 75750,
+        "papers": 50,
+        "image": "https://agents-download.skywork.ai/image/rt/109532110770fa3261519f8122a0566f.jpg",
+        "connections": [],
+        "description": "深度学习先驱，AI教育领袖，Software 2.0理论提出者"
+      }
     }
   ],
   "connections": [
