@@ -16,19 +16,22 @@ export default function ScholarPage({ params }: { params: { id: string } }) {
   const [dynamicToc, setDynamicToc] = useState<TocSection[]>([])
   const [sidebarOpen, setSidebarOpen] = useState(false)
   
-  // Extract scholars from reports data
-  const scholars = reportsData.reports
-    .filter(report => report.subject.type === 'scholar')
-    .map(report => ({
-      id: report.networkNode.id,
-      name: report.networkNode.name,
-      hIndex: report.networkNode.hIndex,
-      institution: report.networkNode.institution,
-      field: report.networkNode.field,
-      image: report.networkNode.image,
-      reportFile: null,
-      htmlReportFile: report.filename
-    }))
+  // Extract all subjects (scholars and institutions) from reports data
+  const subjects = reportsData.reports.map(report => ({
+    id: report.networkNode.id,
+    name: report.networkNode.name,
+    type: report.subject.type as 'scholar' | 'institution',
+    hIndex: report.networkNode.hIndex,
+    institution: report.networkNode.institution,
+    field: report.networkNode.field,
+    image: report.networkNode.image,
+    reportFile: null,
+    htmlReportFile: report.filename,
+    link: report.subject.type === 'scholar' ? `/scholars/${report.networkNode.id}` : `/reports/static/${report.filename.replace('.html', '')}`
+  }))
+  
+  // Keep scholars variable for finding current scholar
+  const scholars = subjects
   
   const currentScholar = scholars.find(s => s.id === params.id)
   

@@ -27,8 +27,14 @@ const networkData = {
 // 最新报告数据 - 使用前两个报告
 const latestReports = reportsData.reports.slice(0, 2)
 
-// 从网络数据中提取学者信息用于搜索建议
-const scholars = networkNodes.filter((node: any) => node.type === 'scholar')
+// 从网络数据中提取学者和机构信息用于搜索建议
+const subjects = reportsData.reports.map((report: any) => ({
+  id: report.networkNode.id,
+  name: report.networkNode.name,
+  shortName: report.networkNode.shortName,
+  type: report.subject.type,
+  link: report.subject.type === 'scholar' ? `/scholars/${report.networkNode.id}` : report.networkNode.link
+}))
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -38,12 +44,12 @@ export default function HomePage() {
   // 生成搜索建议
   useEffect(() => {
     if (searchQuery.trim()) {
-      const filtered = scholars
-        .filter((scholar: any) => 
-          scholar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          scholar.shortName.toLowerCase().includes(searchQuery.toLowerCase())
+      const filtered = subjects
+        .filter((subject: any) => 
+          subject.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          subject.shortName.toLowerCase().includes(searchQuery.toLowerCase())
         )
-        .map((scholar: any) => scholar.name)
+        .map((subject: any) => subject.name)
         .slice(0, 5)
       setSuggestions(filtered)
       setShowSuggestions(filtered.length > 0)
@@ -56,18 +62,18 @@ export default function HomePage() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      // Find the scholar by name and navigate to their page
-      const scholar = scholars.find((s: any) => s.name === searchQuery.trim())
-      if (scholar) {
-        window.location.href = `/scholars/${scholar.id}`
+      // Find the subject by name and navigate to their page
+      const subject = subjects.find((s: any) => s.name === searchQuery.trim())
+      if (subject) {
+        window.location.href = subject.link
       }
     }
   }
 
   const handleSuggestionClick = (suggestion: string) => {
-    const scholar = scholars.find((s: any) => s.name === suggestion)
-    if (scholar) {
-      window.location.href = `/scholars/${scholar.id}`
+    const subject = subjects.find((s: any) => s.name === suggestion)
+    if (subject) {
+      window.location.href = subject.link
     }
   }
 

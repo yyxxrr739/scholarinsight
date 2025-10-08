@@ -1,129 +1,158 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
-import { ArrowLeft, Share2 } from 'lucide-react'
+import { useState } from 'react'
+import { Menu, BookOpen, Building2 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ScholarSidebar from '@/components/ScholarSidebar'
+import HtmlReportContent from '@/components/HtmlReportContent'
+import ScrollIndicator from '@/components/ScrollIndicator'
+import reportsData from '@/data/reports.json'
+import { TocSection } from '@/utils/tocGenerator'
 
-export default function StaticReportPage() {
-  const params = useParams()
-  const router = useRouter()
-  const [reportContent, setReportContent] = useState<string>('')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  const filename = params.filename as string
-
-  useEffect(() => {
-    const loadReport = async () => {
-      if (!filename) return
-      
-      try {
-        setLoading(true)
-        setError(null)
-        
-        // 加载静态HTML报告文件
-        const response = await fetch(`/reports/${filename}.html`)
-        if (!response.ok) {
-          throw new Error('报告文件未找到')
-        }
-        
-        const htmlContent = await response.text()
-        setReportContent(htmlContent)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : '加载报告时发生错误')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadReport()
-  }, [filename])
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: '学术报告',
-        text: '查看这份学术分析报告',
-        url: window.location.href,
-      })
-    } else {
-      // 复制链接到剪贴板
-      navigator.clipboard.writeText(window.location.href)
-      alert('链接已复制到剪贴板')
-    }
+export default function StaticReportPage({ params }: { params: { filename: string } }) {
+  const [selectedSection, setSelectedSection] = useState<string>('')
+  const [dynamicToc, setDynamicToc] = useState<TocSection[]>([])
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  
+  // Extract all subjects (scholars and institutions) from reports data
+  const subjects = reportsData.reports.map(report => ({
+    id: report.networkNode.id,
+    name: report.networkNode.name,
+    type: report.subject.type as 'scholar' | 'institution',
+    hIndex: report.networkNode.hIndex,
+    institution: report.networkNode.institution,
+    field: report.networkNode.field,
+    image: report.networkNode.image,
+    reportFile: null,
+    htmlReportFile: report.filename,
+    link: report.subject.type === 'scholar' ? `/scholars/${report.networkNode.id}` : `/reports/static/${report.filename.replace('.html', '')}`
+  }))
+  
+  // Find current institution report
+  const currentReport = reportsData.reports.find(
+    report => report.filename.replace('.html', '') === params.filename
+  )
+  
+  if (!currentReport) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 flex items-center justify-center pt-16">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-academic-900 mb-4">报告未找到</h1>
+            <p className="text-academic-600">抱歉，您查找的报告不存在。</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
   }
 
+  const currentSubject = {
+    id: currentReport.networkNode.id,
+    name: currentReport.networkNode.name,
+    type: currentReport.subject.type as 'scholar' | 'institution',
+    hIndex: currentReport.networkNode.hIndex,
+    institution: currentReport.networkNode.institution,
+    field: currentReport.networkNode.field,
+    image: currentReport.networkNode.image,
+    reportFile: null,
+    htmlReportFile: currentReport.filename
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-1 pt-16">
-        {/* 报告头部控制栏 */}
-        <section className="bg-white border-b border-academic-200 py-4">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between">
+      <main className="flex-1 flex pt-16">
+        {/* 移动端侧边栏遮罩 */}
+        {sidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
+        {/* 左侧边栏 */}
+        <div className={`
+          fixed lg:static inset-y-0 left-0 z-50 lg:z-auto
+          w-80 bg-white border-r border-academic-200 flex-shrink-0
+          transform transition-transform duration-300 ease-in-out
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}>
+          <ScholarSidebar 
+            scholars={subjects}
+            currentScholar={currentSubject}
+            selectedSection={selectedSection}
+            onSectionSelect={setSelectedSection}
+            dynamicToc={dynamicToc}
+            onClose={() => setSidebarOpen(false)}
+          />
+        </div>
+
+        {/* 主内容区域 */}
+        <div className="flex-1">
+          {/* 报告内容 */}
+          <div className="flex-1 bg-academic-50">
+            <div className="p-1 lg:p-2 mobile-report-container">
+              {/* 移动端菜单按钮 */}
               <button
-                onClick={() => router.push('/reports')}
-                className="flex items-center space-x-2 text-academic-600 hover:text-primary-600 transition-colors"
+                onClick={() => setSidebarOpen(true)}
+                className="lg:hidden fixed top-20 left-4 z-30 bg-white border border-academic-300 rounded-lg p-2 shadow-md hover:bg-academic-50 transition-colors"
               >
-                <ArrowLeft className="w-4 h-4" />
-                <span>返回报告列表</span>
+                <Menu className="w-5 h-5 text-academic-700" />
               </button>
 
-              <div className="flex items-center space-x-4">
-                <button
-                  onClick={handleShare}
-                  className="flex items-center space-x-2 btn-secondary"
-                >
-                  <Share2 className="w-4 h-4" />
-                  <span>分享</span>
-                </button>
+              {/* 页面头部 */}
+              <div className="flex items-center justify-between mb-6 lg:ml-0 ml-12">
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden bg-academic-200">
+                    {currentSubject.image ? (
+                      <img 
+                        src={currentSubject.image} 
+                        alt={currentSubject.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-academic-300 flex items-center justify-center">
+                        <Building2 className="w-8 h-8 text-academic-600" />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <div className="flex items-center space-x-2 mb-1">
+                      <h1 className="text-2xl font-bold text-academic-900">{currentSubject.name}</h1>
+                      <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
+                        机构
+                      </span>
+                    </div>
+                    <p className="text-academic-600">{currentSubject.institution}</p>
+                    <p className="text-academic-500 text-sm">{currentSubject.field}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 报告内容 */}
+              <div id="report-content">
+                <HtmlReportContent 
+                  reportFilename={currentSubject.htmlReportFile}
+                  selectedSection={selectedSection}
+                  onTocGenerated={setDynamicToc}
+                />
               </div>
             </div>
           </div>
-        </section>
-
-        {/* 报告内容 */}
-        <section className="py-8">
-          <div className="container mx-auto px-4">
-            {loading ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-academic-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-                <h3 className="text-lg font-semibold text-academic-900 mb-2">正在加载报告</h3>
-                <p className="text-academic-600">请稍候...</p>
-              </div>
-            ) : error ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-8 h-8 text-red-600">⚠️</div>
-                </div>
-                <h3 className="text-lg font-semibold text-academic-900 mb-2">加载失败</h3>
-                <p className="text-academic-600 mb-4">{error}</p>
-                <button
-                  onClick={() => window.location.reload()}
-                  className="btn-primary"
-                >
-                  重新加载
-                </button>
-              </div>
-            ) : (
-              <div className="bg-white rounded-lg shadow-sm border border-academic-200 overflow-hidden">
-                <div 
-                  className="prose max-w-none"
-                  dangerouslySetInnerHTML={{ __html: reportContent }}
-                />
-              </div>
-            )}
-          </div>
-        </section>
+        </div>
       </main>
 
       <Footer />
+      
+      {/* 移动端滚动提示 */}
+      <ScrollIndicator 
+        targetId="report-content"
+        text="向下滚动查看报告内容"
+      />
     </div>
   )
 }

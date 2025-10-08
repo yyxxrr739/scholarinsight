@@ -2,17 +2,19 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ChevronRight, Users, BookOpen, Search, X } from 'lucide-react'
+import { ChevronDown, ChevronRight, Users, BookOpen, Search, X, Building2 } from 'lucide-react'
 import { TocSection } from '@/utils/tocGenerator'
 
 interface Scholar {
   id: string
   name: string
+  type?: 'scholar' | 'institution'
   hIndex: number | null
   institution: string
   field: string
   image?: string
   reportFile?: string | null
+  link?: string
 }
 
 interface ScholarSidebarProps {
@@ -154,11 +156,11 @@ export default function ScholarSidebar({
         </div>
       )}
 
-      {/* 学者列表 */}
+      {/* 学者与机构列表 */}
       <div className="p-3 border-b border-academic-200">
         <div className="flex items-center space-x-2 mb-2">
           <Users className="w-3 h-3 text-academic-600" />
-          <h3 className="font-medium text-academic-900 text-sm">学者</h3>
+          <h3 className="font-medium text-academic-900 text-sm">学者与机构</h3>
         </div>
         
         {/* 搜索框 */}
@@ -173,38 +175,52 @@ export default function ScholarSidebar({
           />
         </div>
 
-        {/* 学者列表 */}
+        {/* 学者与机构列表 */}
         <div className="space-y-1 max-h-40 overflow-y-auto">
-          {filteredScholars.map((scholar) => (
-            <Link
-              key={scholar.id}
-              href={`/scholars/${scholar.id}`}
-              className={`block p-2 rounded transition-colors ${
-                scholar.id === currentScholar.id
-                  ? 'bg-primary-100 text-primary-700 border border-primary-200'
-                  : 'hover:bg-academic-100 text-academic-700'
-              }`}
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 rounded-full overflow-hidden bg-academic-200 flex-shrink-0">
-                  {scholar.image && (
-                    <img 
-                      src={scholar.image} 
-                      alt={scholar.name}
-                      className="w-full h-full object-cover"
-                    />
+          {filteredScholars.map((scholar) => {
+            const isInstitution = scholar.type === 'institution'
+            const linkHref = scholar.link || `/scholars/${scholar.id}`
+            
+            return (
+              <Link
+                key={scholar.id}
+                href={linkHref}
+                className={`block p-2 rounded transition-colors ${
+                  scholar.id === currentScholar.id
+                    ? 'bg-primary-100 text-primary-700 border border-primary-200'
+                    : 'hover:bg-academic-100 text-academic-700'
+                }`}
+              >
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 rounded-full overflow-hidden bg-academic-200 flex-shrink-0 flex items-center justify-center">
+                    {scholar.image ? (
+                      <img 
+                        src={scholar.image} 
+                        alt={scholar.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : isInstitution ? (
+                      <Building2 className="w-3 h-3 text-academic-600" />
+                    ) : null}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium text-xs truncate">{scholar.name}</div>
+                    <div className="text-xs text-academic-500 truncate">{scholar.institution}</div>
+                  </div>
+                  {!isInstitution && (
+                    <div className="text-xs bg-academic-200 text-academic-700 px-1.5 py-0.5 rounded text-xs">
+                      {scholar.hIndex || 'N/A'}
+                    </div>
+                  )}
+                  {isInstitution && (
+                    <div className="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-xs">
+                      机构
+                    </div>
                   )}
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-medium text-xs truncate">{scholar.name}</div>
-                  <div className="text-xs text-academic-500 truncate">{scholar.institution}</div>
-                </div>
-                <div className="text-xs bg-academic-200 text-academic-700 px-1.5 py-0.5 rounded text-xs">
-                  {scholar.hIndex || 'N/A'}
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            )
+          })}
         </div>
       </div>
 

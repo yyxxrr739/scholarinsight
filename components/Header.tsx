@@ -12,24 +12,24 @@ export default function Header() {
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
-  // Extract scholars from reports data for search suggestions
-  const scholars = reportsData.reports
-    .filter(report => report.subject.type === 'scholar')
-    .map(report => ({
-      id: report.networkNode.id,
-      name: report.networkNode.name,
-      shortName: report.networkNode.shortName
-    }))
+  // Extract scholars and institutions from reports data for search suggestions
+  const subjects = reportsData.reports.map(report => ({
+    id: report.networkNode.id,
+    name: report.networkNode.name,
+    shortName: report.networkNode.shortName,
+    type: report.subject.type as 'scholar' | 'institution',
+    link: report.subject.type === 'scholar' ? `/scholars/${report.networkNode.id}` : report.networkNode.link
+  }))
 
   // Generate search suggestions
   useEffect(() => {
     if (searchQuery.trim()) {
-      const filtered = scholars
-        .filter(scholar => 
-          scholar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          scholar.shortName.toLowerCase().includes(searchQuery.toLowerCase())
+      const filtered = subjects
+        .filter(subject => 
+          subject.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          subject.shortName.toLowerCase().includes(searchQuery.toLowerCase())
         )
-        .map(scholar => scholar.name)
+        .map(subject => subject.name)
         .slice(0, 5)
       setSuggestions(filtered)
       setShowSuggestions(filtered.length > 0)
@@ -42,18 +42,18 @@ export default function Header() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchQuery.trim()) {
-      // Find the scholar by name and navigate to their page
-      const scholar = scholars.find(s => s.name === searchQuery.trim())
-      if (scholar) {
-        window.location.href = `/scholars/${scholar.id}`
+      // Find the subject by name and navigate to their page
+      const subject = subjects.find(s => s.name === searchQuery.trim())
+      if (subject) {
+        window.location.href = subject.link
       }
     }
   }
 
   const handleSuggestionClick = (suggestion: string) => {
-    const scholar = scholars.find(s => s.name === suggestion)
-    if (scholar) {
-      window.location.href = `/scholars/${scholar.id}`
+    const subject = subjects.find(s => s.name === suggestion)
+    if (subject) {
+      window.location.href = subject.link
     }
   }
 
@@ -78,7 +78,7 @@ export default function Header() {
               研究报告
             </Link>
             <Link href="/scholars" className="text-gray-300 hover:text-white transition-colors">
-              学者列表
+              学者与机构
             </Link>
             <Link href="/network" className="text-gray-300 hover:text-white transition-colors">
               合作网络
@@ -97,7 +97,7 @@ export default function Header() {
                   <div className="relative">
                     <input
                       type="text"
-                      placeholder="搜索学者姓名..."
+                      placeholder="搜索学者或机构..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       onFocus={() => setShowSuggestions(suggestions.length > 0)}
@@ -172,7 +172,7 @@ export default function Header() {
                 className="text-gray-300 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                学者列表
+                学者与机构
               </Link>
               <Link 
                 href="/network" 
