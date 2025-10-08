@@ -437,6 +437,40 @@
         "connections": [],
         "description": "语言神经科学领军人物，大脑语义图谱开创者，脑活动解码技术突破者"
       }
+    },
+    {
+      "id": "andrew-ng-scholar-analysis-report",
+      "filename": "吴恩达学者信息分析报告.html",
+      "title": "吴恩达（Andrew Ng）学者信息分析报告",
+      "description": "全面分析人工智能领域杰出学者吴恩达的学术贡献、产业影响力与教育普及成就",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["人工智能", "机器学习", "深度学习", "在线教育", "吴恩达", "Andrew Ng", "Google Brain", "Coursera", "DeepLearning.AI"],
+      "subject": {
+        "type": "scholar",
+        "name": "吴恩达 (Andrew Yan-Tak Ng)",
+        "institution": "Stanford University",
+        "field": "Machine Learning, Deep Learning, Artificial Intelligence"
+      },
+      "summary": "本报告全面分析了吴恩达的学术生涯、核心贡献和影响力。作为人工智能领域的顶尖学者与教育家，他共同提出了LDA主题模型和谱聚类算法，创立并领导Google Brain项目，联合创办全球最大的MOOC平台Coursera，并通过DeepLearning.AI推动AI知识的民主化。他倡导'以数据为中心的AI'和'智能体AI'等前沿理念，深刻影响了AI领域的理论发展、产业应用和人才培养。",
+      "featured": true,
+      "thumbnail": "https://agents-download.skywork.ai/image/rt/c5dc4b5486daa2fa85b2022860970ca6.jpg",
+      "networkNode": {
+        "id": "andrew-ng",
+        "name": "Andrew Y. Ng",
+        "shortName": "A. Ng",
+        "type": "scholar",
+        "institution": "Stanford University",
+        "field": "Machine Learning, Deep Learning, AI",
+        "category": "scholar",
+        "hIndex": 153,
+        "citations": 296134,
+        "papers": 416,
+        "image": "https://agents-download.skywork.ai/image/rt/c5dc4b5486daa2fa85b2022860970ca6.jpg",
+        "connections": [],
+        "description": "AI领域顶尖学者，Google Brain创始人，Coursera联合创始人，AI教育布道者"
+      }
     }
   ],
   "connections": [
