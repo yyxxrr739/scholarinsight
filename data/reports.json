@@ -31,7 +31,8 @@
         "papers": 1250,
         "image": "https://picture-search.tiangong.cn/image/rt/f009eb9bfbfca01ab6d15840acace810.jpg",
         "connections": ["wellcome-centre", "richard-frackowiak"],
-        "description": "自由能原理提出者，SPM软件开发者"
+        "description": "自由能原理提出者，SPM软件开发者",
+        "link": "/scholars/karl-friston"
       }
     },
     {
@@ -63,7 +64,8 @@
         "hIndex": 0,
         "image": "https://agents-download.skywork.ai/image/rt/fa8e364e9f474c5b0f624eeb3e98d38b.jpg",
         "connections": ["karl-friston", "richard-frackowiak", "john-ashburner", "chris-frith"],
-        "description": "世界级神经影像研究中心"
+        "description": "世界级神经影像研究中心",
+        "link": "/reports/static/Wellcome_Trust_Centre_Analysis_Report"
       }
     },
     {
@@ -97,7 +99,8 @@
         "papers": 450,
         "image": "https://agents-download.skywork.ai/croped/images/db39daf203a8b46b7950ec8baae768cc_crop.jpg",
         "connections": ["karl-friston", "wellcome-centre"],
-        "description": "神经影像学奠基人，FIL实验室创始人"
+        "description": "神经影像学奠基人，FIL实验室创始人",
+        "link": "/scholars/richard-frackowiak"
       }
     },
     {
@@ -131,7 +134,8 @@
         "papers": 65,
         "image": "https://agents-download.skywork.ai/image/rt/ea78632e4fcd90fe46962d9c306e4802.jpg",
         "connections": ["karl-friston", "wellcome-centre"],
-        "description": "计算神经科学家，生成式重放理论提出者"
+        "description": "计算神经科学家，生成式重放理论提出者",
+        "link": "/scholars/philipp-schwartenbeck"
       }
     },
     {
@@ -165,7 +169,8 @@
         "papers": 300,
         "image": "https://agents-download.skywork.ai/image/rt/fcd94c937b1a6c36551c580357103996.jpg",
         "connections": ["karl-friston", "wellcome-centre"],
-        "description": "神经影像分析奠基人，SPM核心开发者"
+        "description": "神经影像分析奠基人，SPM核心开发者",
+        "link": "/scholars/john-ashburner"
       }
     },
     {
@@ -199,7 +204,8 @@
         "papers": 247,
         "image": "https://agents-download.skywork.ai/croped/images/15d2d0c5dd01ee9cf9f82c1d32f064ac_crop.jpg",
         "connections": ["karl-friston"],
-        "description": "预测性加工理论核心阐释者，预测心智理论提出者"
+        "description": "预测性加工理论核心阐释者，预测心智理论提出者",
+        "link": "/scholars/jakob-hohwy"
       }
     },
     {
@@ -233,7 +239,8 @@
         "papers": 74,
         "image": "https://agents-download.skywork.ai/image/rt/0d56efdf331eb261022fcdff97d98bdc.jpg",
         "connections": [],
-        "description": "深度学习奠基人，GPT系列模型领导者，AI安全倡导者"
+        "description": "深度学习奠基人，GPT系列模型领导者，AI安全倡导者",
+        "link": "/scholars/ilya-sutskever"
       }
     },
     {
@@ -265,7 +272,8 @@
         "hIndex": 0,
         "image": "https://images.squarespace-cdn.com/content/v1/659718f5ee2ea73e83a08349/c50dc46a-8569-40f0-817c-c8977c1b86cb/actinf.jpg?format=1500w",
         "connections": ["karl-friston"],
-        "description": "主动推理理论推广与教育中心"
+        "description": "主动推理理论推广与教育中心",
+        "link": "/reports/static/Active_Inference_Institute_Analysis_Report"
       }
     },
     {
@@ -299,7 +307,8 @@
         "papers": 500,
         "image": "https://agents-download.skywork.ai/image/rt/ed5251566c6b547c98005d49eed3f36d.jpg",
         "connections": ["karl-friston", "wellcome-centre"],
-        "description": "认知神经科学奠基人，社会认知神经科学开创者"
+        "description": "认知神经科学奠基人，社会认知神经科学开创者",
+        "link": "/scholars/chris-frith"
       }
     },
     {
@@ -333,7 +342,8 @@
         "papers": 200,
         "image": "https://agents-download.skywork.ai/image/rt/64621d4784dee18cc5b6e828799143bb.jpg",
         "connections": ["karl-friston"],
-        "description": "意识科学领军人物，预测性大脑理论核心推动者"
+        "description": "意识科学领军人物，预测性大脑理论核心推动者",
+        "link": "/scholars/anil-seth"
       }
     },
     {
@@ -367,7 +377,8 @@
         "papers": 400,
         "image": "https://agents-download.skywork.ai/croped/images/757cc0ee5f25e1c64c6009bdcc31e364_crop.jpg",
         "connections": ["karl-friston"],
-        "description": "延展心智理论提出者，预测加工框架核心推动者"
+        "description": "延展心智理论提出者，预测加工框架核心推动者",
+        "link": "/scholars/andy-clark"
       }
     },
     {
@@ -401,7 +412,8 @@
         "papers": 50,
         "image": "https://agents-download.skywork.ai/image/rt/109532110770fa3261519f8122a0566f.jpg",
         "connections": [],
-        "description": "深度学习先驱，AI教育领袖，Software 2.0理论提出者"
+        "description": "深度学习先驱，AI教育领袖，Software 2.0理论提出者",
+        "link": "/scholars/andrej-karpathy"
       }
     },
     {
@@ -435,7 +447,8 @@
         "papers": 90,
         "image": "https://www.cs.utexas.edu/~huth/static/alexhuth.png",
         "connections": [],
-        "description": "语言神经科学领军人物，大脑语义图谱开创者，脑活动解码技术突破者"
+        "description": "语言神经科学领军人物，大脑语义图谱开创者，脑活动解码技术突破者",
+        "link": "/scholars/alexander-huth"
       }
     },
     {
@@ -469,7 +482,8 @@
         "papers": 416,
         "image": "https://agents-download.skywork.ai/image/rt/c5dc4b5486daa2fa85b2022860970ca6.jpg",
         "connections": [],
-        "description": "AI领域顶尖学者，Google Brain创始人，Coursera联合创始人，AI教育布道者"
+        "description": "AI领域顶尖学者，Google Brain创始人，Coursera联合创始人，AI教育布道者",
+        "link": "/scholars/andrew-ng"
       }
     }
   ],

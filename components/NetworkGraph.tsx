@@ -15,6 +15,7 @@ interface NetworkNode extends d3.SimulationNodeDatum {
   image?: string
   connections: string[]
   description?: string
+  link?: string
 }
 
 interface NetworkConnection {
@@ -333,11 +334,91 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
       .style('filter', darkMode ? 'drop-shadow(0 0 1px rgba(59, 130, 246, 0.2))' : 'none')
 
 
+    // 移动端交互变量
+    let dragStartPos: { x: number, y: number } | null = null
+    let dragDistance = 0
+    let clickedNode: NetworkNode | null = null
+    let currentNodeElement: SVGGElement | null = null
+
+    // 拖拽函数
+    function dragstarted(this: SVGGElement, event: any, d: NetworkNode) {
+      if (!event.active) simulation.alphaTarget(0.3).restart()
+      d.fx = d.x
+      d.fy = d.y
+      
+      // 记录起始位置和节点元素
+      dragStartPos = { x: event.x, y: event.y }
+      dragDistance = 0
+      currentNodeElement = this
+    }
+
+    function dragged(event: any, d: NetworkNode) {
+      d.fx = event.x
+      d.fy = event.y
+      
+      // 计算拖拽距离
+      if (dragStartPos) {
+        const dx = event.x - dragStartPos.x
+        const dy = event.y - dragStartPos.y
+        dragDistance = Math.sqrt(dx * dx + dy * dy)
+      }
+    }
+
+    function dragended(event: any, d: NetworkNode) {
+      if (!event.active) simulation.alphaTarget(0)
+      d.fx = null
+      d.fy = null
+      
+      // 移动端：如果拖拽距离很小（<5px），认为是点击
+      console.log('[NetworkGraph] dragended - isMobile:', isMobile, 'dragDistance:', dragDistance, 'node:', d.name)
+      
+      if (isMobile && dragDistance < 5 && currentNodeElement) {
+        console.log('[NetworkGraph] Mobile tap detected on node:', d.name, 'has link:', !!d.link)
+        
+        // 点击节点：显示该节点的按钮，隐藏其他按钮
+        if (clickedNode === d) {
+          // 再次点击同一节点，隐藏按钮
+          console.log('[NetworkGraph] Hiding button (same node clicked twice)')
+          d3.selectAll('.nav-button')
+            .transition()
+            .duration(200)
+            .style('opacity', '0')
+            .style('pointer-events', 'none')
+          clickedNode = null
+        } else {
+          // 点击新节点，显示该节点的按钮
+          console.log('[NetworkGraph] Showing button for node:', d.name)
+          d3.selectAll('.nav-button')
+            .transition()
+            .duration(200)
+            .style('opacity', '0')
+            .style('pointer-events', 'none')
+          
+          // 找到对应节点的按钮并显示
+          const buttonSelection = d3.select(currentNodeElement).select('.nav-button')
+          console.log('[NetworkGraph] Button selection found:', !buttonSelection.empty())
+          
+          buttonSelection
+            .transition()
+            .duration(200)
+            .style('opacity', '1')
+            .style('pointer-events', 'auto')
+          
+          clickedNode = d
+        }
+      }
+      
+      dragStartPos = null
+      dragDistance = 0
+      currentNodeElement = null
+    }
+
     // 添加节点组
     const node = zoomableGroup.append('g')
       .selectAll('g')
       .data(data.nodes)
       .enter().append('g')
+      .attr('class', 'node-group')
       .call(d3.drag<SVGGElement, NetworkNode>()
         .filter((event) => {
           // 移动端优化：防止与缩放手势冲突
@@ -394,11 +475,44 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
       }
     })
 
+    // 为每个节点添加半透明的导航按钮（初始隐藏）
+    node.each(function(d: NetworkNode) {
+      if (!d.link) return // 如果没有链接则不添加按钮
+      
+      const nodeGroup = d3.select(this)
+      
+      // 创建按钮组
+      const buttonGroup = nodeGroup.append('g')
+        .attr('class', 'nav-button')
+        .style('opacity', '0')
+        .style('pointer-events', 'none')
+        .style('cursor', 'pointer')
+      
+      // 添加圆形背景
+      buttonGroup.append('circle')
+        .attr('r', 12)
+        .attr('fill', darkMode ? 'rgba(59, 130, 246, 0.85)' : 'rgba(59, 130, 246, 0.9)')
+        .attr('stroke', darkMode ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.8)')
+        .attr('stroke-width', 1.5)
+        .style('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))')
+      
+      // 添加箭头图标
+      buttonGroup.append('path')
+        .attr('d', 'M-4,-4 L4,0 L-4,4 Z') // 右箭头
+        .attr('fill', 'white')
+        .attr('transform', 'translate(1, 0)')
+      
+      // 添加点击事件
+      buttonGroup.on('click', (event) => {
+        event.stopPropagation() // 防止事件冒泡
+        if (d.link) {
+          window.location.href = d.link
+        }
+      })
+    })
+
     // 添加交互事件
     node
-      .on('click', (event, d: NetworkNode) => {
-        console.log('Clicked on:', d.name, 'Type:', d.type)
-      })
       .on('mouseover', function(event, d: NetworkNode) {
         d3.select(this).select('circle, rect')
           .transition()
@@ -408,6 +522,15 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
             'drop-shadow(0 6px 12px rgba(0,0,0,0.8)) drop-shadow(0 4px 8px rgba(0,0,0,0.6))' : 
             'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
           )
+        
+        // 桌面端：悬停时显示按钮
+        if (!isMobile && d.link) {
+          d3.select(this).select('.nav-button')
+            .transition()
+            .duration(200)
+            .style('opacity', '1')
+            .style('pointer-events', 'auto')
+        }
       })
       .on('mouseout', function(event, d: NetworkNode) {
         d3.select(this).select('circle, rect')
@@ -418,6 +541,15 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
             'drop-shadow(0 4px 8px rgba(0,0,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4))' : 
             'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
           )
+        
+        // 桌面端：鼠标移出时隐藏按钮
+        if (!isMobile) {
+          d3.select(this).select('.nav-button')
+            .transition()
+            .duration(200)
+            .style('opacity', '0')
+            .style('pointer-events', 'none')
+        }
       })
 
     // 添加节点标签 - 使用短名称，放在节点形状正下方
@@ -544,25 +676,6 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
         fitToView()
       }, 100)
     })
-
-
-    // 拖拽函数
-    function dragstarted(event: any, d: NetworkNode) {
-      if (!event.active) simulation.alphaTarget(0.3).restart()
-      d.fx = d.x
-      d.fy = d.y
-    }
-
-    function dragged(event: any, d: NetworkNode) {
-      d.fx = event.x
-      d.fy = event.y
-    }
-
-    function dragended(event: any, d: NetworkNode) {
-      if (!event.active) simulation.alphaTarget(0)
-      d.fx = null
-      d.fy = null
-    }
 
     // 窗口大小变化监听器
     const handleResize = () => {
