@@ -74,9 +74,6 @@ export default function Header() {
             <Link href="/" className="text-gray-300 hover:text-white transition-colors">
               首页
             </Link>
-            <Link href="/reports" className="text-gray-300 hover:text-white transition-colors">
-              研究报告
-            </Link>
             <Link href="/scholars" className="text-gray-300 hover:text-white transition-colors">
               学者与机构
             </Link>
@@ -159,13 +156,6 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 首页
-              </Link>
-              <Link 
-                href="/reports" 
-                className="text-gray-300 hover:text-white transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                研究报告
               </Link>
               <Link 
                 href="/scholars" 

@@ -214,10 +214,10 @@ export default function HomePage() {
 
               <div className="text-center">
                 <Link
-                  href="/reports"
+                  href="/scholars"
                   className="inline-flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-lg transition-all duration-300"
                 >
-                  <span>查看所有报告</span>
+                  <span>查看所有学者</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
