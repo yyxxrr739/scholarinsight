@@ -207,7 +207,25 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
     // 定义节点领域分类
     const categorizeNode = (node: NetworkNode): 'ai' | 'neuroscience' => {
       const field = node.field.toLowerCase()
-      if (field.includes('deep learning') || field.includes('artificial intelligence') || field.includes('ai safety')) {
+      // AI相关关键词匹配
+      const aiKeywords = [
+        'deep learning',
+        'machine learning',
+        'artificial intelligence',
+        'ai safety',
+        'computer vision',
+        'autonomous driving',
+        'neural network',
+        'AI'
+      ]
+      
+      // 检查是否包含AI关键词
+      const isAI = aiKeywords.some(keyword => field.includes(keyword))
+      
+      // 特殊处理：单独的 "ai" 或 "ai,"
+      const hasStandaloneAI = field.match(/\bai\b/i) !== null
+      
+      if (isAI || hasStandaloneAI) {
         return 'ai'
       }
       return 'neuroscience'
@@ -217,6 +235,19 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
     const leftCenterX = width * 0.25  // 左侧中心点 (AI领域)
     const rightCenterX = width * 0.75 // 右侧中心点 (Neuroscience领域)
     const centerY = height / 2
+
+    // 为节点设置初始位置（基于分类），避免孤立节点位置不稳定
+    data.nodes.forEach(node => {
+      const category = categorizeNode(node)
+      const targetX = category === 'ai' ? leftCenterX : rightCenterX
+      
+      // 在目标中心点周围添加随机偏移，避免节点完全重叠
+      const randomOffsetX = (Math.random() - 0.5) * 100
+      const randomOffsetY = (Math.random() - 0.5) * 100
+      
+      node.x = targetX + randomOffsetX
+      node.y = centerY + randomOffsetY
+    })
 
     // 创建力导向图
     const simulation = d3.forceSimulation<NetworkNode>(data.nodes)
@@ -234,9 +265,13 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
           const dx = targetX - (node.x || 0)
           const dy = targetY - (node.y || 0)
           
-          // 应用力，强度随alpha衰减，降低强度使布局更稳定
-          node.vx = (node.vx || 0) + dx * alpha * 0.1
-          node.vy = (node.vy || 0) + dy * alpha * 0.1
+          // 对于孤立节点（没有连接），使用更强的力
+          const hasConnections = node.connections && node.connections.length > 0
+          const forceStrength = hasConnections ? 0.1 : 0.3
+          
+          // 应用力，强度随alpha衰减
+          node.vx = (node.vx || 0) + dx * alpha * forceStrength
+          node.vy = (node.vy || 0) + dy * alpha * forceStrength
         })
       })
       .force('collision', d3.forceCollide().radius((d: any) => {
@@ -442,9 +477,10 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
     simulation.nodes(data.nodes)
     simulation.force<d3.ForceLink<NetworkNode, any>>('link')!.links(links)
     
-    // 设置模拟参数，让它在稳定后停止
-    simulation.alphaDecay(0.08) // 稍微增加alpha衰减率，让模拟更快稳定
-    simulation.velocityDecay(0.5) // 增加速度衰减，减少震荡
+    // 设置模拟参数，让它充分稳定
+    simulation.alphaDecay(0.05) // 降低alpha衰减率，让模拟运行更长时间以确保孤立节点稳定
+    simulation.velocityDecay(0.6) // 提高速度衰减，让节点更快稳定
+    simulation.alphaMin(0.001) // 设置更低的最小alpha值，确保充分模拟
 
     // 自适应显示所有节点的函数
     const fitToView = () => {
