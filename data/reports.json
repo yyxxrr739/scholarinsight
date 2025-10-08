@@ -485,6 +485,41 @@
         "description": "AI领域顶尖学者，Google Brain创始人，Coursera联合创始人，AI教育布道者",
         "link": "/scholars/andrew-ng"
       }
+    },
+    {
+      "id": "maxwell-ramstead-analysis-report",
+      "filename": "maxwell_ramstead_analysis_report.html",
+      "title": "Maxwell Ramstead（McGill → VERSES AI → Noumenal Labs）主动推理理论传播者分析报告",
+      "description": "深度分析主动推理理论关键传播者Maxwell Ramstead的学术贡献、理论创新与产业实践",
+      "author": "ScholarInsight AI",
+      "date": "2025-10-01",
+      "category": "学者分析",
+      "tags": ["主动推理", "自由能原理", "贝叶斯力学", "物理AI", "计算神经科学", "Maxwell Ramstead", "行动式推理", "具身智能"],
+      "subject": {
+        "type": "scholar",
+        "name": "Maxwell J. D. Ramstead",
+        "institution": "University College London / Noumenal Labs",
+        "field": "Active Inference, Free Energy Principle, Computational Neuroscience, Physical AI"
+      },
+      "summary": "本报告全面分析了Maxwell Ramstead的学术生涯、核心贡献和影响力。作为连接Karl Friston的自由能原理与人工智能产业应用的关键桥梁人物，他提出了'行动式推理'（Enactive Inference）理论，参与构建'贝叶斯力学'框架，并通过在VERSES AI的研究实践和创立Noumenal Labs，将主动推理理论应用于可解释AI、机器人技术和物理AI等前沿领域，为下一代人工智能开辟了一条基于第一性原理的新道路。",
+      "featured": true,
+      "thumbnail": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode400/4981699/4981699-1689466957263-73a2107843cfe.jpg",
+      "networkNode": {
+        "id": "maxwell-ramstead",
+        "name": "Maxwell J. D. Ramstead",
+        "shortName": "M. Ramstead",
+        "type": "scholar",
+        "institution": "UCL / Noumenal Labs",
+        "field": "Active Inference, Physical AI",
+        "category": "scholar",
+        "hIndex": 42,
+        "citations": 9000,
+        "papers": 85,
+        "image": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode400/4981699/4981699-1689466957263-73a2107843cfe.jpg",
+        "connections": ["karl-friston", "wellcome-centre"],
+        "description": "主动推理理论关键传播者，行动式推理理论提出者，物理AI倡导者",
+        "link": "/scholars/maxwell-ramstead"
+      }
     }
   ],
   "connections": [
@@ -565,6 +600,18 @@
       "target": "andy-clark",
       "strength": 0.9,
       "type": "collaboration"
+    },
+    {
+      "source": "karl-friston",
+      "target": "maxwell-ramstead",
+      "strength": 0.95,
+      "type": "mentorship"
+    },
+    {
+      "source": "wellcome-centre",
+      "target": "maxwell-ramstead",
+      "strength": 0.85,
+      "type": "affiliation"
     }
   ],
   "categories": {

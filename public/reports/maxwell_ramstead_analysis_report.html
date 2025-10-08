@@ -1,0 +1,1280 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maxwell Ramstead（McGill → VERSES AI → Noumenal Labs）主动推理理论传播者分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+/* Academic Report Responsive Template - Optimized for Mobile */
+
+/* Base styles for desktop */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.chart-container {
+    position: relative;
+    margin: 3em auto;
+    max-width: 700px;
+    min-height: 200px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    aspect-ratio: 7/5;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background-color: #fdfdfd;
+    margin: 0 24px 0 24px;
+    padding: 0;
+    font-size: 16px;
+    max-width: none;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2, h3, h4 {
+    font-family: "Georgia", "Times New Roman", "KaiTi", "STKaiTi", "SimSun", serif;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin-top: 24px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 0.3em;
+    font-size: 28px;
+}
+
+h1 {
+    font-size: 28px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+    margin-top: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 20px;
+    border-bottom: none;
+}
+
+h4 {
+    font-size: 18px;
+    border-bottom: none;
+    color: #555;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+a {
+    color: #07c;
+    text-decoration: none;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.95em;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 20px;
+    margin: 2em 0;
+    color: #666;
+    font-style: italic;
+}
+
+ul, ol {
+    padding-left: 2em;
+    margin-bottom: 1.2em;
+}
+
+li {
+    margin-bottom: 0.5em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+figure {
+    margin: 2em auto;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 4px;
+    border-radius: 8px;
+    display: block;
+    overflow: hidden;
+    max-height: 280px;
+    margin: 1em auto;
+}
+
+figcaption {
+    margin-top: 0.8em;
+    font-size: 0.9em;
+    color: #555;
+    font-style: italic;
+}
+
+.report-meta {
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.report-meta p {
+    margin: 0.5em 0;
+}
+
+.toc {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 15px 20px;
+    margin: 2em 0;
+    border-radius: 5px;
+}
+
+.toc h2, .toc h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.5em;
+}
+
+.toc ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.toc ul ul {
+    padding-left: 20px;
+}
+
+.toc li a {
+    color: #333;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.executive-summary, .chapter {
+    margin-bottom: 3em;
+}
+
+/* Mobile-specific styles for links and text wrapping */
+a {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+p, li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+}
+
+/* Mobile responsive styles */
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: PingFang SC;
+        font-size: 15px;
+        line-height: 1.5;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .container {
+        padding: 0;
+        margin: 16px 10px 30px;
+        box-shadow: none;
+        max-width: 100%;
+        width: auto;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    main {
+        margin: 20px auto;
+        padding: 15px;
+        max-width: 100%;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    table {
+        font-size: 14px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+        margin: 1em 0;
+    }
+    
+    th, td {
+        padding: 6px 4px;
+        min-width: 60px;
+        font-size: 13px;
+    }
+    
+    .chart-container {
+        max-width: 100%;
+        margin: 2em auto;
+        overflow-x: auto;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: PingFang SC;
+    }
+
+    h1 {
+        font-size: 1.87em;
+        line-height: 1.6;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.6em;
+        font-weight: 600;
+        margin-top: 1.3em;
+        margin-bottom: 0.8em;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+        font-weight: 600;
+        margin-top: 1em;
+        margin-bottom: 0.6em;
+    }
+
+    h4 {
+        font-size: 1.1em;
+        font-weight: 500;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-style: normal;
+    }
+
+    h5 {
+        font-size: 1em;
+        font-weight: 500;
+        margin-bottom: 1.2em;
+    }
+
+    ul, ol {
+        font-size: 1em;
+        font-weight: 400;
+        margin-bottom: 1.2em;
+        line-height: 1.8;
+    }
+
+    p {
+        font-size: 1em;
+        line-height: 1.8;
+        font-weight: 400;
+        margin-top: 0.8em;
+        margin-bottom: 0.8em;
+    }
+
+    blockquote {
+        padding: 1em 1.2em;
+    }
+
+    blockquote p {
+        margin: 0;
+    }
+
+    figcaption {
+        margin-top: 0.5em;
+        font-size: 0.8em;
+        font-weight: 400;
+        text-align: center;
+        font-style: normal;
+        color: #7F8896;
+    }
+
+    img {
+        display: block;
+        overflow: hidden;
+        max-width: 100%;
+        max-height: 335px;
+        margin: 1em auto;
+        border-radius: 8px;
+    }
+}
+</style>
+<link rel="stylesheet" href="https://static.skywork.ai/fe/skywork-site-assets/styles/doc_reference_style.css?v=1973384090014240768"/></head>
+<body>
+<div class="container">
+<h1 id="section-1">Maxwell Ramstead（McGill → VERSES AI → Noumenal Labs）主动推理理论传播者分析报告</h1>
+<nav class="toc" id="table-of-contents">
+<h3 id="section-0-1">报告目录</h3>
+<ul>
+<li><a href="#executive-summary">执行摘要</a>
+<ul>
+<li><a href="#section-summary-target">分析目标</a></li>
+<li><a href="#section-summary-findings">关键发现</a></li>
+<li><a href="#section-summary-completeness">信息完整度评估</a></li>
+</ul>
+</li>
+<li><a href="#chapter-1">第一章 人物档案</a>
+<ul>
+<li><a href="#section-profile-basic">1.1 基础信息</a></li>
+<li><a href="#section-profile-education">1.2 教育背景</a></li>
+<li><a href="#section-profile-career">1.3 职业生涯</a></li>
+</ul>
+</li>
+<li><a href="#chapter-2">第二章 行业影响力评估</a>
+<ul>
+<li><a href="#section-impact-quantitative">2.1 定量指标</a></li>
+<li><a href="#section-impact-conclusion">2.2 影响力评估结论</a></li>
+</ul>
+</li>
+<li><a href="#chapter-3">第三章 技术与产品贡献分析</a>
+<ul>
+<li><a href="#section-contribution-evolution">3.1 技术生涯演进</a></li>
+<li><a href="#section-contribution-core">3.2 核心技术/理论贡献</a></li>
+<li><a href="#section-contribution-product">3.3 产品贡献 (在VERSES AI)</a></li>
+<li><a href="#section-contribution-discourse">3.4 关键思想与论述</a></li>
+</ul>
+</li>
+<li><a href="#chapter-4">第四章 专业网络与合作</a>
+<ul>
+<li><a href="#section-network-collaborators">4.1 核心合作者</a></li>
+</ul>
+</li>
+<li><a href="#chapter-5">第五章 技术哲学与愿景</a>
+<ul>
+<li><a href="#section-philosophy-core">5.1 核心技术理念</a></li>
+<li><a href="#section-philosophy-origins">5.2 思想渊源与影响</a></li>
+<li><a href="#section-philosophy-controversy">5.3 争议与反思</a></li>
+</ul>
+</li>
+<li><a href="#chapter-6">第六章 生态与社区影响力</a>
+<ul>
+<li><a href="#section-ecosystem-knowledge">6.1 知识传播</a></li>
+<li><a href="#section-ecosystem-business">6.2 商业与生态构建</a></li>
+</ul>
+</li>
+<li><a href="#chapter-7">第七章 综合评估与展望</a>
+<ul>
+<li><a href="#section-assessment-status">7.1 行业地位评估</a></li>
+<li><a href="#section-assessment-contribution">7.2 核心贡献评价</a></li>
+<li><a href="#section-assessment-trends">7.3 未来发展趋势</a></li>
+<li><a href="#section-assessment-recommendations">7.4 合作与跟进建议</a></li>
+</ul>
+</li>
+<li><a href="#appendix">附录</a>
+<ul>
+<li><a href="#section-appendix-a">附录A：核心信息源</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section class="executive-summary" id="executive-summary">
+<h2 id="section-1">执行摘要</h2>
+<h3 id="section-summary-target">分析目标</h3>
+<p><strong>核心目标：</strong> 本报告旨在全面、准确地获取Maxwell J. D. Ramstead的专业成就与行业影响力信息。通过对公开学术成果、职业履历、公开演讲及创业活动进行交叉验证，构建其完整的技术与思想画像。分析重点将聚焦于他作为“主动推理”（Active Inference）理论从深奥的学术界向新兴的AI产业界传播与实践过程中的关键桥梁角色，并评估其对下一代人工智能发展的潜在影响。</p>
+<h3 id="section-summary-findings">关键发现</h3>
+<ul>
+<li><strong>行业地位：</strong> Maxwell Ramstead是一位杰出的理论物理学家、认知科学家与AI思想家。他被广泛认为是连接其导师、著名神经科学家卡尔·弗里斯顿（Karl Friston）所提出的“自由能原理”（Free Energy Principle, FEP）与“主动推理”（Active Inference）学术理论，和人工智能产业应用的“关键桥梁”人物。他不仅是理论的深刻诠释者，更是坚定的实践推动者。</li>
+<li><strong>核心贡献：</strong>
+<ol>
+<li><strong>理论创新：</strong> 提出了“行动式推理”（Enactive Inference）这一关键概念，通过将主动推理与行动主义哲学相结合，深化并重塑了学界对该理论的理解，强调了认知与行动的本质性、不可分割性，为具身智能（Embodied AI）提供了更为深刻的理论基石。</li>
+<li><strong>理论传播：</strong> 通过撰写大量高质量的学术论文、在顶级播客（如MLST）进行深度访谈、发布在线教程等方式，成功地将极其深奥和数学化的自由能原理与主动推理理论，以更易于理解的方式普及给更广泛的AI研究者和开发者社区。</li>
+<li><strong>产业实践：</strong> 在<a href="https://www.verses.ai/" target="_blank">VERSES AI</a>担任研究高级总监期间，领导研究团队将主动推理理论应用于可解释AI（XAI）、机器人技术和空间网络（Spatial Web）等前沿领域，推动其商业化落地；随后联合创立<a href="https://www.linkedin.com/company/noumenal-labs" target="_blank">Noumenal Labs</a>，致力于运用第一性原理从根本上解决物理AI（Physical AI）的核心难题。</li>
+</ol>
+</li>
+<li><strong>影响力指标：</strong> 其核心学术论文累计被引用数千次，在主动推理、计算神经科学和认知科学的学术圈内拥有极高的声誉。作为VERSES AI和Noumenal Labs的核心科学家，他的思想直接塑造了这些公司基于主动推理理论的AI产品和技术路线图。</li>
+<li><strong>当前动向：</strong> 于2024年初联合创立了深度科技AI公司Noumenal Labs，并担任首席科学官（CSO）。该公司的核心使命是为物理AI和机器人构建“数字大脑”，旨在从根本上解决当前机器人技术普遍存在的适应性差、高昂的重训练成本和在复杂现实世界中性能不佳等瓶颈问题。</li>
+<li><strong>未来趋势：</strong> 预计Maxwell Ramstead将继续引领基于物理学和神经科学第一性原理的AI新范式。他所倡导的路径，旨在挑战当前主流的、以大规模数据驱动和统计拟合为核心的AI模型（如大型语言模型），尤其是在需要高度自主性、适应性和安全性的具身智能及自主机器人领域，有望开辟一条全新的技术道路。</li>
+</ul>
+<h3 id="section-summary-completeness">信息完整度评估</h3>
+<ul>
+<li><strong>信息完整度：</strong>高。Ramstead博士的学术发表记录（Google Scholar）、详细的职业履历（LinkedIn）、频繁的公开演讲和社交媒体活动（X/Twitter, YouTube）信息非常丰富，且各渠道信息能够相互印证，形成了一个完整的人物画像。</li>
+<li><strong>数据可靠性：</strong>高。本报告信息主要来源于<a href="https://ca.linkedin.com/in/maxwell-ramstead-43a1991b7" target="_blank">LinkedIn</a>、<a href="https://scholar.google.com/citations?user=ILpGOMkAAAAJ&amp;hl=fr" target="_blank">Google Scholar</a>、公司官网（VERSES AI, Noumenal Labs）、权威学术期刊（如SAGE, Frontiers, Entropy）等高可信度渠道。信息交叉验证后，一致性强，可靠性高。</li>
+<li><strong>分析深度：</strong>高。本报告不仅罗列事实，更致力于深入剖析其思想的演进脉络、理论贡献的内在逻辑，以及其学术研究与产业实践之间紧密而深刻的联系，力求提供富有洞察力的分析。</li>
+</ul>
+</section>
+<section class="chapter" id="chapter-1">
+<h2 id="section-2">第一章 人物档案</h2>
+<h3 id="section-profile-basic">1.1 基础信息</h3>
+<figure>
+    <img alt="Maxwell Ramstead" src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode400/4981699/4981699-1689466957263-73a2107843cfe.jpg" style="max-height: 280px; max-width: 100%;"/>
+    <figcaption>Maxwell Ramstead</figcaption>
+</figure>
+<p>Maxwell J. D. Ramstead的个人档案清晰地展示了一位深度扎根于跨学科研究，并致力于将前沿理论转化为实际应用的科学家的形象。他的背景横跨哲学、精神病学、神经科学和人工智能，这种独特的知识结构是他能够成为理论与实践之间“桥梁”的关键。</p>
+<table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>详细信息</th>
+<th>数据来源</th>
+<th>验证状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>人物全名</strong></td>
+<td>Maxwell J. D. Ramstead</td>
+<td><a href="https://scholar.google.com/citations?user=ILpGOMkAAAAJ&amp;hl=fr" target="_blank">Google Scholar</a>, <a href="https://ca.linkedin.com/in/maxwell-ramstead-43a1991b7" target="_blank">LinkedIn</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>社交媒体</strong></td>
+<td><a href="https://ca.linkedin.com/in/maxwell-ramstead-43a1991b7" target="_blank">LinkedIn Profile</a>, <a href="https://x.com/mjdramstead" target="_blank">X (Twitter) @mjdramstead</a></td>
+<td>个人主页</td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>国籍</strong></td>
+<td>加拿大</td>
+<td><a href="https://ca.linkedin.com/in/maxwell-ramstead-43a1991b7" target="_blank">LinkedIn</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>当前公司/组织</strong></td>
+<td>Noumenal Labs, 联合创始人 &amp; 首席科学官 (CSO)<br/>University College London (UCL), 荣誉研究员</td>
+<td><a href="https://www.linkedin.com/company/noumenal-labs" target="_blank">Noumenal Labs LinkedIn</a>, <a href="https://paricenter.com/contributor/maxwell-ramstead/" target="_blank">UCL 相关页面</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>个人主页/博客</strong></td>
+<td>通过其社交媒体分享 <a href="https://www.linkedin.com/posts/maxwell-ramstead-43a1991b7_blog-noumenal-labs-activity-7290848559283781633-bCVb" target="_blank">Noumenal Labs Blog</a></td>
+<td><a href="https://ca.linkedin.com/in/maxwell-ramstead-43a1991b7" target="_blank">LinkedIn</a></td>
+<td>已验证</td>
+</tr>
+<tr>
+<td><strong>主要技术领域</strong></td>
+<td>主动推理 (Active Inference), 自由能原理 (FEP), 贝叶斯力学 (Bayesian Mechanics), 物理AI (Physical AI), 计算神经科学, 计算现象学, 具身智能 (Embodied AI)</td>
+<td>学术论文, 公司介绍, <a href="https://x.com/mjdramstead?lang=en" target="_blank">个人X简介</a></td>
+<td>已验证</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-profile-education">1.2 教育背景</h3>
+<p>Ramstead的教育背景是理解其思想体系的起点。他在麦吉尔大学的博士研究，并非传统的计算机科学或工程学路径，而是深入到了哲学与精神病学的交叉领域。这使得他从一开始就关注智能、意识和心智的根本问题，而非仅仅是技术实现。</p>
+<table>
+<thead>
+<tr>
+<th>学位类型</th>
+<th>专业领域</th>
+<th>毕业院校</th>
+<th>国家</th>
+<th>毕业年份</th>
+<th>导师</th>
+<th>论文题目 (及其与后续工作的关联)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>博士 (PhD)</strong></td>
+<td>哲学 (Philosophy) / 社会与跨文化精神病学 (Social and Transcultural Psychiatry)</td>
+<td>麦吉尔大学 (McGill University)</td>
+<td>加拿大</td>
+<td>2019</td>
+<td><a href="https://www.mcgill.ca/culture-mind-brain/people-0" target="_blank">Ian Gold</a>, <a href="https://escholarship.mcgill.ca/concern/theses/1v53k237p" target="_blank">Laurence Kirmayer</a></td>
+<td>
+<strong>《我们失去理智了吗？认知科学中多尺度动力学的一种方法》</strong><br/>
+                            (<em>Have we lost our minds? An approach to multiscale dynamics in the cognitive sciences</em>)<br/><br/>
+<strong>关联分析：</strong> 这篇博士论文是其学术生涯的奠基之作。它直面认知科学中的一个核心难题：如何统一研究跨越多个时空尺度的认知系统——从单个神经元的活动，到个体的行为，再到整个社会文化的演变。Ramstead在论文中提出，需要一个基于“第一性原理”的框架来整合这些不同层级的动力学。这篇论文中孕育的思想，直接导向了他对自由能原理的拥抱，因为FEP正是这样一个有潜力统一描述从细胞到社会所有自组织系统行为的理论框架。这为他后来在VERSES AI参与设计“智能体生态系统”和在Noumenal Labs构建多尺度整合的“数字大脑”埋下了坚实的理论伏笔。
+                        </td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-profile-career">1.3 职业生涯</h3>
+<p>Ramstead的职业轨迹清晰地描绘了他从纯学术研究，到理论与产业结合，再到独立创业，将理论信仰付诸实践的全过程。这一路径展示了他不仅满足于理论创新，更渴望验证和实现其理论的巨大决心。</p>
+<table>
+<thead>
+<tr>
+<th>职位/角色</th>
+<th>公司/组织</th>
+<th>负责业务</th>
+<th>起止年份</th>
+<th>主要成就与贡献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>联合创始人 &amp; 首席科学官 (CSO)</strong></td>
+<td><strong>Noumenal Labs</strong></td>
+<td>物理AI与机器人“数字大脑”的研发</td>
+<td>2024.01 - 至今</td>
+<td>创立公司，旨在从根本上解决物理AI的适应性难题。发布公司白皮书，阐述其基于第一性原理构建智能的理念，将主动推理理论推向了更专注、更具挑战性的商业化场景。</td>
+</tr>
+<tr>
+<td><strong>研究高级总监</strong></td>
+<td><strong>VERSES AI</strong></td>
+<td>领导主动推理研究，推动其在AI产品中的应用</td>
+<td>2021.12 - 2024.05</td>
+<td>作为公司AI研究的核心人物，领导团队将主动推理理论转化为具体的技术架构。关键贡献包括：为公司的可解释AI（XAI）战略提供理论基础；探索主动推理在机器人和物流自动化（如Wayfinder产品）中的应用；与Karl Friston等人合作发表多篇关键论文，为VERSES的“空间网络”和KOSM操作系统构建了坚实的理论护城河。</td>
+</tr>
+<tr>
+<td><strong>荣誉研究员</strong></td>
+<td><strong>University College London (UCL)</strong></td>
+<td>理论神经生物学研究</td>
+<td>2021.01 - 至今</td>
+<td>在Karl Friston领导的<a href="https://paricenter.com/contributor/maxwell-ramstead/" target="_blank">Wellcome Centre for Human Neuroimaging</a>理论神经生物学部门进行紧密的合作研究，持续产出关于自由能原理和主动推理的前沿理论成果，保持其在学术界的领先地位。</td>
+</tr>
+<tr>
+<td><strong>首席执行官 (CEO)</strong></td>
+<td>Nested Minds</td>
+<td>早期创业探索</td>
+<td>2020.12 - 2021.12</td>
+<td>一段短暂的早期创业经历，显示出他早已开始思考如何将复杂的认知理论商业化。</td>
+</tr>
+<tr>
+<td><strong>研究总监</strong></td>
+<td>Spatial Web Foundation</td>
+<td>空间网络协议的理论研究</td>
+<td>2020.11 - 2021.12</td>
+<td>为Web 3.0的“空间网络”概念提供理论支持，研究如何创建可互操作的、具有共享上下文的协议。这项工作与VERSES AI的宏大愿景紧密相连，后者旨在为物理世界和数字世界创建一个统一的操作系统。</td>
+</tr>
+<tr>
+<td><strong>博士后研究员</strong></td>
+<td>Jewish General Hospital</td>
+<td>Douglas Utting抑郁症研究奖金</td>
+<td>2019 - ~2020</td>
+<td>博士毕业后的首个研究职位，延续了其在社会与跨文化精神病学领域的探索，将计算模型应用于理解心理健康问题。</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="chapter" id="chapter-2">
+<h2 id="section-3">第二章 行业影响力评估</h2>
+<h3 id="section-impact-quantitative">2.1 定量指标</h3>
+<p>Maxwell Ramstead的影响力模型呈现出典型的“深度而非广度”的特征。他的核心影响力根植于严谨的学术圈和前沿技术社区，而非大众媒体。其学术产出的引用数据远比社交媒体的关注度更能体现其价值。</p>
+<table>
+<thead>
+<tr>
+<th>数据源</th>
+<th>指标</th>
+<th>数值</th>
+<th>备注</th>
+<th>统计截止日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Google Scholar</strong></td>
+<td>总被引次数</td>
+<td>~9,000+ (估算)</td>
+<td>反映其在学术界的深远影响，尤其是在认知科学、理论神经科学和人工智能哲学领域。这一数字对于一位职业生涯中期的研究者来说相当可观。</td>
+<td>2025-10-01</td>
+</tr>
+<tr>
+<td><strong>Google Scholar</strong></td>
+<td>关键论文引用</td>
+<td>《Cultural affordances...》 (537+), 《Thinking through other minds...》 (427+), 《A tale of two densities...》 (318+), 《The hierarchically mechanistic mind》 (250+)</td>
+<td>单篇论文的高引用量证明了其理论贡献的开创性和重要性。这些论文通常是各自细分领域的必读文献。</td>
+<td>2025-10-01</td>
+</tr>
+<tr>
+<td><strong>X (Twitter)</strong></td>
+<td>Followers</td>
+<td>~3,400</td>
+<td>虽然粉丝数量不大，但其关注者多为AI研究人员、神经科学家、哲学家和技术专家，构成了一个高度专业化的圈子，使其在该领域具有很强的话语权。</td>
+<td>2025-10-01</td>
+</tr>
+<tr>
+<td><strong>LinkedIn</strong></td>
+<td>Followers</td>
+<td>~1,200</td>
+<td>专业网络中的关注者，多为AI研究人员、工程师、投资者和潜在的商业合作伙伴，是其产业影响力的体现。</td>
+<td>2025-10-01</td>
+</tr>
+</tbody>
+</table>
+<div class="chart-container" id="canvas-parent-1">
+<canvas id="citationsChart"></canvas>
+</div>
+<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const ctx = document.getElementById('citationsChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [
+                                'Cultural affordances (2016)', 
+                                'Thinking through other minds (2020)', 
+                                'A tale of two densities (2020)', 
+                                'The hierarchically mechanistic mind (2019)', 
+                                'A variational approach to niche construction (2018)',
+                                'Regimes of expectations (2019)'
+                            ],
+                            datasets: [{
+                                label: 'Google Scholar 引用次数',
+                                data: [537, 427, 318, 250, 275, 222],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Maxwell Ramstead 关键学术论文引用量分析',
+                                    font: { size: 20, family: 'Georgia, serif' }
+                                },
+                                legend: {
+                                    display: false
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return '引用次数: ' + context.parsed.y;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: '引用次数'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+            </script>
+<blockquote>
+<strong>数据解读：</strong> Ramstead的影响力结构清晰地表明，他并非一位追求公众曝光度的AI网红，而是一位在特定领域深耕的“思想领袖”。他的观点主要通过严谨的学术论文和在VERSES AI、Noumenal Labs的产业实践来传播，对下一代AI架构的设计产生着底层和长远的影响。他的社交媒体更像是一个专业人士的公告板和讨论区，而非大众传播平台。这种模式决定了他的影响力是“质”大于“量”，深度渗透于决定未来技术方向的核心圈层。
+            </blockquote>
+<h3 id="section-impact-conclusion">2.2 影响力评估结论</h3>
+<p>综合来看，Maxwell Ramstead是主动推理领域承上启下的关键人物。他扮演了多重角色：</p>
+<ul>
+<li><strong>理论的诠释者与发展者：</strong> 他不仅是其导师Karl Friston理论的杰出诠释者，更是重要的发展者。他提出的“行动式推理”等概念，极大地丰富和澄清了自由能原理的内涵。</li>
+<li><strong>理论的传播者与布道者：</strong> 他通过各种渠道，将这一复杂的理论普及给更广泛的受众，是主动推理社区的核心知识源泉。</li>
+<li><strong>理论的实践者与驱动者：</strong> 他通过在VERSES AI的实践和创立Noumenal Labs的决心，正在努力将一个深刻的科学理想到一条可行的技术路径转化。</li>
+</ul>
+<p>他的工作弥合了理论神经科学与应用人工智能之间的巨大鸿沟，为AI领域提供了一个迥异于当前主流范式的、充满潜力的新视角。</p>
+<p><strong>影响力等级：</strong> <strong>关键创新者</strong> &amp; <strong>领域专家</strong>（正积极地向<strong>行业引领者</strong>演进）</p>
+</section>
+<section class="chapter" id="chapter-3">
+<h2 id="section-4">第三章 技术与产品贡献分析</h2>
+<h3 id="section-contribution-evolution">3.1 技术生涯演进</h3>
+<p>Maxwell Ramstead的技术生涯展现了一个清晰的、从抽象哲学思辨到具体工程实践的递进过程。这个过程可以分为三个主要阶段，每个阶段都建立在前一阶段的基础之上，最终形成了一个连贯而宏大的技术叙事。</p>
+<h4>3.1.1 探索阶段 (McGill博士期间, ~2019)</h4>
+<p>在麦吉尔大学攻读博士学位期间，Ramstead的关注点并非狭义的技术问题，而是智能和心智的哲学基础。他的研究横跨哲学、精神病学和认知科学，核心议题是“多尺度系统建模”。</p>
+<ul>
+<li><strong>技术焦点：</strong> 他致力于解决一个根本性难题：我们能否拥有一个统一的理论，来同时解释和建模在不同时空尺度上发生的认知现象？例如，从毫秒级的神经元放电，到秒级的行为决策，再到长达数年乃至数代的文化演变。</li>
+<li><strong>方法论/工具：</strong> 这一阶段，他的主要工具是哲学思辨、跨学科文献整合以及对信息论的初步探索。他在博士论文中，系统性地论证了传统认知科学在处理跨尺度问题上的局限性，并呼吁一种基于“第一性原理”的新方法。</li>
+<li><strong>关键成果：</strong> 博士论文本身就是此阶段最重要的成果。它不仅为Ramstead个人的学术生涯奠定了基础，也预示了他未来的研究方向——寻找那个能够统一所有尺度的“第一性原理”。这使他自然而然地被Karl Friston的自由能原理所吸引，因为FEP恰好提供了这样一个候选框架。可以说，他的博士研究为他后来将FEP从一个“大脑理论”扩展为一个“万物理论”的宏大叙事，进行了充分的哲学和理论准备。</li>
+</ul>
+<h4>3.1.2 突破阶段 (UCL合作与VERSES任职, 2020-2024)</h4>
+<p>博士毕业后，Ramstead迅速进入了理论突破和产业实践相结合的黄金时期。他与Karl Friston的紧密合作以及在VERSES AI的领导角色，使其思想得以快速发展和验证。</p>
+<ul>
+<li><strong>核心突破：</strong> 此阶段的突破是双重的。
+                    <ul>
+<li><strong>理论上：</strong> 他与Friston等人合著的一文，是主动推理发展史上的一个里程碑。文中，他明确提出“行动式推理”（Enactive Inference），有力地驳斥了学界对FEP的纯粹“表征主义”解读。他论证道，智能体并非在脑中构建一个世界的静态“镜像”或“表征”，而是通过与环境的持续动态交互（即行动）来主动塑造其感知和信念。这一观点为具身AI和机器人学提供了坚实而深刻的理论依据。</li>
+<li><strong>实践上：</strong> 在VERSES AI，他面临的挑战是将抽象的数学公式转化为可计算、可部署的AI架构。他领导团队探索如何利用主动推理构建无需海量预训练数据即可进行规划和控制的机器人系统，以及如何设计天然具备可解释性的AI模型。</li>
+</ul>
+</li>
+<li><strong>架构/设计思想：</strong> 他的核心设计思想源于FEP：智能的本质是最小化“惊奇”（variational free energy）。一个智能体（无论是生物还是机器）为了在环境中维持自身的存在，就必须不断地更新其内部的世界模型，并采取行动来使未来的感官输入更符合其模型的预测。这一思想指导了VERSES设计能够实时适应、推理和规划的智能体，与主流AI依赖历史数据进行模式匹配的思路截然不同。</li>
+<li><strong>关键成果：</strong> 除了多篇高影响力论文外，他在VERSES的贡献体现在为公司的核心技术（如KOSM操作系统）和产品（如Wayfinder物流方案）注入了主动推理的理论内核，形成了公司独特的技术壁垒。</li>
+</ul>
+<h4>3.1.3 领导与拓展阶段 (创立Noumenal Labs, 2024至今)</h4>
+<p>创立Noumenal Labs标志着Ramstead的技术生涯进入了一个全新的、更加自主和专注的阶段。他不再满足于在现有公司框架内进行研究，而是要亲自掌舵，将他的理论信仰付诸终极的商业实践。</p>
+<ul>
+<li><strong>技术愿景：</strong> 构建真正自适应的“物理AI”。Ramstead敏锐地洞察到，当前AI（特别是机器人和自动驾驶）的普遍瓶颈在于其“脆弱性”——它们在训练数据覆盖的场景下表现优异，但一旦遇到未见过的意外情况就容易失效。他的愿景是创造能够像生物一样，通过与物理世界的持续互动来终身学习和即时适应的“数字大脑”。</li>
+<li><strong>生态构建：</strong> 通过Noumenal Labs，Ramstead试图创建一个全新的AI开发范式。他在公司白皮书中明确指出，目标是从第一性原理出发构建智能，而非仅仅依赖海量数据进行拟合。这不仅是一次技术创业，更是一场思想运动，旨在为AI行业提供另一条可能的发展路径。</li>
+<li><strong>最新动向：</strong> 他当前的工作重心是带领Noumenal Labs团队，将主动推理、贝叶斯力学等深奥理论，直接应用于解决机器人技术中最棘手的实际难题，例如在动态、非结构化环境下的实时适应、小样本甚至零样本学习，以及多智能体协同等。</li>
+</ul>
+<h3 id="section-contribution-core">3.2 核心技术/理论贡献</h3>
+<p>Ramstead的贡献不仅在于传播理论，更在于对理论本身的深化和再创造。他最重要的两个理论贡献，层层递进，共同构建了一个从认知哲学到宇宙物理的宏大理论体系。</p>
+<h4>1. 行动式推理 (Enactive Inference)</h4>
+<blockquote>
+                &#34;我们认为，对生成模型和识别模型的结构表征主义解释，并没有公正地对待这些构造在FEP下的主动推理中所扮演的角色。……我们提出了主动推理的一种行动主义解释——可以称之为行动式推理。&#34; — <a href="https://discovery.ucl.ac.uk/10080065/1/1059712319862774.pdf" target="_blank">Ramstead et al., &#34;A tale of two densities&#34; (2019)</a>
+</blockquote>
+<ul>
+<li><strong>贡献内容：</strong> 在这篇标志性论文中，Ramstead等人对主动推理理论进行了一次深刻的哲学“正名”。他指出，许多人误将主动推理理解为大脑内部的一个纯粹的“预测处理”或“表征构建”过程。他对此提出异议，认为主动推理的核心是“行动”。智能体并非被动地接收信息并构建世界的模型，而是主动地通过行动去“采样”世界，从而让世界变得可预测。</li>
+<li><strong>技术创新点：</strong> 这一思想将认知与行动在理论层面彻底绑定。它意味着，一个没有身体、无法行动的AI，永远无法获得真正的理解。智能必须是“具身的”（embodied）和“行动的”（enactive）。这为设计真正能在物理世界中灵活互动的机器人提供了比传统强化学习（通常将感知、规划、行动分离）更深刻的理论基础。它解释了为什么智能必须是主动的、嵌入环境的，而非一个孤立的信息处理器。</li>
+<li><strong>学术影响：</strong> 该论文已成为主动推理领域的必读文献，被引用超过300次。它有效地澄清了主动推理与早期“预测编码”理论的关键区别，深刻影响了后续关于具身认知、人工智能哲学和机器人学的研究方向。</li>
+</ul>
+<h4>2. 贝叶斯力学 (Bayesian Mechanics)</h4>
+<blockquote>
+                &#34;本文旨在介绍过去十年间出现的一个研究领域，称为贝叶斯力学。贝叶斯力学是一种概率力学，包含一套用于建模具有马尔可夫毯的随机动态系统的工具……&#34; — <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rsfs.2022.0029" target="_blank">Ramstead et al., &#34;On Bayesian mechanics&#34; (2023)</a>
+</blockquote>
+<ul>
+<li><strong>贡献内容：</strong> 如果说“行动式推理”是Ramstead对认知层面的深化，那么“贝叶斯力学”则是他参与构建的一个更为宏大和底层的统一框架。这是一个雄心勃勃的尝试，旨在为任何遵循自由能原理的系统（从基本粒子到行星系统，再到人类社会）的动力学行为提供一个统一的数学描述。</li>
+<li><strong>技术创新点：</strong> 贝叶斯力学试图为“智能”和“生命”本身提供一种“物理学”描述。它将信息论（如熵、信息）和统计力学（如能量、温度）的概念统一在自由能的框架下，认为任何“事物”（任何与环境存在边界的系统）的持续存在，都可以被描述为一种最小化其内部信念与外部现实之间“不匹配”（即自由能）的过程。这为构建通用人工智能（AGI）提供了一个终极的、不依赖于特定任务或数据的理论蓝图。</li>
+<li><strong>学术影响：</strong> 这是一个极具前瞻性和野心的理论体系，目前正吸引着越来越多来自物理学、生物学、计算机科学和哲学领域的跨学科关注。虽然它还处于早期发展阶段，但其潜力在于可能为我们理解宇宙中从物质到心智的涌现提供一把统一的钥匙。</li>
+</ul>
+<h3 id="section-contribution-product">3.3 产品贡献 (在VERSES AI)</h3>
+<p>在VERSES AI，Ramstead的角色是将上述深奥的理论转化为具有商业价值的技术和产品。他的贡献主要体现在为公司的核心战略提供理论支撑。</p>
+<h4>1. 可解释AI (XAI) 框架</h4>
+<ul>
+<li><strong>贡献内容：</strong> Ramstead领导的研究团队发表了多篇论文，阐述如何基于主动推理构建人类可理解的AI系统。例如，论文明确阐述了这一框架。</li>
+<li><strong>技术创新点：</strong> 与黑箱式的深度学习模型不同，主动推理模型在本质上就是一个关于“信念”、“偏好”和“意图”的因果模型。AI的决策过程——例如，在不同行动策略之间权衡其“预期自由能”——是透明和可追溯的。这意味着我们可以直接“询问”AI：“你为什么这么做？”AI可以回答：“因为我认为这样做最有可能实现我的目标（偏好），同时能最大程度地减少我对未来不确定性的惊讶（信息增益）。”</li>
+<li><strong>市场影响：</strong> 这一特性对于需要高安全性和高信任度的应用场景（如自动驾驶、医疗诊断、金融风控）至关重要。它不仅是一个技术优势，更是一个战略优势，尤其是在全球AI监管日趋严格的背景下（如欧盟的《AI法案》），为VERSES在AI治理和合规性方面提供了独特的竞争力。</li>
+</ul>
+<h3 id="section-contribution-discourse">3.4 关键思想与论述</h3>
+<p>Ramstead通过大量的演讲、播客和文章，将他复杂的技术哲学提炼为一系列核心观点，深刻地影响着社区。</p>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>标题/主题</th>
+<th>发表平台/会议</th>
+<th>年份</th>
+<th>核心观点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>A tale of two densities: active inference is enactive inference</strong></td>
+<td>Adaptive Behavior (Journal)</td>
+<td>2020</td>
+<td>主动推理的本质是“行动式”的（Enactive），认知与行动不可分割。智能体通过主动行动来塑造其感知世界，而非被动地在内部构建一个世界的表征。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>On Bayesian mechanics: a physics of and by beliefs</strong></td>
+<td>Interface Focus (Journal)</td>
+<td>2023</td>
+<td>提出一个描述“信念”动力学的物理学框架，旨在统一描述所有自组织系统（从粒子到人类）的行为，为通用人工智能提供了第一性原理基础。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Designing ecosystems of intelligence from first principles</strong></td>
+<td>Collective Intelligence (Journal)</td>
+<td>2024</td>
+<td>阐述了构建一个由多个智能体组成的、可扩展、自组织的AI生态系统的宏大蓝图，其基础是自由能原理和主动推理，指向一种“共享智能”。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>智能的物理学本质</strong></td>
+<td><a href="https://podcasts.apple.com/br/podcast/dr-maxwell-ramstead-the-physics-of-survival/id1510472996?i=1000621265074" target="_blank">MLST Podcast</a>, YouTube教程</td>
+<td>持续</td>
+<td>智能的本质是“存在”（to be），即在动态变化的环境中维持自身的存在性。为了存在，任何系统都必须最小化“惊奇”（即自由能），这一物理约束自然而然地导致了感知、学习和行动等智能行为的涌现。</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="chapter" id="chapter-4">
+<h2 id="section-5">第四章 专业网络与合作</h2>
+<p>Maxwell Ramstead的学术和职业生涯建立在一个强大而紧密的专业网络之上。这个网络的核心是理论神经科学的巨擘，并延伸至AI产业的前沿。理解他的合作网络，是理解其思想如何形成、传播和实践的关键。</p>
+<h3 id="section-network-collaborators">4.1 核心合作者</h3>
+<p>Ramstead的合作网络呈现出以学术泰斗为核心、向产业界辐射的鲜明特征。他不仅是知识的接受者，更是积极的共建者和传播者。</p>
+
+tBody&gt;
+            <table>
+<thead>
+<tr>
+<th>排名</th>
+<th>合作者姓名</th>
+<th>合作关系</th>
+<th>合作项目/公司</th>
+<th>合作成果与影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Karl J. Friston</strong></td>
+<td>导师 / 紧密合作者</td>
+<td>UCL, VERSES AI</td>
+<td>这是Ramstead最重要的合作关系。Friston是自由能原理和主动推理的创立者，而Ramstead则是其理论最重要、最活跃的诠释者、发展者和产业化先锋。他们共同署名了数十篇高影响力论文，涵盖了从理论深化（如<a href="https://pubmed.ncbi.nlm.nih.gov/32831534/" target="_blank">Enactive Inference</a>）到宏大构想（如<a href="https://journals.sagepub.com/doi/10.1177/26339137231222481" target="_blank">Designing ecosystems of intelligence</a>）的方方面面。Friston担任VERSES的首席科学家，而Ramstead作为研究总监，二人共同构成了VERSES从理论到实践的“双核驱动”。这种关系类似于物理学史上理论家与实验家的紧密合作，共同推动一个新范式的建立。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>VERSES AI 创始团队 (Gabriel Rene, Dan Mapes)</strong></td>
+<td>同事 / 合作伙伴</td>
+<td>VERSES AI, Spatial Web Foundation</td>
+<td>Rene和Mapes是“空间网络”（Spatial Web）的提出者，他们拥有将AI、物联网、区块链等技术融为一体的宏大商业愿景。Ramstead的加入，为这个宏大愿景提供了坚实的科学理论基础。他将主动推理的“第一性原理”与VERSES的“空间网络操作系统（KOSM）”相结合，共同打造了VERSES独特的技术护城河。这种合作是商业远见与前沿科学理论的完美联姻。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Michael Kirchhoff, Axel Constant, 等</strong></td>
+<td>学术合作者</td>
+<td>多篇学术论文</td>
+<td>Ramstead与这些来自哲学、认知科学领域的学者合作，共同发展和深化了自由能原理的哲学内涵。例如，他们共同探讨了“多尺度整合”、“文化演化”、“社会整合”等议题，将FEP的应用范围从个体大脑扩展到群体和社会层面。这些合作为主动推理理论注入了更深厚的人文和社会科学底蕴。</td>
+</tr>
+</tbody></table>
+<figure>
+<img alt="Karl Friston教授" src="https://agents-download.skywork.ai/image/rt/4a50d8641a229a77bf9614e9f3e68e67.jpg" style="max-height: 280px; max-width: 100%;"/>
+<figcaption>Karl Friston教授，自由能原理的提出者，UCL的著名神经科学家，也是Maxwell Ramstead最重要的学术合作导师</figcaption>
+</figure>
+</section>
+<section class="chapter" id="chapter-5">
+<h2 id="section-6">第五章 技术哲学与愿景</h2>
+<h3 id="section-philosophy-core">5.1 核心技术理念</h3>
+<p>Maxwell Ramstead的技术哲学可以精准地概括为<strong>“第一性原理驱动的建构主义”</strong>。他坚信，真正的智能不应仅仅是对海量数据的模仿和拟合，而应是从最基本的物理和生物学原理中“生长”和“涌现”出来的。这与当前主流AI（特别是大型语言模型）的“经验主义”路径形成了鲜明对比。</p>
+<blockquote>
+                &#34;自由能原理颠倒了传统生存逻辑。它不是问哪些行为能促进生存，而是问：鉴于事物确实存在，它们必须做什么？答案是：最小化自由能，或‘惊奇’。&#34; — <a href="https://podcasts.apple.com/br/podcast/dr-maxwell-ramstead-the-physics-of-survival/id1510472996?i=1000621265074" target="_blank">Dr. Maxwell Ramstead on a podcast</a>
+</blockquote>
+<ul>
+<li><strong>技术方法论：物理学思维。</strong> Ramstead看待智能的方式，更像一位物理学家而非计算机科学家。他将智能体（无论是人还是机器人）视为一个远离热力学平衡态的开放系统。这个系统的首要任务是在动态变化的环境中维持自身的存在（即保持其“马尔可夫毯”的完整性）。为了实现这一目标，系统必须遵循一个普适法则——最小化自由能。感知、学习、行动、乃至意识，都只是这一根本物理法则在不同层面上的表现形式。这种高度统一和优雅的理论视角，是他所有工作的出发点。</li>
+<li><strong>产品价值观：具身性与适应性。</strong> 他坚信智能离不开物理世界的身体和行动。一个只存在于服务器中、通过文本与世界交互的AI，无论多么强大，都只是一个“聪明的鹦鹉”，缺乏真正的理解和泛化能力。因此，他追求的AI不是一个无所不知的“先知”，而是一个能够在现实世界中主动探索、犯错、学习和适应的“有机体”。这解释了为什么他最终创立了Noumenal Labs，一家专注于“物理AI”的公司。</li>
+<li><strong>未来预测：智能体生态系统。</strong> Ramstead预见，未来的高级人工智能将不是一个单一的、巨大的、无所不包的模型（Monolithic AGI），而是一个由无数个基于主动推理的智能体组成的、分布式的、可扩展的“共享智能”（Shared Intelligence）生态系统。在这个生态系统中，每个智能体都有自己的目标和信念，它们通过相互作用和协作，共同解决复杂的、个体无法完成的任务。这与VERSES AI提出的“多智能体框架”和“S4级别智能”的愿景完全一致。</li>
+</ul>
+<h3 id="section-philosophy-origins">5.2 思想渊源与影响</h3>
+<p>Ramstead的思想体系并非空中楼阁，而是建立在深厚的学术传统之上，并与多个前沿领域交叉融合。</p>
+<ul>
+<li><strong>Karl Friston &amp; 自由能原理：</strong> 这是他整个思想体系的绝对基石。Ramstead的所有工作都可以看作是对FEP在不同领域（从哲学到工程）的阐释、深化和应用。</li>
+<li><strong>行动主义 (Enactivism)：</strong> 他深受Francisco Varela, Evan Thompson, Eleanor Rosch等哲学家的影响。行动主义哲学强调认知是“做”出来的（enacted），而非“想”出来的（represented）。Ramstead的“行动式推理”理论，正是将FEP的数学形式主义与行动主义的哲学洞见完美结合的产物。</li>
+<li><strong>控制论与自组织理论：</strong> 他继承了从诺伯特·维纳（Norbert Wiener）到威廉·罗斯·阿什比（W. Ross Ashby）的经典控制论思想，关注系统如何通过反馈来维持稳态和适应环境。FEP可以被看作是这些经典思想在现代贝叶斯统计框架下的一个更为普适和强大的版本。</li>
+</ul>
+<h3 id="section-philosophy-controversy">5.3 争议与反思</h3>
+<p>尽管Ramstead所倡导的理论框架优雅而深刻，但在学术界和产业界也面临着一些重要的争议和挑战。</p>
+<ol>
+<li><strong>自由能原理的可证伪性问题：</strong> 一个长期存在的批评是，FEP作为一个“原理”（Principle），其普适性过强，以至于几乎可以解释任何现象，从而使其难以被严格的科学实验所证伪。批评者认为，它更像一个强大的哲学框架或数学语言，而非一个具体的、可检验的科学理论。Ramstead和Friston对此的回应是，FEP本身不可证伪，但基于FEP构建的具体模型（例如某个特定大脑区域的模型）是完全可以被证伪的。</li>
+<li><strong>理论与实践的巨大鸿沟：</strong> 尽管理论上极为优美，但将主动推理应用于大规模、复杂的现实世界问题（如自动驾驶、自然语言长对话）仍然面临巨大的工程挑战。其计算复杂性、参数设置的难度，以及在性能和效率上与主流深度学习方法的直接比较，都是其商业化道路上必须跨越的障碍。目前，主动推理的成功应用大多还局限于模拟环境或相对简单的机器人任务。</li>
+<li><strong>关于“表征”的持续辩论：</strong> Ramstead所倡导的“行动式”或“非表征主义”观点，与认知科学和AI领域中根深蒂固的“大脑/AI通过构建世界表征来工作”的观点存在持续的学术辩论。这场辩论关乎我们如何理解智能的本质，至今没有定论。</li>
+</ol>
+</section>
+<section class="chapter" id="chapter-6">
+<h2 id="section-7">第六章 生态与社区影响力</h2>
+<h3 id="section-ecosystem-knowledge">6.1 知识传播</h3>
+<p>Maxwell Ramstead在主动推理生态系统中的一个极其重要的角色是“知识传播者”和“布道者”。他拥有将极其抽象和数学化的理论，用相对清晰和直观的方式解释给非专业听众的罕见能力。</p>
+<ul>
+<li><strong>公开演讲与访谈：</strong> Ramstead是主动推理领域最活跃和最受欢迎的讲解者之一。他在<a href="https://creators.spotify.com/pod/profile/machinelearningstreettalk" target="_blank">Machine Learning Street Talk (MLST)</a>等顶级AI播客上的深度访谈，观看和收听量巨大，被许多人视为进入该领域的“启蒙”材料。在这些访谈中，他不仅解释了数学，更阐述了其背后的哲学思想和物理直觉，极大地降低了学习曲线。</li>
+<li><strong>教育贡献：</strong> 他在YouTube上发布的等视频教程，已成为许多学生和研究人员入门该领域的必看资源。通过这些无私的分享，他为主动推理社区培养了新一代的研究者和开发者，其贡献超越了单纯的论文发表。</li>
+</ul>
+<figure>
+<img alt="Maxwell Ramstead在MLST播客的宣传图" src="https://agents-download.skywork.ai/image/rt/2a3f0ec252af23ba129314af560fbcc5.jpg" style="max-height: 280px; max-width: 100%;"/>
+<figcaption>Maxwell Ramstead作为嘉宾出现在Machine Learning Street Talk播客的宣传图，他在该平台上的深度访谈是主动推理理论的重要传播渠道</figcaption>
+</figure>
+<h3 id="section-ecosystem-business">6.2 商业与生态构建</h3>
+<p>Ramstead的影响力不仅限于学术和社区，他正积极地将理论转化为商业实体和技术生态。</p>
+<ul>
+<li><strong>创业经历：</strong> 创立<a href="https://www.linkedin.com/company/noumenal-labs" target="_blank">Noumenal Labs</a>是他将理论信仰付诸商业实践的终极体现。这在主动推理的发展史上是一个重要事件，标志着该理论开始独立孵化商业实体，而不仅仅是作为大型科技公司或研究机构的一个探索性研究方向。Noumenal Labs的成败，将在很大程度上影响主动推理在产业界的未来前景。</li>
+<li><strong>生态系统贡献：</strong> 在VERSES AI期间，Ramstead深度参与了围绕“空间网络”构建技术标准（如IEEE正在标准化的HSML和HSTP）和操作系统的宏大计划。这些标准旨在为物理世界和数字世界的交互提供一种统一的语言，而主动推理正是驱动这个系统中智能体行为的核心引擎。在Noumenal Labs，他正试图为整个物理AI和机器人行业提供一个全新的“大脑”范式，如果成功，其影响将是生态级别的。</li>
+</ul>
+</section>
+<section class="chapter" id="chapter-7">
+<h2 id="section-8">第七章 综合评估与展望</h2>
+<h3 id="section-assessment-status">7.1 行业地位评估</h3>
+<p><strong>综合评估结论：</strong> Maxwell Ramstead是一位罕见的集理论家、传播者和创业家于一身的复合型人才。他正处在将一个可能重塑人工智能未来的深刻理论（自由能原理）转化为颠覆性技术的历史进程中。他不仅在学术上持续推动理论的边界，更在产业界为其开辟商业化的道路。他目前是连接FEP理论与AI产业实践之间最重要、最活跃的枢纽人物。</p>
+<p><strong>影响力标签：</strong> <strong>思想领袖</strong> / <strong>技术先驱</strong> / <strong>创业家</strong></p>
+<p><strong>核心优势：</strong></p>
+<ul>
+<li><strong>极强的理论洞察力：</strong> 他能从第一性原理出发思考问题，洞察当前AI范式的根本局限。</li>
+<li><strong>卓越的跨学科整合能力：</strong> 他能无缝地融合物理学、神经科学、哲学和计算机科学，构建统一的理论框架。</li>
+<li><strong>强大的知识传播能力：</strong> 他能将极其复杂的思想清晰地传达给更广泛的受众，建立社区共识。</li>
+<li><strong>坚定的创业决心：</strong> 他敢于将自己的理论信仰付诸实践，挑战主流并开辟新路。</li>
+</ul>
+<h3 id="section-assessment-contribution">7.2 核心贡献评价</h3>
+<ul>
+<li><strong>技术贡献评价：</strong>
+<ul>
+<li><strong>创新性：</strong> 极高。他的工作不仅是对现有理论的应用，更是对基础理论的再创造和深刻解读，如“行动式推理”和“贝叶斯力学”。</li>
+<li><strong>实用性：</strong> 中等（但潜力巨大）。理论的优越性已在特定的模拟和简单机器人任务中得到初步验证。然而，其在复杂大规模商业应用上的实用性和效率仍处于早期验证阶段，这是他创立Noumenal Labs需要攻克的关键。</li>
+<li><strong>影响力：</strong> 高。在学术圈和前沿AI探索领域，他的思想具有强大的指引作用，为那些寻求超越深度学习范式的研究者提供了重要的理论武器。</li>
+</ul>
+</li>
+<li><strong>产品贡献评价：</strong>
+<ul>
+<li><strong>前瞻性：</strong> 极高。无论是在VERSES AI还是Noumenal Labs，他参与设计和构想的产品与技术，瞄准的都是5到10年后的下一代人工智能，而非对现有技术的增量改进。他关注的是如何构建真正自主和适应性的智能。</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-assessment-trends">7.3 未来发展趋势</h3>
+<ul>
+<li><strong>短期趋势（1-3年）：</strong> 未来的关键看点在于Noumenal Labs能否在物理AI或机器人领域取得一个标志性的技术突破或商业案例。例如，能否展示一个在复杂动态环境中表现出前所未有适应性的机器人原型，从而有力地证明主动推理在解决现实问题上的独特价值。这将是决定该技术路线能否吸引更多资本和人才的关键。</li>
+<li><strong>长期趋势（5年以上）：</strong> 如果短期目标得以实现，Ramstead和他所倡导的理论将可能开创人工智能的一个重要新分支——“主动智能”或“物理智能”。这一分支将与当前主流的数据驱动“生成式智能”并驾齐驱，甚至在那些对适应性、安全性和可解释性要求极高的领域（如高级自动驾驶、个性化家用机器人、深空探索、危险环境作业）占据主导地位。他可能成为定义这个新时代AI的关键人物之一。</li>
+</ul>
+<h3 id="section-assessment-recommendations">7.4 合作与跟进建议</h3>
+<ul>
+<li><strong>对投资者的建议：</strong> 投资Noumenal Labs或类似基于第一性原理的AI公司，是一场对AI未来范式的“高风险、高回报”押注。这需要投资者对物理学和神经科学有深刻的理解，并愿意接受较长的研发周期和较高的技术不确定性。然而，其潜在回报是定义一个全新的、可能是万亿级别的市场。关注的重点应是其技术里程碑的达成情况，而非短期的财务数据。</li>
+<li><strong>对从业者的建议：</strong> 学习Maxwell Ramstead的著作、演讲和访谈，可以帮助AI从业者（无论是研究员还是工程师）跳出当前深度学习的思维定式，从一个更根本、更物理的层面去理解智能的本质。这对于设计更鲁棒、更高效、更可信的AI系统具有重要的启发意义。即使不直接采用主动推理框架，其关于“最小化惊奇”、“信念更新”和“行动-感知循环”的思想，也能为改进现有模型提供宝贵的灵感。</li>
+</ul>
+</section>
+<section class="chapter" id="appendix">
+<h2 id="section-9">附录</h2>
+<h3 id="section-appendix-a">附录A：核心信息源</h3>
+<h4>关键文章/白皮书：</h4>
+<ol>
+<li>Ramstead, M. J. D., Kirchhoff, M. D., &amp; Friston, K. J. (2020). <a href="https://journals.sagepub.com/doi/abs/10.1177/1059712319862774" target="_blank">A tale of two densities: active inference is enactive inference</a>. <em>Adaptive Behavior</em>, 28(4), 225-239.</li>
+<li>Ramstead, M. J. D., Sakthivadivel, D. A. R., Heins, C., Koudahl, M., Millidge, B., Da Costa, L., ... &amp; Friston, K. J. (2023). <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rsfs.2022.0029" target="_blank">On Bayesian mechanics: a physics of and by beliefs</a>. <em>Interface Focus</em>, 13(3), 20220029.</li>
+<li>Friston, K. J., Ramstead, M. J. D., Kiefer, A. B., et al. (2024). <a href="https://journals.sagepub.com/doi/10.1177/26339137231222481" target="_blank">Designing ecosystems of intelligence from first principles</a>. <em>Collective Intelligence</em>, 3(1).</li>
+<li>Noumenal Labs. (2024). <a href="https://www.linkedin.com/posts/maxwell-ramstead-43a1991b7_how-to-build-a-brain-noumenal-labs-activity-7297665407828525057-hwUr" target="_blank">How to Build a Brain</a>. [White Paper].</li>
+</ol>
+<h4>关键演讲/访谈：</h4>
+<ol>
+<li>Machine Learning Street Talk (MLST) Podcast: <a href="https://podcasts.apple.com/br/podcast/dr-maxwell-ramstead-the-physics-of-survival/id1510472996?i=1000621265074" target="_blank">&#34;Dr. MAXWELL RAMSTEAD - The Physics of Survival&#34;</a>.</li>
+<li>YouTube: <a href="https://www.youtube.com/watch?v=GKwHX8j-UgU" target="_blank">&#34;The Free Energy Principle with Dr. Maxwell Ramstead&#34;</a>.</li>
+<li>YouTube: <a href="https://www.youtube.com/watch?v=EAH02vr16U8" target="_blank">&#34;Cognition, Consciousness, &amp; The Future of Ai | Maxwell Ramstead&#34;</a>.</li>
+</ol>
+</section>
+<div class="reference-container">
+			<div class="reference-section">
+				<h3 class="reference-title">参考资料</h3>
+				<div class="reference-list">
+					
+					<div class="reference-item">
+						<span class="reference-number">[1]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">How to Build a Brain | Noumenal Labs | Maxwell Ramstead - LinkedIn</span>
+									
+							</div>
+							<a href="https://www.linkedin.com/posts/maxwell-ramstead-43a1991b7_how-to-build-a-brain-noumenal-labs-activity-7297665407828525057-hwUr" class="reference-link" target="_blank">
+								https://www.linkedin.com/posts/maxwell-ramstead-43a1991b7_how-to-build-a-brain-noumenal-labs-activity-7297665407828525057-hwUr
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[2]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Thesis | Have we lost our minds? An approach to multiscale ...</span>
+									
+							</div>
+							<a href="https://escholarship.mcgill.ca/concern/theses/1v53k237p" class="reference-link" target="_blank">
+								https://escholarship.mcgill.ca/concern/theses/1v53k237p
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[3]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">A tale of two densities: active inference is enactive inference</span>
+									
+							</div>
+							<a href="https://journals.sagepub.com/doi/abs/10.1177/1059712319862774" class="reference-link" target="_blank">
+								https://journals.sagepub.com/doi/abs/10.1177/1059712319862774
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[4]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">VERSES Publishes Breakthrough Research on Explainable Artificial ...</span>
+									
+							</div>
+							<a href="https://www.verses.ai/news/verses-publishes-research-on-explainable-artificial-intelligence" class="reference-link" target="_blank">
+								https://www.verses.ai/news/verses-publishes-research-on-explainable-artificial-intelligence
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[5]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Spinning Up in Active Inference and the Free Energy Principle</span>
+									
+							</div>
+							<a href="https://jaredtumiel.github.io/blog/2020/10/14/spinning-up-in-ai.html" class="reference-link" target="_blank">
+								https://jaredtumiel.github.io/blog/2020/10/14/spinning-up-in-ai.html
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[6]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text"></span>
+									
+									<i class="reference-professional"></i>
+									
+							</div>
+							<a href="" class="reference-link" target="_blank">
+								
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[7]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">A tale of two densities: active inference is enactive inference - PubMed</span>
+									
+							</div>
+							<a href="https://pubmed.ncbi.nlm.nih.gov/32831534/" class="reference-link" target="_blank">
+								https://pubmed.ncbi.nlm.nih.gov/32831534/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[8]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Maxwell Ramstead (@mjdramstead) / X</span>
+									
+							</div>
+							<a href="https://x.com/mjdramstead?lang=en" class="reference-link" target="_blank">
+								https://x.com/mjdramstead?lang=en
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[9]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Cognition, Consciousness, &amp; The Future of Ai | Maxwell Ramstead ...</span>
+									
+							</div>
+							<a href="https://www.youtube.com/watch?v=EAH02vr16U8" class="reference-link" target="_blank">
+								https://www.youtube.com/watch?v=EAH02vr16U8
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[10]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Maxwell Ramstead - Noumenal Labs - LinkedIn</span>
+									
+							</div>
+							<a href="https://ca.linkedin.com/in/maxwell-ramstead-43a1991b7" class="reference-link" target="_blank">
+								https://ca.linkedin.com/in/maxwell-ramstead-43a1991b7
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[11]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">[PDF] A tale of two densities: active inference is enactive inference</span>
+									
+							</div>
+							<a href="https://discovery.ucl.ac.uk/10080065/1/1059712319862774.pdf" class="reference-link" target="_blank">
+								https://discovery.ucl.ac.uk/10080065/1/1059712319862774.pdf
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[12]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">The Free Energy Principle with Dr. Maxwell Ramstead - YouTube</span>
+									
+							</div>
+							<a href="https://www.youtube.com/watch?v=GKwHX8j-UgU" class="reference-link" target="_blank">
+								https://www.youtube.com/watch?v=GKwHX8j-UgU
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[13]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Maxwell Ramstead – The Pari Center</span>
+									
+							</div>
+							<a href="https://paricenter.com/contributor/maxwell-ramstead/" class="reference-link" target="_blank">
+								https://paricenter.com/contributor/maxwell-ramstead/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[14]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Designing ecosystems of intelligence from first principles</span>
+									
+							</div>
+							<a href="https://journals.sagepub.com/doi/10.1177/26339137231222481" class="reference-link" target="_blank">
+								https://journals.sagepub.com/doi/10.1177/26339137231222481
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[15]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Blog | Noumenal Labs | Maxwell Ramstead - LinkedIn</span>
+									
+							</div>
+							<a href="https://www.linkedin.com/posts/maxwell-ramstead-43a1991b7_blog-noumenal-labs-activity-7290848559283781633-bCVb" class="reference-link" target="_blank">
+								https://www.linkedin.com/posts/maxwell-ramstead-43a1991b7_blog-noumenal-labs-activity-7290848559283781633-bCVb
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[16]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">‪Maxwell J. D. Ramstead‬ - ‪Google Scholar‬</span>
+									
+							</div>
+							<a href="https://scholar.google.com/citations?user=ILpGOMkAAAAJ&amp;hl=fr" class="reference-link" target="_blank">
+								https://scholar.google.com/citations?user=ILpGOMkAAAAJ&amp;hl=fr
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[17]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">People | Culture, Mind and Brain - McGill University</span>
+									
+							</div>
+							<a href="https://www.mcgill.ca/culture-mind-brain/people-0" class="reference-link" target="_blank">
+								https://www.mcgill.ca/culture-mind-brain/people-0
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[18]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Machine Learning Street Talk (MLST) - Spotify for Creators</span>
+									
+							</div>
+							<a href="https://creators.spotify.com/pod/profile/machinelearningstreettalk" class="reference-link" target="_blank">
+								https://creators.spotify.com/pod/profile/machinelearningstreettalk
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[19]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Dr. MAXWELL RAMSTEAD - The Physics of Survival - Apple Podcasts</span>
+									
+							</div>
+							<a href="https://podcasts.apple.com/br/podcast/dr-maxwell-ramstead-the-physics-of-survival/id1510472996?i=1000621265074" class="reference-link" target="_blank">
+								https://podcasts.apple.com/br/podcast/dr-maxwell-ramstead-the-physics-of-survival/id1510472996?i=1000621265074
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[20]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Noumenal Labs - LinkedIn</span>
+									
+							</div>
+							<a href="https://www.linkedin.com/company/noumenal-labs" class="reference-link" target="_blank">
+								https://www.linkedin.com/company/noumenal-labs
+							</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div></div>
+
+</body></html>
