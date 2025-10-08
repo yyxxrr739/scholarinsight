@@ -609,10 +609,10 @@ const NetworkGraph = forwardRef<NetworkGraphRef, NetworkGraphProps>(({ data, dar
     simulation.nodes(data.nodes)
     simulation.force<d3.ForceLink<NetworkNode, any>>('link')!.links(links)
     
-    // 设置模拟参数，让它充分稳定
-    simulation.alphaDecay(0.05) // 降低alpha衰减率，让模拟运行更长时间以确保孤立节点稳定
-    simulation.velocityDecay(0.6) // 提高速度衰减，让节点更快稳定
-    simulation.alphaMin(0.001) // 设置更低的最小alpha值，确保充分模拟
+    // 设置模拟参数，快速稳定节点
+    simulation.alphaDecay(0.2) // 提高alpha衰减率，加快模拟速度
+    simulation.velocityDecay(0.8) // 提高速度衰减，让节点更快稳定
+    simulation.alphaMin(0.005) // 设置更高的最小alpha值，更快结束模拟
 
     // 自适应显示所有节点的函数
     const fitToView = () => {
